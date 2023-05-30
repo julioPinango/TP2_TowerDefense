@@ -7,7 +7,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 ## Grupo {08}
 
 * **Julio Piñango** - [julioPinango](https://github.com/julioPinango)
-* **Mariano Ruggeri** - [MarianoRuggeri](https://github.com/MariRug10)
+* **Mariano Ruggeri** - [MarianoRuggeri10](https://github.com/MariRug10)
 * **Julianna Sanchez** - [julism13](https://github.com/julism13)
 * **Integrante 4** - [integrante4](https://github.com/integrante4)
 
