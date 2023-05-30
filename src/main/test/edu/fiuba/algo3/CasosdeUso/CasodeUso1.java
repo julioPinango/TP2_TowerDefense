@@ -7,7 +7,9 @@ public class CasodeUso1 {
     @Test
     public void Prueba01(){
         Jugador prueba=new Jugador();
+        
         assertTrue(prueba.getCreditos()==100);
+
         assertTrue(prueba.getVida()==20);
     }
 }
