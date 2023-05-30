@@ -9,6 +9,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Julio Piñango** - [julioPinango](https://github.com/julioPinango)
 * **Mariano Ruggeri** - [MarianoRuggeri10](https://github.com/MariRug10)
 * **Julianna Sanchez** - [julism13](https://github.com/julism13)
+* **Juan Cruz Diez** - [juancruzdiez10](https://github.com/juancruzdiez10)
 * **Integrante 4** - [integrante4](https://github.com/integrante4)
 
 Corrector: **{Corrector}**
