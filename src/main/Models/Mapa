@@ -1,0 +1,6 @@
+import Models.Parcelas.Parcela;
+
+public class Mapa
+{
+    private listaParcelas ListOF(Parcela) ;
+}

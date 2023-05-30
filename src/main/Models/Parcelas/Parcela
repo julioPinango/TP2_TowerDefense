@@ -1,0 +1,6 @@
+public abstract class Parcela
+{
+   // private contenido 
+   private idParcela int;
+   private cordenadas Models.Cordenada;
+}

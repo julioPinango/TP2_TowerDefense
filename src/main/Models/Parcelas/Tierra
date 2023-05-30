@@ -1,0 +1,4 @@
+public class Tierra extends Parcela
+{
+    private defensas Models.defensa;
+}

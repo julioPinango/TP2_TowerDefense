@@ -1,0 +1,5 @@
+public class Jugador{
+   private int Vida;
+   private int Creditos;
+   private String Nombre;
+}
