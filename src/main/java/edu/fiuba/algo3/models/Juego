@@ -1,6 +1,0 @@
-import models.mapa;
-
-public class Juego
-{
-    private mapa mapa;
-}

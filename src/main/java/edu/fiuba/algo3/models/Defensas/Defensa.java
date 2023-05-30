@@ -1,4 +1,6 @@
-public  abstract class defensa
+package edu.fiuba.algo3.models.Defensas;
+
+public abstract class Defensa
 {
     private int Costo;
     private int TiempoConstruccion;
