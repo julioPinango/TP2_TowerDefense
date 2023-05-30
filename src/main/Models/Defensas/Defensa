@@ -1,9 +1,0 @@
-public  abstract class defensa
-{
-    private Costo int;
-    private TiempoConstruccion int;
-    private RangoAtaque int;
-    private danio int;
-    private idTorre int;
-
-}

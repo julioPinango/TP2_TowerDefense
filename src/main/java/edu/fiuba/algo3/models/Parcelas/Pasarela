@@ -1,0 +1,4 @@
+public class Pasarela extends Parcela
+{
+    private ListOF(enemigos) Listaenemigos;
+}

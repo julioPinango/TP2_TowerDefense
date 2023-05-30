@@ -1,0 +1,8 @@
+public abstract Enemigo 
+{
+    public int idEnemigo ;
+    public int Velocidad ;
+    public int Daño ;
+    public int Energia ;
+    public int Creditos ;
+}

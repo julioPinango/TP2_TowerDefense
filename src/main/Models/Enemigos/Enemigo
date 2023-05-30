@@ -1,8 +1,0 @@
-public abstract Enemigo 
-{
-    public idEnemigo int;
-    public Velocidad int;
-    public Daño int;
-    public Energia int;
-    public Creditos int;
-}
