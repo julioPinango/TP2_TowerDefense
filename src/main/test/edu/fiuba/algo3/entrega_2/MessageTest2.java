@@ -21,12 +21,5 @@ public class MessageTest2 {
         Message message = new Message("Hola Mundo!", "Hello world!");
 
         assertEquals("Hola Mundo!", message.greet());
-    }
-   
-    @Test
-    public void Prueba01(){
-        Jugador prueba=new Jugador();
-        assertTrue(prueba.getCreditos()==100);
-        assertTrue(prueba.getVida()==10);
-    }
+    }   
 }

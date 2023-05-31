@@ -7,16 +7,18 @@ import java.util.List;
 
 public abstract class Defensa
 {
-    private Cordenada cordenada;
+    protected Cordenada cordenada;
 
-    private int Costo;
-    private int TiempoConstruccion;
-    private int RangoAtaque;
-    private int danio ;
-    private int idTorre ;
+    protected int Costo;
+    protected int TiempoConstruccion;
+    protected int RangoAtaque;
+    protected int danio ;
 
     public void atacar(List<Enemigo> enemigos){
 
     }
 
+    public int getCosto(){
+        return Costo;
+    }
 }
