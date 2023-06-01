@@ -12,7 +12,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Juan Cruz Diez** - [juancruzdiez10](https://github.com/juancruzdiez10)
 * **Manuel Perez** - [perezmanu](https://github.com/perezmanu)
 
-Corrector: **{Corrector}**
+Corrector: **{Maia Naftali}**
 
 ## Aplicación
 
