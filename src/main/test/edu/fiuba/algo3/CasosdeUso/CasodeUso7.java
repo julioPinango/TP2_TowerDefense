@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import edu.fiuba.algo3.models.Cordenada;
+import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
@@ -32,7 +33,9 @@ public class CasodeUso7 {
 
         Enemigo hormiga = new Hormiga(pasarelas);
 
-        hormiga.mover();
+        Jugador jugador=new Jugador("Juan Cruz");
+        
+        hormiga.mover(jugador);
 
         assertTrue(hormiga.getCordenada() == cordenada1);
     }

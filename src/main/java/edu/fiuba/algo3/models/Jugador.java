@@ -12,11 +12,13 @@ public class Jugador{
    private int Vida;
    private int Creditos;
    private String Nombre;
+   private int hormigasDestruidas;
 
    public Jugador(String nombreJugador){ 
       this.Vida=20;
       this.Creditos=100;
       this.Nombre=nombreJugador;
+      this.hormigasDestruidas=0;
    }
 
    public int getVida() {
@@ -50,5 +52,22 @@ public void recibirAtaque(Enemigo enemigo) {
 
    this.Vida=Vida-enemigo.getdanio();
 
+}
+
+public Boolean jugadorDerrotado() {
+   return (getVida()<=0);
+}
+
+public int getHormigasDestruidas() {
+    return hormigasDestruidas;
+}
+
+public void sumarHormigaMuerta() {
+   this.hormigasDestruidas++;
+}
+
+public void agregarCreditos(int creditosEntrantes)
+{
+   Creditos=Creditos+creditosEntrantes;
 }
 }

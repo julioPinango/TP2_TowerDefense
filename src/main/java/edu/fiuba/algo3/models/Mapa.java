@@ -1,34 +1,32 @@
 package edu.fiuba.algo3.models;
 
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
+import edu.fiuba.algo3.models.Enemigos.Hormiga;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
 import javafx.scene.layout.ColumnConstraints;
 import edu.fiuba.algo3.models.Defensas.Defensa;
 import edu.fiuba.algo3.models.Defensas.TorreBlanca;
 import edu.fiuba.algo3.models.Defensas.TorrePlateada;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.text.StyledEditorKit.BoldAction;
-
-
 public class Mapa
 {
-    private List<Parcela> listaParcelas;
+    
     private List<Defensa> listaDefensas;
     private List<Enemigo> listaEnemigos;
-    private int Columna;
-    private int Fila;
     private Parcela[][] Parcelas;
     private Map<String, Defensa> tiposDeTorre = new HashMap<>();
     private int contadorHormigas=0; 
 
-    public Mapa(int columnas, int filas){
-        this.Columna=columnas;
-        this.Fila=filas;
-        this.Parcelas=new Parcela[filas][columnas];       
+    public Mapa(Parcela[][] parcelas2, List<Defensa> listaDefensas2, List<Enemigo> listaEnemigos2) {
+
+        Parcelas=parcelas2;
+        listaDefensas=listaDefensas2;
+        listaEnemigos=listaEnemigos2;
     }
     public void SiguienteTurno() {
         
@@ -53,7 +51,40 @@ public class Mapa
     }
     public boolean quedanEnemigos()
     {
-        return getEnemigos().size()==0;
+        return getEnemigos().size()>0;
+    }
+    public void realizarTurno(Jugador jugador) {
+        
+        for (var torre : listaDefensas) {
+                   torre.realizarTurno(listaEnemigos); 
+        }
+
+        List<Enemigo> listaEnemigosVivos = new ArrayList<>();
+        
+        
+        for(Enemigo enemigo:listaEnemigos)
+        {
+            if(enemigo.getEnergia()>0)
+            { 
+                listaEnemigosVivos.add(enemigo);
+                enemigo.mover(jugador);
+            }
+            else
+            {
+                enemigo.otorgarCreditos(jugador);                
+                enemigo.sumarEnemigoMuerto(jugador);
+            }
+
+           
+
+        }
+
+        listaEnemigos=listaEnemigosVivos;
+
+
+
+
+
     }
 
 }

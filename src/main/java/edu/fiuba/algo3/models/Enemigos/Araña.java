@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.models.Enemigos;
 
 import java.util.Queue;
+import java.util.Random;
 
+import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class Araña extends Enemigo
@@ -15,9 +17,28 @@ public class Araña extends Enemigo
         this.pasarelas=pasarelas;
     }
 
-    public void mover() {
-        pasarelas.poll();        
-        pasarelas.poll();        
+    public void mover(Jugador jugador) {
+        if (pasarelas.size()<3)
+        {
+            jugador.recibirAtaque(this);
+            Energia=0;
+        }
+        else 
+        {
+            pasarelas.poll();        
+            pasarelas.poll(); 
+        }       
 
     }
+    public void sumarEnemigoMuerto(Jugador jugador) {
+    }
+    public void otorgarCreditos(Jugador jugador)
+    {
+        Random random = new Random();
+        int numeroAleatorio = random.nextInt(11);
+        
+
+        jugador.agregarCreditos(numeroAleatorio);
+
+    }  
 }

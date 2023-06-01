@@ -16,11 +16,5 @@ public class TorrePlateada extends Defensa
     public boolean puedoAtacar(){
         return(this.estado.puedoAtacar());
     }
-    public void realizarTurno(){
-        if (this.puedoAtacar()) {
-            this.estado=new Operativo();
-            //ATACA
-        }
-        return;
-    }
+    
 }

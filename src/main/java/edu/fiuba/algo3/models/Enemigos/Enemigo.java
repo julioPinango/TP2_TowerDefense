@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import edu.fiuba.algo3.models.Cordenada;
+import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public abstract class Enemigo{
@@ -33,7 +34,12 @@ public abstract class Enemigo{
         Energia=Energia-danio;
     }
 
-    public void mover() {
+    public void mover(Jugador jugador) {
           
     }
+    public void sumarEnemigoMuerto(Jugador jugador) {
+    }
+
+    public void otorgarCreditos(Jugador jugador)
+    {}
 }
