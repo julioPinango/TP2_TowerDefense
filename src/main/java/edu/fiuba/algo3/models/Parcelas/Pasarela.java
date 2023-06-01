@@ -10,7 +10,7 @@ public class Pasarela extends Parcela
     {
        this.cordenadas=cordenada;
     }
-    //private ListOF(enemigos) Listaenemigos;
+
     public boolean puedoConstruirDefensa(Defensa defensaNueva) {
         return defensaNueva.puedoConstruirEnPasarela();
      }

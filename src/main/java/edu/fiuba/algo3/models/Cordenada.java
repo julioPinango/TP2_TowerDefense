@@ -2,8 +2,8 @@ package edu.fiuba.algo3.models;
 
 public class Cordenada
 {
-    public int X;
-    public int  Y;
+    private int X;
+    private int  Y;
 
 
     public Cordenada(int x,int y)

@@ -5,14 +5,7 @@ import edu.fiuba.algo3.models.Defensas.Defensa;
 
 public abstract class Parcela
 {
-/* 
-   public Parcela(Cordenada cordenada)
-   {
-      this.cordenadas=cordenada;
-   }*/
 
-   // private contenido 
-   protected int idParcela ;
    protected Cordenada cordenadas ;
 
    public boolean puedoConstruirDefensa(Defensa defensaNueva) {
