@@ -14,7 +14,6 @@ import edu.fiuba.algo3.models.Mapa;
 import edu.fiuba.algo3.models.Defensas.Defensa;
 import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
-import edu.fiuba.algo3.models.Enemigos.Hormiga;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 import edu.fiuba.algo3.models.Parcelas.Rocoso;

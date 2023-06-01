@@ -3,7 +3,6 @@ package edu.fiuba.algo3.models.Enemigos;
 import java.util.Queue;
 
 import edu.fiuba.algo3.models.Jugador;
-import edu.fiuba.algo3.models.Parcelas.Parcela;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class Hormiga extends Enemigo

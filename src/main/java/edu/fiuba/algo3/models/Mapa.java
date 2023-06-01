@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.models;
 
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
-import edu.fiuba.algo3.models.Enemigos.Hormiga;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
-import javafx.scene.layout.ColumnConstraints;
 import edu.fiuba.algo3.models.Defensas.Defensa;
 import edu.fiuba.algo3.models.Defensas.TorreBlanca;
 import edu.fiuba.algo3.models.Defensas.TorrePlateada;

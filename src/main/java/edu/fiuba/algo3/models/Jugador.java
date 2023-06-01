@@ -1,10 +1,6 @@
 package edu.fiuba.algo3.models;
 
-import java.util.function.BooleanSupplier;
-
 import edu.fiuba.algo3.models.Defensas.Defensa;
-import edu.fiuba.algo3.models.Defensas.TorrePlateada;
-import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 
 public class Jugador{
