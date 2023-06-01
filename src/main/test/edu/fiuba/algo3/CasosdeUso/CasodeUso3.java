@@ -13,7 +13,7 @@ public class CasodeUso3 {
     @Test
     public void Prueba01(){
   
-        Jugador jugador=new Jugador();
+        Jugador jugador=new Jugador("Julio Piñango");
 
         TorrePlateada torre=new TorrePlateada();
 
@@ -22,7 +22,7 @@ public class CasodeUso3 {
     @Test
     public void Prueba02(){
   
-        Jugador jugador=new Jugador();
+        Jugador jugador=new Jugador("Julio Piñango");
 
         TorreBlanca torre=new TorreBlanca();
 
@@ -33,7 +33,7 @@ public class CasodeUso3 {
     @Test
     public void Prueba03(){
   
-        Jugador jugador=new Jugador();
+        Jugador jugador=new Jugador("Julio Piñango");
 
         TorreBlanca torre=new TorreBlanca();
 

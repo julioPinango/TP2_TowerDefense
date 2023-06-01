@@ -15,7 +15,7 @@ public class CasodeUso12 {
 
         PasarelaFinal pasarela=new PasarelaFinal();
 
-        Jugador jugador=new Jugador();
+        Jugador jugador=new Jugador("Mariano");
 
         Enemigo araña=new Araña(pasarela);
         

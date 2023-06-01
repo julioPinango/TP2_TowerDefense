@@ -13,30 +13,29 @@ public class Jugador{
    private int Creditos;
    private String Nombre;
 
-   public Jugador()
-   {
+   public Jugador(String nombreJugador){ 
       this.Vida=20;
       this.Creditos=100;
-
+      this.Nombre=nombreJugador;
    }
 
    public int getVida() {
-      return Vida;
+      return this.Vida;
    }
    public void setVida(int vida) {
-      Vida = vida;
+      this.Vida = vida;
    }
    public int getCreditos() {
-      return Creditos;
+      return this.Creditos;
    }
    public void setCreditos(int creditos) {
-      Creditos = creditos;
+      this.Creditos = creditos;
    }
    public String getNombre() {
-      return Nombre;
+      return this.Nombre;
    }
    public void setNombre(String nombre) {
-      Nombre = nombre;
+      this.Nombre = nombre;
    }
 
    public boolean creditosSuficientes(Defensa torre) {   
@@ -44,12 +43,12 @@ public class Jugador{
    }
 
    public void descontarCredito(int costo) {
-      Creditos=Creditos-costo;
+      this.Creditos=Creditos-costo;
    }
 
 public void recibirAtaque(Enemigo enemigo) {
 
-   Vida=Vida-enemigo.getdanio();
+   this.Vida=Vida-enemigo.getdanio();
 
 }
 }

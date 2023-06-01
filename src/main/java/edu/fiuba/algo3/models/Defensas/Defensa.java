@@ -13,6 +13,7 @@ public abstract class Defensa
     protected int TiempoConstruccion;
     protected int RangoAtaque;
     protected int danio ;
+    protected Estado estado;
 
     public void atacar(List<Enemigo> enemigos){
 
@@ -20,5 +21,17 @@ public abstract class Defensa
 
     public int getCosto(){
         return Costo;
+    }
+
+    public boolean puedoConstruirEnPasarela(){
+        return false;
+    }
+
+    public boolean puedoConstruirEnRocoso(){
+        return false;
+    }
+
+    public boolean puedoConstruirEnTierra(Boolean estaLibre){
+        return estaLibre;
     }
 }
