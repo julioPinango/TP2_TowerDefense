@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract class Defensa
 {
-    protected Cordenada cordenada;
+    protected Cordenada cordenadas;
 
     protected int Costo;
     protected int TiempoConstruccion;
@@ -16,7 +16,14 @@ public abstract class Defensa
     protected Estado estado;
 
     public void atacar(List<Enemigo> enemigos){
-
+        for (Enemigo enemigo : enemigos) {
+            
+            if(Cordenada.estaEnRango(RangoAtaque, cordenadas, enemigo.getCordenada()))
+            {
+                enemigo.recibirAtaque(danio);
+                break;
+            }
+        }
     }
 
     public int getCosto(){
@@ -34,4 +41,10 @@ public abstract class Defensa
     public boolean puedoConstruirEnTierra(Boolean estaLibre){
         return estaLibre;
     }
+    public boolean puedoAtacar(){
+       return false;
+    }
+    public void realizarTurno(){
+    }
+
 }

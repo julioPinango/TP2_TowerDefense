@@ -6,6 +6,6 @@ import edu.fiuba.algo3.models.Jugador;
 public class CasodeUso8 {    
     @Test
     public void Prueba01(){
-        
+        assertTrue(false);
     }
 }

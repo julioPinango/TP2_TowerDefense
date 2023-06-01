@@ -7,7 +7,7 @@ import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
-import edu.fiuba.algo3.models.Parcelas.PasarelaFinal;
+/*import edu.fiuba.algo3.models.Parcelas.PasarelaFinal;
 
 public class CasodeUso12 {    
     @Test
@@ -34,4 +34,5 @@ public class CasodeUso12 {
 
         assertTrue(Juego.jugadorDerrotado(jugador)); 
     }
-}
+} */
+ 

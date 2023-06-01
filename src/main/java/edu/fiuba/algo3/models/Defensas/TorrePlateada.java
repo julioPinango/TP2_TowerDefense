@@ -1,12 +1,16 @@
 package edu.fiuba.algo3.models.Defensas;
 
+import edu.fiuba.algo3.models.Cordenada;
+
 public class TorrePlateada extends Defensa
 {
-    public TorrePlateada()
+    public TorrePlateada(Cordenada cordenadas)
     {
         this.Costo=20;
         this.RangoAtaque=3;
         this.danio=2;
+        
+        this.cordenadas=cordenadas;
         this.estado=new EnConstruccion(2);
     }
     public boolean puedoAtacar(){
@@ -19,5 +23,4 @@ public class TorrePlateada extends Defensa
         }
         return;
     }
-
 }

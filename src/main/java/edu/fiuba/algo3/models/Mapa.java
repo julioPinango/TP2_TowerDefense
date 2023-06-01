@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.text.StyledEditorKit.BoldAction;
+
 
 public class Mapa
 {
@@ -21,14 +23,12 @@ public class Mapa
     private int Fila;
     private Parcela[][] Parcelas;
     private Map<String, Defensa> tiposDeTorre = new HashMap<>();
+    private int contadorHormigas=0; 
 
     public Mapa(int columnas, int filas){
         this.Columna=columnas;
         this.Fila=filas;
-        this.Parcelas=new Parcela[filas][columnas];
-        //tiposDeTorre.put("Torre Plateada", new TorrePlateada());
-        tiposDeTorre.put("Torre Blanca", new TorreBlanca());
-        tiposDeTorre.put("Torre Plateada", new TorrePlateada());
+        this.Parcelas=new Parcela[filas][columnas];       
     }
     public void SiguienteTurno() {
         
@@ -38,7 +38,22 @@ public class Mapa
         this.Parcelas[x][y]=parcela;
     }
     boolean colocarDefensaEnEstaPosicion(int x,int y, String tipo){
+
+        Cordenada cordenada=new Cordenada(x, y);
+
+        tiposDeTorre.put("Torre Blanca", new TorreBlanca(cordenada));
+        tiposDeTorre.put("Torre Plateada", new TorrePlateada(cordenada));
+
         Defensa defensaNueva=this.tiposDeTorre.get(tipo);
+
         return (this.Parcelas[x][y].puedoConstruirDefensa(defensaNueva));
     }
+    public List<Enemigo> getEnemigos() {
+        return listaEnemigos;
+    }
+    public boolean quedanEnemigos()
+    {
+        return getEnemigos().size()==0;
+    }
+
 }

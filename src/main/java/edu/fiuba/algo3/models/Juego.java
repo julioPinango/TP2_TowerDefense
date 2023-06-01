@@ -17,8 +17,11 @@ public class Juego
         return (jugador.getVida()<=0);
     }
 
-    /*private void flujoDeJuego(){
-        while (!(jugadorDerrotado())) {
+    private void flujoDeJuego(Jugador jugador){
+
+       
+
+        while (!(jugadorDerrotado(jugador))&&mapa.quedanEnemigos()) {
             //TURNO 0
             //CONSTRUYE defensa
             //se mueve enemigo
@@ -33,9 +36,15 @@ public class Juego
             //Defensa operativa: pega defensa
             //chequea si el enemimo murio: da creditos
             //se mueve enemigo
+
+                //gano
             // CONTRUIR Y PASAR TURNO
         }
-    }*/
+
+        terminarPartida(!jugadorDerrotado(jugador));//True es gano false es perdio.
+        
+        
+    }
 
     public void SiguienteTurno() {
             /*
@@ -50,5 +59,11 @@ public class Juego
             return false;
         }
         return true;
+    }
+
+
+    public boolean terminarPartida(boolean gano)
+    {
+        return gano;
     }
 }
