@@ -10,7 +10,6 @@ public abstract class Defensa
     protected Cordenada cordenadas;
 
     protected int Costo;
-    protected int TiempoConstruccion;
     protected int RangoAtaque;
     protected int danio ;
     protected Estado estado;
@@ -47,7 +46,6 @@ public abstract class Defensa
     public void realizarTurno(List<Enemigo> listaEnemigos2){
         if (this.puedoAtacar()) {
             this.estado=new Operativo();
-            //ATACA
             atacar(listaEnemigos2);
         }
         return;

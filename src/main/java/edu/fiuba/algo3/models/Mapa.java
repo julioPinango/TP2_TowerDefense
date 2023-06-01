@@ -18,7 +18,7 @@ public class Mapa
     private List<Enemigo> listaEnemigos;
     private Parcela[][] Parcelas;
     private Map<String, Defensa> tiposDeTorre = new HashMap<>();
-    private int contadorHormigas=0; 
+
 
     public Mapa(Parcela[][] parcelas2, List<Defensa> listaDefensas2, List<Enemigo> listaEnemigos2) {
 
@@ -27,7 +27,7 @@ public class Mapa
         listaEnemigos=listaEnemigos2;
     }
     public void SiguienteTurno() {
-        
+
     }
 
     private void colocarTipoParcela(Parcela parcela, int x, int y){
