@@ -44,10 +44,12 @@ public abstract class Defensa
        return false;
     }
     public void realizarTurno(List<Enemigo> listaEnemigos2){
-        if (this.puedoAtacar()) {
+
+        if (this.estado.puedoAtacar()) {
             this.estado=new Operativo();
-            atacar(listaEnemigos2);
+            this.atacar(listaEnemigos2);
         }
+
         return;
     }
 

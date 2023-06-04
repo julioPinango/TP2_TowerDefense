@@ -2,10 +2,7 @@ package edu.fiuba.algo3.CasosdeUso;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Juego;
@@ -46,21 +43,18 @@ public class CasodeUso12 {
         var Pasarela2=new Pasarela(cordenada5);
         var Pasarela3=new Pasarela(cordenada8);
 
-        Parcela[][] parcelas = new Parcela[3][3];
+        Map<Cordenada, Parcela> parcelas = new HashMap<>();
 
-        parcelas[0][0]=tierra1;
-        parcelas[0][1]=tierra2;
-        parcelas[0][2]=tierra3;
+        parcelas.put(cordenada1, tierra1);
+        parcelas.put(cordenada4, tierra2);
+        parcelas.put(cordenada7, tierra3);
+        parcelas.put(cordenada2, Pasarela1);
+        parcelas.put(cordenada5, Pasarela2);
+        parcelas.put(cordenada8, Pasarela3);
+        parcelas.put(cordenada3, Roca1);
+        parcelas.put(cordenada6, Roca2);
+        parcelas.put(cordenada9, Roca3);
 
-        parcelas[1][0]=Roca1;
-        parcelas[1][1]=Roca2;
-        parcelas[1][2]=Roca3;
-
-        parcelas[2][0]=Pasarela1;
-        parcelas[2][1]=Pasarela2;
-        parcelas[2][2]=Pasarela3;
-
-        
 
         List<Defensa> listaDefensas = new ArrayList<>();
 

@@ -1,12 +1,14 @@
 package edu.fiuba.algo3.models;
 
+import java.util.Objects;
+
 public class Cordenada
 {
     private int X;
     private int  Y;
 
 
-    public Cordenada(int x,int y)
+    public Cordenada(int x, int y)
     {
         this.X=x;
         this.Y=y;

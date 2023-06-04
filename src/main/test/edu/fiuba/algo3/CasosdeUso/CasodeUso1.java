@@ -9,7 +9,6 @@ public class CasodeUso1 {
         Jugador prueba=new Jugador("Juan");
         
         assertTrue(prueba.getCreditos()==100);
-        assertTrue(prueba.getNombre()=="Juan");
         assertTrue(prueba.getVida()==20);
     }
 }

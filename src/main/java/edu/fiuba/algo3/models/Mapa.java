@@ -16,33 +16,34 @@ public class Mapa
     
     private List<Defensa> listaDefensas;
     private List<Enemigo> listaEnemigos;
-    private Parcela[][] Parcelas;
+    private Map<Cordenada, Parcela> parcelas = new HashMap<>();
     private Map<String, Defensa> tiposDeTorre = new HashMap<>();
 
 
-    public Mapa(Parcela[][] parcelas2, List<Defensa> listaDefensas2, List<Enemigo> listaEnemigos2) {
+    public Mapa(Map<Cordenada, Parcela> parcelas2 , List<Defensa> listaDefensas2, List<Enemigo> listaEnemigos2) {
 
-        Parcelas=parcelas2;
+        parcelas=parcelas2;
         listaDefensas=listaDefensas2;
         listaEnemigos=listaEnemigos2;
+
+
     }
     public void SiguienteTurno() {
 
     }
 
-    private void colocarTipoParcela(Parcela parcela, int x, int y){
-        this.Parcelas[x][y]=parcela;
-    }
     boolean colocarDefensaEnEstaPosicion(int x,int y, String tipo){
 
         Cordenada cordenada=new Cordenada(x, y);
 
+        //registracion de torres en el hash
         tiposDeTorre.put("Torre Blanca", new TorreBlanca(cordenada));
         tiposDeTorre.put("Torre Plateada", new TorrePlateada(cordenada));
 
+        //asignacion de defensa segun registradas
         Defensa defensaNueva=this.tiposDeTorre.get(tipo);
 
-        return (this.Parcelas[x][y].puedoConstruirDefensa(defensaNueva));
+        return (this.parcelas.get(cordenada).puedoConstruirDefensa(defensaNueva));
     }
     public List<Enemigo> getEnemigos() {
         return listaEnemigos;
