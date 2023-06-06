@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.models;
 
-import java.util.Objects;
-
 public class Cordenada
 {
     private int X;
