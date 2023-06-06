@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.CasosdeUso;
-import edu.fiuba.algo3.models.Defensas.TorreBlanca;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

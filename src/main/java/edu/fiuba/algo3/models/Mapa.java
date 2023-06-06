@@ -28,9 +28,6 @@ public class Mapa
 
 
     }
-    public void SiguienteTurno() {
-
-    }
 
     boolean colocarDefensaEnEstaPosicion(int x,int y, String tipo){
 
@@ -43,7 +40,13 @@ public class Mapa
         //asignacion de defensa segun registradas
         Defensa defensaNueva=this.tiposDeTorre.get(tipo);
 
-        return (this.parcelas.get(cordenada).puedoConstruirDefensa(defensaNueva));
+        if(parcelas.get(cordenada).puedoConstruirDefensa(defensaNueva))
+        {
+            this.listaDefensas.add(defensaNueva);         
+            return true;
+        }
+        return false;
+
     }
     public List<Enemigo> getEnemigos() {
         return listaEnemigos;
