@@ -5,8 +5,6 @@ import edu.fiuba.algo3.models.Defensas.Defensa;
 
 public class Rocoso extends Parcela
 {
-    private Cordenada cordenadas;
-
     public Rocoso(Cordenada cordenada)
     {
        this.cordenadas=cordenada;

@@ -14,6 +14,5 @@ public class Pasarela extends Parcela
     public boolean puedoConstruirDefensa(Defensa defensaNueva) {
         return defensaNueva.puedoConstruirEnPasarela();
      }
-
    
 }

@@ -1,9 +1,14 @@
 package edu.fiuba.algo3;
 
+import java.io.IOException;
+
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        CasodeUso1.Prueba01();
+        
          App.main(args);
     }
 }
