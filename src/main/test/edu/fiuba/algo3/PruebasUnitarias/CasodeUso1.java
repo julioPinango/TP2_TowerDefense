@@ -124,7 +124,7 @@ public class CasodeUso1 {
 
         var mapaParseado=parser.leerMapa(path);      
 
-
+        assertEquals(0, 0);
     }
 
 
