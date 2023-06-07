@@ -4,6 +4,7 @@ import java.util.Queue;
 import java.util.Random;
 
 import edu.fiuba.algo3.models.Jugador;
+import edu.fiuba.algo3.models.Log;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class Araña extends Enemigo
@@ -21,8 +22,7 @@ public class Araña extends Enemigo
     public void mover(Jugador jugador) {
         if (pasarelas.size()<3)
         {
-            jugador.recibirAtaque(this);
-            Energia=0;
+            atacarJugador(jugador);
         }
         else 
         {

@@ -1,10 +1,15 @@
+package edu.fiuba.algo3.models;
+
+import edu.fiuba.algo3.models.Defensas.Defensa;
+import edu.fiuba.algo3.models.Enemigos.Enemigo;
+
 public class Log{
     private static Log INSTANCIA = new Log();
 
     private Log(){}
 
     public static Log obtenetInstancia(){
-        return INSTANCIA
+        return INSTANCIA;
     }
 
     public void imprimirResultado(String resultado){

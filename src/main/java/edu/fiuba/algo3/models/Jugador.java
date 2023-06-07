@@ -44,11 +44,10 @@ public class Jugador{
       this.Creditos=Creditos-costo;
    }
 
-public void recibirAtaque(Enemigo enemigo) {
-   var log = Log.obtenetInstancia();
+public void recibirAtaque(int danio) {
 
-   this.Vida=Vida-enemigo.getdanio();
-   log.imprimirDanioEnemigo(enemigo)
+   this.Vida=Vida-danio;
+
 }
 
 public Boolean jugadorDerrotado() {

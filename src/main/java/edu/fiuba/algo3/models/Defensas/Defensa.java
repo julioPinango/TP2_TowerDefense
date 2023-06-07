@@ -2,6 +2,7 @@ package edu.fiuba.algo3.models.Defensas;
 
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
+import edu.fiuba.algo3.models.Log;
 
 import java.util.List;
 

@@ -42,7 +42,9 @@ public class Mapa
 
         if(parcelas.get(cordenada).puedoConstruirDefensa(defensaNueva))
         {
-            this.listaDefensas.add(defensaNueva);         
+            this.listaDefensas.add(defensaNueva);
+            var log = Log.obtenetInstancia();
+            log.imprimirConstruccion(defensaNueva,cordenada);
             return true;
         }
         return false;

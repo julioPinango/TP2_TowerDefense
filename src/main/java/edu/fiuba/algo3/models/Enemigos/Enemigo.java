@@ -6,6 +6,7 @@ import java.util.Queue;
 
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
+import edu.fiuba.algo3.models.Log;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public abstract class Enemigo{
@@ -42,4 +43,11 @@ public abstract class Enemigo{
 
     public void otorgarCreditos(Jugador jugador)
     {}
+
+    public void atacarJugador(Jugador jugador){
+        jugador.recibirAtaque(Danio);
+        var log = Log.obtenetInstancia();
+        log.imprimirDanioEnemigo(this);
+        Energia=0;
+    }
 }

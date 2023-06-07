@@ -3,6 +3,7 @@ package edu.fiuba.algo3.models.Enemigos;
 import java.util.Queue;
 
 import edu.fiuba.algo3.models.Jugador;
+import edu.fiuba.algo3.models.Log;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class Hormiga extends Enemigo
@@ -26,8 +27,7 @@ public class Hormiga extends Enemigo
 
         if (pasarelas.size()==1)
         {
-            jugador.recibirAtaque(this);
-            Energia=0;
+            atacarJugador(jugador);
             
         }
         else 
