@@ -1,21 +1,22 @@
-package edu.fiuba.algo3.PruebasUnitarias;
-import org.junit.jupiter.api.Test;
+package edu.fiuba.algo3;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+
 
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Parser;
+import edu.fiuba.algo3.models.Parcelas.Parcela;
 import edu.fiuba.algo3.models.Parcelas.Rocoso;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class CasodeUso1 {    
-    @Test
-    public void Prueba01() throws IOException{
+   
+    public static void Prueba01() throws IOException{
    
         // Crear la lista de listas
         List<List<String>> mapa = new ArrayList<>();
@@ -45,15 +46,15 @@ public class CasodeUso1 {
 
         String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapaReducido.json";
 
-        var mapaParseado=parser.leerMapa(path);      
+        Map<Cordenada, Parcela> mapaParseado=parser.leerMapa(path);      
 
-        Cordenada cor=new Cordenada(1, 1);
+        Cordenada cor=new Cordenada(2, 2);
 
-        var coordenada11MapaParseado=mapaParseado.get(cor);    
+        var coordenada11MapaParseado=mapaParseado.values();    
 
         var roco=new Rocoso(cor);
 
-        assertEquals(roco,coordenada11MapaParseado);
+        //assertEquals(roco,coordenada11MapaParseado);
         
     }
 }

@@ -5,14 +5,13 @@ import edu.fiuba.algo3.models.Defensas.Defensa;
 
 public class Tierra extends Parcela
 {
-    private Cordenada cordenadas;
+   private boolean libre=true;
 
-    public Tierra(Cordenada cordenada)
-    {
-       this.cordenadas=cordenada;
-    }
 
-    private boolean libre=true;
+   public Tierra(Cordenada cordenada)
+   {
+      this.cordenadas=cordenada;
+   }    
    // private Defensa Models defensa;
     public boolean puedoConstruirDefensa(Defensa defensaNueva) {
         boolean retorno=defensaNueva.puedoConstruirEnTierra(this.libre);        
