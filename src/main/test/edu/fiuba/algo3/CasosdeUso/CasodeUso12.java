@@ -97,7 +97,7 @@ public class CasodeUso12 {
 
         juego.jugar(jugador);
 
-        assertTrue(juego.resultado()=="Derrotado");
+        assertTrue(juego.resultado()=="Pierde");
     }
 } 
  

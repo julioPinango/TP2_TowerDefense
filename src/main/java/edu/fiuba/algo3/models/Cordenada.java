@@ -31,6 +31,9 @@ public class Cordenada
         return distancia<=rango;
 
     }
+    public String getCoordenadas(){
+        return "("+this.X+","+this.Y+")";
+    }
 
    
 }

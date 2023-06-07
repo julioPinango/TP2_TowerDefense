@@ -13,18 +13,25 @@ public abstract class Defensa
     protected int RangoAtaque;
     protected int danio ;
     protected Estado estado;
+    protected String nombre;
 
     public void atacar(List<Enemigo> enemigos){
         for (Enemigo enemigo : enemigos) {
             
             if(Cordenada.estaEnRango(RangoAtaque, cordenadas, enemigo.getCordenada()))
             {
+                var log = Log.obtenetInstancia();
+                
                 enemigo.recibirAtaque(danio);
+                log.imprimirAtaque(this,enemigo,enemigo.getCordenada());
                 break;
             }
         }
     }
 
+    public String getNombre(){
+        return nombre;
+    }
     public int getCosto(){
         return Costo;
     }

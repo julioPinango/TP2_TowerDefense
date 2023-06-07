@@ -8,6 +8,7 @@ public class Juego
     private Jugador Jugador;
     private int Turno;
     private String resultadoJuego="En proceso";
+    private Log log= Log.obtenetInstancia();
     
     public Juego(Jugador jugador,Mapa mapa2){
         this.Jugador=jugador;
@@ -38,9 +39,11 @@ public class Juego
     public void terminarPartida(boolean gano)
     {
         if(gano)
-            resultadoJuego="Ganado";
+            resultadoJuego="Gana";
         else
-            resultadoJuego="Derrotado";
+            resultadoJuego="Pierde";
+            
+        log.imprimirResultado(resultadoJuego);
     }
 
     public String resultado() {

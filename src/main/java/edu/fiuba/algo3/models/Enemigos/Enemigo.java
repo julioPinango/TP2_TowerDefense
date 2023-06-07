@@ -13,6 +13,7 @@ public abstract class Enemigo{
     protected int Velocidad ;
     protected int Danio ;
     protected int Energia ;
+    protected String nombre;
 
     protected Queue<Pasarela> pasarelas = new LinkedList<>();
 
@@ -21,6 +22,9 @@ public abstract class Enemigo{
     }
     public int getEnergia() {
         return Energia;
+    }
+    public String getNombre(){
+        return nombre;
     }
     public Cordenada getCordenada() {
         return pasarelas.peek().getCordenada();

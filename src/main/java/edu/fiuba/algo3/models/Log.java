@@ -1,0 +1,28 @@
+public class Log{
+    private static Log INSTANCIA = new Log();
+
+    private Log(){}
+
+    public static Log obtenetInstancia(){
+        return INSTANCIA
+    }
+
+    public void imprimirResultado(String resultado){
+        System.out.println("Jugador "+ resultado +" la Partida");
+    }
+
+    public void imprimirDanioEnemigo(Enemigo enemigo){
+        System.out.println(enemigo.getNombre()+" llega a la meta, produce "
+        +enemigo.getdanio()+" daño al jugador");
+    }
+
+    public void imprimirAtaque(Defensa defensa, Enemigo enemigo, Cordenada coordenada){
+        System.out.println(defensa.getNombre()+ " ataca una " + enemigo.getNombre() + 
+        " en la posición " + coordenada.getCoordenadas());
+    }
+
+    public void imprimirConstruccion(Defensa defensa, Cordenada coordenada){
+        System.out.println("Jugador Construye "+defensa.getNombre() + 
+        " en posición " + coordenada.getCoordenadas());
+    }
+}

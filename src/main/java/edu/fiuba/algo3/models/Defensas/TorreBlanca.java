@@ -7,6 +7,7 @@ public class TorreBlanca extends Defensa{
         this.Costo=10;
         this.RangoAtaque=3;
         this.danio=1;
+        this.nombre= "Torre Blanca";
         
         this.cordenadas=cordenadas;
         this.estado=new EnConstruccion(1);

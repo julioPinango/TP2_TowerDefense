@@ -13,6 +13,7 @@ public class Araña extends Enemigo
         this.Energia = 2;
         this.Velocidad = 2;
         this.Danio = 2;
+        this.nombre = "Araña";
         //this.Creditos=1;
         this.pasarelas=pasarelas;
     }

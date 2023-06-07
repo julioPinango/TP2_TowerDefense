@@ -16,6 +16,7 @@ public class Hormiga extends Enemigo
         this.Energia = 1;
         this.Velocidad = 1;
         this.Danio = 1;
+        this.nombre = "Hormiga";
         //this.Creditos=1;
         this.pasarelas=pasarelas;
         

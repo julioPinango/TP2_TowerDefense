@@ -9,6 +9,7 @@ public class TorrePlateada extends Defensa
         this.Costo=20;
         this.RangoAtaque=3;
         this.danio=2;
+        this.nombre= "Torre Plateada";
         
         this.cordenadas=cordenadas;
         this.estado=new EnConstruccion(2);

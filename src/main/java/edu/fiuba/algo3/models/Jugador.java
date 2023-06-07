@@ -45,9 +45,10 @@ public class Jugador{
    }
 
 public void recibirAtaque(Enemigo enemigo) {
+   var log = Log.obtenetInstancia();
 
    this.Vida=Vida-enemigo.getdanio();
-
+   log.imprimirDanioEnemigo(enemigo)
 }
 
 public Boolean jugadorDerrotado() {
