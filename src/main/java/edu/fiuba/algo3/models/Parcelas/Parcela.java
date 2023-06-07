@@ -5,7 +5,7 @@ import edu.fiuba.algo3.models.Defensas.Defensa;
 
 public abstract class Parcela
 {
-
+   protected String TipoDeParcela;
    protected Cordenada cordenadas ;
 
    public boolean puedoConstruirDefensa(Defensa defensaNueva) {
@@ -15,4 +15,5 @@ public abstract class Parcela
    public Cordenada getCordenada() {
       return cordenadas;
   }
+  
 }
