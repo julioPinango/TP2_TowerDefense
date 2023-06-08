@@ -44,16 +44,24 @@ public class CasodeUso1 {
 
         Parser parser= new Parser();
 
-        String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapaReducido.json";
+         String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json";
 
-        Map<Cordenada, Parcela> mapaParseado=parser.leerMapa(path);      
+        /*Map<Cordenada, Parcela> mapaParseado=parser.leerMapa(path);      
 
         Cordenada cor=new Cordenada(2, 2);
 
         var coordenada11MapaParseado=mapaParseado.values();    
 
-        var roco=new Rocoso(cor);
+        var roco=new Rocoso(cor);*/
 
+        var camino=parser.formarCamino(path);
+
+
+        String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosReducido.json";
+
+        var enemigos=parser.desglosarEnemigos(path2,camino);
+
+        String nul=null;
         //assertEquals(roco,coordenada11MapaParseado);
         
     }

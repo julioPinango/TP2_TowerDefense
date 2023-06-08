@@ -6,11 +6,17 @@ import java.nio.file.Paths;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import edu.fiuba.algo3.models.Enemigos.Araña;
+import edu.fiuba.algo3.models.Enemigos.Enemigo;
+import edu.fiuba.algo3.models.Enemigos.Hormiga;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 import edu.fiuba.algo3.models.Parcelas.Rocoso;
@@ -20,25 +26,41 @@ import edu.fiuba.algo3.models.Parcelas.Tierra;
 
 public class Parser {
 
-    public static List<List<String>> desglosarEnemigos(String rutaArchivo) {
+    public static List<List<Enemigo>> desglosarEnemigos(String rutaArchivo,Queue<Pasarela> camino) {
         try{
             String json = new String(Files.readAllBytes(Paths.get(rutaArchivo)));
-            List<List<String>> listaEnemigos = new ArrayList<>();
-
+            List<List<Enemigo>> enemigosList = new ArrayList<>();
             JSONArray jsonArray = new JSONArray(json);
-
+    
             for (int i = 0; i < jsonArray.length(); i++) {
-                //Leo el json
-                JSONObject turnoObj = jsonArray.getJSONObject(i);
-                JSONObject enemigosObj = turnoObj.getJSONObject("enemigos");
-                //Segun lo leido lo ingreso a la lista de enemigos segun corresponda.
-                List<String> enemigos = new ArrayList<>();
-                //enemigos.add("Turno: " + turnoObj.getInt("turno"));
-                enemigos.add("Hormigas: " + enemigosObj.getInt("hormiga"));
-                enemigos.add("Aranas: " + enemigosObj.getInt("arana"));
-                listaEnemigos.add(enemigos);
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                JSONObject enemigosObj = jsonObject.getJSONObject("enemigos");
+                List<Enemigo> enemigos = new ArrayList<>();
+    
+                for (String enemigoKey : enemigosObj.keySet()) {
+                    int cantidad = enemigosObj.getInt(enemigoKey);
+                    for (int j = 0; j < cantidad; j++) {
+                        Enemigo enemigo;
+    
+                        switch (enemigoKey) {
+                            case "arana":
+                                enemigo = new Araña(camino);
+                                break;
+                            case "hormiga":
+                                enemigo = new Hormiga(camino);
+                                break;
+                            default:
+                                throw new IllegalArgumentException("Tipo de enemigo desconocido: " + enemigoKey);
+                        }
+    
+                        enemigos.add(enemigo);
+                    }
+                }
+    
+                enemigosList.add(enemigos);
             }
-            return listaEnemigos; //Devolver el mapa como una lista de listas de cadenas
+    
+            return enemigosList;
         }    
         catch (IOException e) {
             // Manejar el error si ocurre una excepción de lectura del archivo
@@ -56,9 +78,11 @@ public class Parser {
         
         String json = new String(Files.readAllBytes(Paths.get(rutaArchivo)));
         Map<Cordenada, Parcela> mapa = new HashMap<>();  // Diccionario que almacenará el mapa
+
         JSONObject jsonObject = new JSONObject(json);  // Crear un objeto JSONObject a partir de la cadena JSON proporcionada
         JSONObject mapaObj = jsonObject.getJSONObject("Mapa");  // Obtener el objeto JSON que representa el mapa
-            for (int i = 0; i < mapaObj.length(); i++) {  // Recorrer cada elemento en el objeto del mapa
+            
+        for (int i = 0; i < mapaObj.length(); i++) {  // Recorrer cada elemento en el objeto del mapa
                 JSONArray filaArray = mapaObj.getJSONArray(String.valueOf(i+1));  // Obtener el array JSON que representa una fila del mapa
                 for (int j = 0; j < filaArray.length(); j++) {
                     String elemento = filaArray.getString(j);  // Obtener el elemento de la fila actual como una cadena
@@ -91,6 +115,54 @@ public class Parser {
             return null; // Devolver null solo en caso de error
         }
     }
+
+    public Queue<Pasarela> formarCamino(String rutaArchivo)
+    {
+        try{
+        
+            String json = new String(Files.readAllBytes(Paths.get(rutaArchivo)));
+            Queue<Pasarela> camino = new LinkedList<>();  // Diccionario que almacenará el mapa
+    
+            JSONObject jsonObject = new JSONObject(json);  // Crear un objeto JSONObject a partir de la cadena JSON proporcionada
+            JSONObject mapaObj = jsonObject.getJSONObject("Mapa");  // Obtener el objeto JSON que representa el mapa
+                
+            for (int i = 0; i < mapaObj.length(); i++) {  // Recorrer cada elemento en el objeto del mapa
+                    
+                JSONArray filaArray = mapaObj.getJSONArray(String.valueOf(i+1));  // Obtener el array JSON que representa una fila del mapa
+                   
+                    for (int j = 0; j < filaArray.length(); j++) {
+
+                        String elemento = filaArray.getString(j);  // Obtener el elemento de la fila actual como una cadena
+                        Cordenada cordenada=new Cordenada(i,j);
+                        switch(elemento)
+                        {
+                            case "Pasarela":
+                                Pasarela nuevParcela=new Pasarela(cordenada);
+
+                                camino.add(nuevParcela);
+                                break;           
+                        }
+                          // Agregar el elemento al camino
+                    }
+                }
+                return camino;  // Devolver el mapa como un diccionario
+            } 
+            
+            catch (IOException e) {
+                // Manejar el error si ocurre una excepción de lectura del archivo
+                e.printStackTrace();
+                return null; // Devolver null solo en caso de error
+            }
+
+
+
+
+    }
+
+
+
+
+
 }
 
 
