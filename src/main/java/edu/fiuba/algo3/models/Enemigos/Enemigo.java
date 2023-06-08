@@ -2,6 +2,7 @@ package edu.fiuba.algo3.models.Enemigos;
 
 
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Queue;
 
 import edu.fiuba.algo3.models.Cordenada;
@@ -17,6 +18,20 @@ public abstract class Enemigo{
     protected String nombre;
 
     protected Queue<Pasarela> pasarelas = new LinkedList<>();
+
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Enemigo otra = (Enemigo) obj;
+        return Objects.equals(Velocidad, otra.Velocidad) &&
+               Objects.equals(Danio, otra.Danio)&&
+               Objects.equals(Energia, otra.Energia)&&
+               Objects.equals(nombre, otra.nombre);
+    }
 
     public int getdanio() {
         return Danio;

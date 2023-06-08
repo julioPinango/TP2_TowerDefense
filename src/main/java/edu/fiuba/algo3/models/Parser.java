@@ -73,7 +73,7 @@ public class Parser {
 
 
 
-    public Map<Cordenada, Parcela> leerMapa(String rutaArchivo) {
+    public static Map<Cordenada, Parcela> leerMapa(String rutaArchivo) {
         try{
         
         String json = new String(Files.readAllBytes(Paths.get(rutaArchivo)));
@@ -116,7 +116,7 @@ public class Parser {
         }
     }
 
-    public Queue<Pasarela> formarCamino(String rutaArchivo)
+    public static Queue<Pasarela> formarCamino(String rutaArchivo)
     {
         try{
         

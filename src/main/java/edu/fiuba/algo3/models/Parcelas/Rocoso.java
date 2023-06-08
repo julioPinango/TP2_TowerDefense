@@ -15,16 +15,6 @@ public class Rocoso extends Parcela
    public boolean puedoConstruirDefensa(Defensa defensaNueva) {
       return defensaNueva.puedoConstruirEnRocoso();
    }
-   public boolean equals(Object obj) {
-      if (this == obj) {
-          return true;
-      }
-      if (obj == null || getClass() != obj.getClass()) {
-          return false;
-      }
-      Rocoso otra = (Rocoso) obj;
-      return Objects.equals(cordenadas, otra.cordenadas) &&
-             Objects.equals(TipoDeParcela, otra.TipoDeParcela);
-  }
+
 
 }

@@ -20,16 +20,6 @@ public class Tierra extends Parcela
       this.libre=false;
       return retorno;
    }
-   public boolean equals(Object obj) {
-      if (this == obj) {
-          return true;
-      }
-      if (obj == null || getClass() != obj.getClass()) {
-          return false;
-      }
-      Tierra otra = (Tierra) obj;
-      return Objects.equals(cordenadas, otra.cordenadas) &&
-             Objects.equals(TipoDeParcela, otra.TipoDeParcela);
-  }
+  
 
 }

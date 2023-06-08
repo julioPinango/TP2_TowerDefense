@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.models.Enemigos;
 
+import java.util.Objects;
 import java.util.Queue;
 
 import edu.fiuba.algo3.models.Jugador;
@@ -22,6 +23,7 @@ public class Hormiga extends Enemigo
         this.pasarelas=pasarelas;
         
     }
+  
   
     public void mover(Jugador jugador) {
 

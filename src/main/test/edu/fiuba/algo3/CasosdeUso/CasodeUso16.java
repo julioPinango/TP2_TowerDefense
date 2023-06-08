@@ -2,17 +2,14 @@ package edu.fiuba.algo3.CasosdeUso;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import edu.fiuba.algo3.models.Cordenada;
-import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Parser;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 import edu.fiuba.algo3.models.Parcelas.Rocoso;
 import edu.fiuba.algo3.models.Parcelas.Tierra;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,12 +39,10 @@ public class CasodeUso16 {
                 terceraLista.add("Pasarela");
                 terceraLista.add("Tierra");
                 mapa.add(terceraLista);
-        
-                Parser parser= new Parser();
-        
+            
                 String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapaReducido.json";
         
-                var mapaParseado=parser.leerMapa(path);      
+                var mapaParseado=Parser.leerMapa(path);      
         
                 Cordenada cor0_0=new Cordenada(0, 0);
                 Cordenada cor1_0=new Cordenada(1, 0);
