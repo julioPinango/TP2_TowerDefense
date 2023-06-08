@@ -14,22 +14,29 @@ import java.util.Map;
 public class Mapa
 {
     
-    private List<Defensa> listaDefensas;
-    private List<Enemigo> listaEnemigos;
+    private List<Defensa> listaDefensas=new ArrayList<>();
+    private List<List<Enemigo>> Spawn;
     private Map<Cordenada, Parcela> parcelas = new HashMap<>();
     private Map<String, Defensa> tiposDeTorre = new HashMap<>();
+    private List<Enemigo> listaEnemigos=new ArrayList<>();
 
 
-    public Mapa(Map<Cordenada, Parcela> parcelas2 , List<Defensa> listaDefensas2, List<Enemigo> listaEnemigos2) {
+
+/* 
+    public Mapa(Map<Cordenada, Parcela> parcelas2 , List<Defensa> listaDefensas2, List<List<Enemigo>> listaEnemigos2) {
 
         parcelas=parcelas2;
         listaDefensas=listaDefensas2;
         listaEnemigos=listaEnemigos2;
 
 
+    }*/
+    public Mapa(Map<Cordenada, Parcela> parcelas2 , List<List<Enemigo>> spawn) {
+        parcelas=parcelas2;
+        Spawn=spawn;
     }
 
-    boolean colocarDefensaEnEstaPosicion(int x,int y, String tipo){
+    public boolean colocarDefensaEnEstaPosicion(int x,int y, String tipo){
 
         Cordenada cordenada=new Cordenada(x, y);
 
@@ -57,8 +64,8 @@ public class Mapa
     {
         return getEnemigos().size()>0;
     }
-    public void realizarTurno(Jugador jugador) {
-        
+    public void realizarTurno(Jugador jugador,int turno) {
+
         for (var torre : listaDefensas) {
                    torre.realizarTurno(listaEnemigos); 
         }
@@ -75,6 +82,7 @@ public class Mapa
             }
             else
             {
+                enemigo.atacarJugador(jugador);
                 enemigo.otorgarCreditos(jugador);                
                 enemigo.sumarEnemigoMuerto(jugador);
             }
@@ -85,7 +93,17 @@ public class Mapa
 
         listaEnemigos=listaEnemigosVivos;
 
+        List<Enemigo> enemigos=Spawn.get(turno);
 
+        for (Enemigo enemigo : enemigos) 
+            listaEnemigos.add(enemigo);
+            
+            
+        
+
+        //CHEQUEO SI GANO.
+
+        //SPAWN HACE COSAS.
 
 
 

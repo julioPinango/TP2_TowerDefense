@@ -57,41 +57,12 @@ public class Juego
 
     public void jugar(Jugador jugador) {
 
-        
-            while (!(jugador.jugadorDerrotado())&&(mapa.quedanEnemigos())) {
-
-                mapa.realizarTurno(jugador);
-                
-                
-                
+            do{
+                mapa.realizarTurno(jugador,Turno);              
                 Turno++;
-                
-                
-
-                //TURNO 0
-                //CONSTRUYE defensa
-                //se mueve enemigo
-                //PASA TURNO
-    
-                //TURNO 1
-                //defensa en construccion
-                //se mueve enemigo
-                //Contruir y pasar turno
-    
-                //TURNO 2
-                //Defensa operativa: pega defensa
-                //chequea si el enemimo murio: da creditos
-                //se mueve enemigo
-    
-                    //gano
-                // CONTRUIR Y PASAR TURNO
             }
+            while (!(jugador.jugadorDerrotado())&&(mapa.quedanEnemigos())) ;                          
     
-            terminarPartida(!jugador.jugadorDerrotado());//True es gano false es perdio.
-            
-            
-        
-
-
+            terminarPartida(!jugador.jugadorDerrotado()&&Turno!=0);//True es gano false es perdio.
     }
 }

@@ -77,6 +77,10 @@ public class CasodeUso12 {
 
         List<Enemigo> listaEnemigos = new ArrayList<>();
 
+        List<List<Enemigo>> listaEnemigos2 = new ArrayList<>();
+
+        
+
         listaEnemigos.add(Araña1);
         listaEnemigos.add(Araña2);
         listaEnemigos.add(Araña3);
@@ -86,10 +90,19 @@ public class CasodeUso12 {
         listaEnemigos.add(Araña7);
         listaEnemigos.add(Araña8);
         listaEnemigos.add(Araña9);
-        listaEnemigos.add(Araña10);      
+        listaEnemigos.add(Araña10);
+           
+        List<Enemigo> listaEnemigos3 = new ArrayList<>();
 
 
-        Mapa mapa=new Mapa(parcelas,listaDefensas,listaEnemigos);
+        listaEnemigos2.add(listaEnemigos);
+        listaEnemigos2.add(listaEnemigos3);
+        listaEnemigos2.add(listaEnemigos3);
+        listaEnemigos2.add(listaEnemigos3);
+        listaEnemigos2.add(listaEnemigos3);
+
+        Mapa mapa=new Mapa(parcelas,listaEnemigos2);     
+
 
         Jugador jugador=new Jugador("Juan Cruz");
 
@@ -97,7 +110,7 @@ public class CasodeUso12 {
 
         juego.jugar(jugador);
 
-        assertTrue(juego.resultado()=="Pierde");
+        assertTrue(juego.resultado()=="Pierde"); 
     }
 } 
  

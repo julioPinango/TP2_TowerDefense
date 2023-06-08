@@ -99,7 +99,21 @@ public class CasodeUso8 {
 
 
 
-        Mapa mapa=new Mapa(parcelas,listaDefensas,listaEnemigos);
+        List<List<Enemigo>> listaEnemigos2=new ArrayList<>();
+
+        List<Enemigo> listaEnemigos3 = new ArrayList<>();
+
+
+        listaEnemigos2.add(listaEnemigos);
+        listaEnemigos2.add(listaEnemigos3);
+        listaEnemigos2.add(listaEnemigos3);
+        listaEnemigos2.add(listaEnemigos3);
+        listaEnemigos2.add(listaEnemigos3);
+
+
+
+
+        Mapa mapa=new Mapa(parcelas,listaEnemigos2);
 
         Jugador jugador=new Jugador("Juan Cruz");
 
@@ -163,36 +177,35 @@ public class CasodeUso8 {
         pasarelas.add(Pasarela2);
         pasarelas.add(Pasarela3);
 
-        Enemigo Hormiga1=new  Hormiga(pasarelas);
-        Enemigo Hormiga2=new  Hormiga(pasarelas);
-        Enemigo Hormiga3=new  Hormiga(pasarelas);
-        Enemigo Hormiga4=new  Hormiga(pasarelas);
-        Enemigo Hormiga5=new  Hormiga(pasarelas);
-        Enemigo Hormiga6=new  Hormiga(pasarelas);
-        Enemigo Hormiga7=new  Hormiga(pasarelas);
-        Enemigo Hormiga8=new  Hormiga(pasarelas);
-        Enemigo Hormiga9=new  Hormiga(pasarelas);
-        Enemigo Hormiga10=new Hormiga(pasarelas);
-        Enemigo Hormiga11=new Hormiga(pasarelas);
+        Enemigo Hormiga=new Hormiga(pasarelas);
+
+        List<Enemigo> listaEnemigos = new ArrayList<>();        
+
+        listaEnemigos.add(Hormiga);
+        listaEnemigos.add(Hormiga);
+        listaEnemigos.add(Hormiga);
+        listaEnemigos.add(Hormiga);
+        listaEnemigos.add(Hormiga);
+        listaEnemigos.add(Hormiga);
+        listaEnemigos.add(Hormiga);
+        listaEnemigos.add(Hormiga);
+        listaEnemigos.add(Hormiga);
+        listaEnemigos.add(Hormiga);
+        listaEnemigos.add(Hormiga);  
 
 
-        List<Enemigo> listaEnemigos = new ArrayList<>();
+        List<List<Enemigo>> listaEnemigos2=new ArrayList<>();
 
-        listaEnemigos.add(Hormiga1);
-        listaEnemigos.add(Hormiga2);
-        listaEnemigos.add(Hormiga3);
-        listaEnemigos.add(Hormiga4);
-        listaEnemigos.add(Hormiga5);
-        listaEnemigos.add(Hormiga6);
-        listaEnemigos.add(Hormiga7);
-        listaEnemigos.add(Hormiga8);
-        listaEnemigos.add(Hormiga9);
-        listaEnemigos.add(Hormiga10);
-        listaEnemigos.add(Hormiga11);  
+        listaEnemigos2.add(listaEnemigos);
+
+        List<Enemigo> listaEnemigos3 = new ArrayList<>();
+        listaEnemigos2.add(listaEnemigos3);
+        listaEnemigos2.add(listaEnemigos3);
+        listaEnemigos2.add(listaEnemigos3);
 
 
 
-        Mapa mapa=new Mapa(parcelas,listaDefensas,listaEnemigos);
+        Mapa mapa=new Mapa(parcelas,listaEnemigos2);
 
         Jugador jugador=new Jugador("Juan Cruz");
 
@@ -263,14 +276,27 @@ public class CasodeUso8 {
 
         listaEnemigos.add(araña);
 
-        Mapa mapa=new Mapa(parcelas,listaDefensas,listaEnemigos);
+        List<List<Enemigo>> listaEnemigos2=new ArrayList<>();
+
+        List<Enemigo> listaEnemigos3 = new ArrayList<>();
+
+
+        listaEnemigos2.add(listaEnemigos);
+        listaEnemigos2.add(listaEnemigos3);
+        listaEnemigos2.add(listaEnemigos3);
+        listaEnemigos2.add(listaEnemigos3);
+        listaEnemigos2.add(listaEnemigos3);
+
+        listaEnemigos2.add(listaEnemigos);
+
+        Mapa mapa=new Mapa(parcelas,listaEnemigos2);
 
         Jugador jugador=new Jugador("Juan Cruz");
 
         Juego juego=new Juego(jugador,mapa);
 
         juego.jugar(jugador);
-
+        //Como probamos lo aleatorio?
         assertTrue(jugador.getCreditos()>=100);
 
     }

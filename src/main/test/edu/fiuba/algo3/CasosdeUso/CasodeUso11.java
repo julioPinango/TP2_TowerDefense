@@ -8,7 +8,6 @@ import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Juego;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Mapa;
-import edu.fiuba.algo3.models.Defensas.Defensa;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
@@ -56,10 +55,6 @@ public class CasodeUso11 {
         parcelas.put(cordenada6, Roca2);
         parcelas.put(cordenada9, Roca3);
 
-
-
-        List<Defensa> listaDefensas = new ArrayList<>();
-
         Queue<Pasarela> pasarelas = new LinkedList<>();
         
         pasarelas.add(Pasarela1);
@@ -68,11 +63,24 @@ public class CasodeUso11 {
 
         Enemigo hormiga=new Hormiga(pasarelas);
 
-        List<Enemigo> listaEnemigos = new ArrayList<>();
+        List<List<Enemigo>> listaEnemigos = new ArrayList<>();
 
-        listaEnemigos.add(hormiga);
+        List<Enemigo> listaEnemigos2 = new ArrayList<>();
 
-        Mapa mapa=new Mapa(parcelas,listaDefensas,listaEnemigos);
+        listaEnemigos2.add(hormiga);
+
+        listaEnemigos.add(listaEnemigos2);
+
+        List<Enemigo> listaEnemigos3=new ArrayList<>();
+
+        listaEnemigos.add(listaEnemigos3);
+        listaEnemigos.add(listaEnemigos3);
+        listaEnemigos.add(listaEnemigos3);
+        listaEnemigos.add(listaEnemigos3);
+             
+        listaEnemigos.add(listaEnemigos2);
+
+        Mapa mapa=new Mapa(parcelas,listaEnemigos);       
 
         Jugador jugador=new Jugador("Juan Cruz");
 

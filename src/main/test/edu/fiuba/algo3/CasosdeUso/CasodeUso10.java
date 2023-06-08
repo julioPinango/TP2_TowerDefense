@@ -73,13 +73,26 @@ public class CasodeUso10 {
 
         Enemigo hormiga=new Hormiga(pasarelas);
 
-        List<Enemigo> listaEnemigos = new ArrayList<>();
+        List<List<Enemigo>> listaEnemigos = new ArrayList<>();
 
-        listaEnemigos.add(hormiga);
+        List<Enemigo> listaEnemigos2 = new ArrayList<>();
+
+        listaEnemigos2.add(hormiga);
+
+        listaEnemigos.add(listaEnemigos2);
+
+        List<Enemigo> listaEnemigos3=new ArrayList<>();
+
+        listaEnemigos.add(listaEnemigos3);
+        listaEnemigos.add(listaEnemigos3);
+        listaEnemigos.add(listaEnemigos3);
+        listaEnemigos.add(listaEnemigos3);
 
 
 
-        Mapa mapa=new Mapa(parcelas,listaDefensas,listaEnemigos);
+        Mapa mapa=new Mapa(parcelas,listaEnemigos);
+
+        mapa.colocarDefensaEnEstaPosicion(0,0,"Torre Blanca");
 
         Jugador jugador=new Jugador("Juan Cruz");
 
@@ -88,7 +101,5 @@ public class CasodeUso10 {
         juego.jugar(jugador);
 
         assertTrue(juego.resultado()=="Gana");
-
-
     }
 }
