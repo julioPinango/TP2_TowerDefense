@@ -7,14 +7,14 @@ import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Log;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
-public class Araña extends Enemigo
+public class Topo extends Enemigo
 {
-    public Araña(Queue<Pasarela> pasarelas)
+    public Topo(Queue<Pasarela> pasarelas)
     {
-        this.Energia = 2;
-        this.Velocidad = 2;
-        this.Danio = 2;
-        this.nombre = "Araña";
+        this.Energia = inf; //nunca lo atacan asi que no se que poner en energia
+        this.Velocidad = 1; //va aumentando
+        this.Danio = 2; //si el turno es impar causa 5
+        this.nombre = "Topo";
         this.pasarelas=pasarelas;
     }
 
@@ -25,20 +25,11 @@ public class Araña extends Enemigo
         }
         else 
         {
-            pasarelas.poll();        
-            pasarelas.poll(); 
+            pasarelas.poll();         
         }       
 
     }
     public void sumarEnemigoMuerto(Jugador jugador) {
     }
-    public void otorgarCreditos(Jugador jugador)
-    {
-        Random random = new Random();
-        int numeroAleatorio = random.nextInt(11);
-        
-
-        jugador.agregarCreditos(numeroAleatorio);
-
-    }  
+    
 }

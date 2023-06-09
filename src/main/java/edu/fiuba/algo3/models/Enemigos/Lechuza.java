@@ -7,15 +7,15 @@ import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Log;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
-public class Araña extends Enemigo
+public class Lechuza extends Enemigo
 {
-    public Araña(Queue<Pasarela> pasarelas)
+    public Lechuza(Queue<Pasarela> pasarelas)
     {
-        this.Energia = 2;
-        this.Velocidad = 2;
-        this.Danio = 2;
-        this.nombre = "Araña";
-        this.pasarelas=pasarelas;
+        this.Energia = 5;
+        this.Velocidad = 5;
+        this.Danio = 0;
+        this.nombre = "Lechuza";
+        this.pasarelas=pasarelas; //se mueve por cualquier parcela
     }
 
     public void mover(Jugador jugador) {
@@ -27,18 +27,12 @@ public class Araña extends Enemigo
         {
             pasarelas.poll();        
             pasarelas.poll(); 
+            pasarelas.poll(); 
+            pasarelas.poll(); 
+            pasarelas.poll(); 
         }       
 
     }
     public void sumarEnemigoMuerto(Jugador jugador) {
     }
-    public void otorgarCreditos(Jugador jugador)
-    {
-        Random random = new Random();
-        int numeroAleatorio = random.nextInt(11);
-        
-
-        jugador.agregarCreditos(numeroAleatorio);
-
-    }  
 }

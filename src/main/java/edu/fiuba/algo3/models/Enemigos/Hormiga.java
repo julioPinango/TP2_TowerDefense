@@ -9,8 +9,6 @@ import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class Hormiga extends Enemigo
 {
-
-
     //Queue<Pasarela> pasarelas = new LinkedList<>();
 
     public Hormiga(Queue<Pasarela> pasarelas)
@@ -19,7 +17,6 @@ public class Hormiga extends Enemigo
         this.Velocidad = 1;
         this.Danio = 1;
         this.nombre = "Hormiga";
-        //this.Creditos=1;
         this.pasarelas=pasarelas;
         
     }
