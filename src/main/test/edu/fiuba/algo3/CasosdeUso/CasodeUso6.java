@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.CasosdeUso;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -33,10 +35,11 @@ public class CasodeUso6 {
               enemigos.add(enemigo);
       
               
+              torre.atacar(enemigos);  
               torre.atacar(enemigos);     
               int energiaEnemigo=enemigo.getEnergia();
       
-              assertTrue(energiaEnemigo==0);
+              assertEquals(energiaEnemigo,0);
     }
     @Test
     public void Prueba02(){
@@ -55,9 +58,11 @@ public class CasodeUso6 {
               enemigos.add(enemigo);
       
               
-              torre.atacar(enemigos);     
+              torre.atacar(enemigos); 
+              torre.atacar(enemigos);  
+              torre.atacar(enemigos);      
               int energiaEnemigo=enemigo.getEnergia();
       
-              assertTrue(energiaEnemigo==0);
+              assertEquals(energiaEnemigo,0);
     }
 }

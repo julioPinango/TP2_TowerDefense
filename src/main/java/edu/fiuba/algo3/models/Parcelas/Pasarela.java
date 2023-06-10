@@ -17,4 +17,19 @@ public class Pasarela extends Parcela
       return defensaNueva.puedoConstruirEnPasarela();
    }
 
+   //-----------------------------------------------------------------
+   // OTRA FORMA MAS BASICA Y SIMPLE
+   //-----------------------------------------------------------------
+   /*public boolean puedoConstruirDefensa(String tipo) {
+      if (tipo=="Torre blanca") {
+         return false;
+      }
+      else if (tipo=="Torre Plateada") {
+         return false;
+      }
+      else if (tipo=="Trampa Arena") {
+         return true;
+      }
+   }*/
+
 }

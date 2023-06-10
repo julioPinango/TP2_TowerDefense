@@ -11,10 +11,4 @@ public class Rocoso extends Parcela
       this.cordenadas=cordenada;
       this.TipoDeParcela="Rocoso";
    }
-
-   public boolean puedoConstruirDefensa(Defensa defensaNueva) {
-      return defensaNueva.puedoConstruirEnRocoso();
-   }
-
-
 }
