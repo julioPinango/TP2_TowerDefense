@@ -20,12 +20,15 @@ public class Juego
 
    
 
-    public void SiguienteTurno() {
-            /*
-        this.mapa.realizarTurno();
-        Coordenada Coordenada= this.jugador.ColocarDefensasNuevas();
-        this.mapa.ColocarDefensasNuevas()=coordenadaNueva
-        this.SiguienteTurno(); */
+    public void SiguienteTurno(Jugador jugador) {        
+        do{
+            mapa.realizarTurno(jugador,Turno);              
+            Turno++;
+        }
+        while (!(jugador.jugadorDerrotado())&&(mapa.quedanEnemigos())) ;                          
+
+        terminarPartida(!jugador.jugadorDerrotado()&&Turno!=0);//True es gano false es perdio.
+        
     }
 
     public boolean colocarDefensas(int x, int y, String tipoDeTorre){

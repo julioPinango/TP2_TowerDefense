@@ -25,6 +25,7 @@ public class Lechuza extends Enemigo
         }
         else 
         {
+            //Esto hay que corregirlo.
             pasarelas.poll();        
             pasarelas.poll(); 
             pasarelas.poll(); 

@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.CasosdeUso;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.*;
@@ -61,24 +63,6 @@ public class CasodeUso8 {
         parcelas.put(cordenada6, Roca2);
         parcelas.put(cordenada9, Roca3);
 
-
-        /*
-        Parcela[][] parcelas = new Parcela[3][3];
-
-        parcelas[0][0]=tierra1;
-        parcelas[0][1]=tierra2;
-        parcelas[0][2]=tierra3;
-
-        parcelas[1][0]=Roca1;
-        parcelas[1][1]=Roca2;
-        parcelas[1][2]=Roca3;
-
-        parcelas[2][0]=Pasarela1;
-        parcelas[2][1]=Pasarela2;
-        parcelas[2][2]=Pasarela3;
-
-         */
-
         Defensa torre=new TorrePlateada(cordenada1);
 
         List<Defensa> listaDefensas = new ArrayList<>();
@@ -97,23 +81,11 @@ public class CasodeUso8 {
 
         listaEnemigos.add(hormiga);
 
+        List<List<Enemigo>> ArrayEnemigos=new ArrayList<>();
 
+        ArrayEnemigos.add(listaEnemigos);
 
-        List<List<Enemigo>> listaEnemigos2=new ArrayList<>();
-
-        List<Enemigo> listaEnemigos3 = new ArrayList<>();
-
-
-        listaEnemigos2.add(listaEnemigos);
-        listaEnemigos2.add(listaEnemigos3);
-        listaEnemigos2.add(listaEnemigos3);
-        listaEnemigos2.add(listaEnemigos3);
-        listaEnemigos2.add(listaEnemigos3);
-
-
-
-
-        Mapa mapa=new Mapa(parcelas,listaEnemigos2);
+        Mapa mapa=new Mapa(parcelas,ArrayEnemigos);
 
         Jugador jugador=new Jugador("Juan Cruz");
 
@@ -121,7 +93,7 @@ public class CasodeUso8 {
 
         juego.jugar(jugador);
 
-        assertTrue(jugador.getCreditos()==101);
+        assertEquals(jugador.getCreditos(),101);
 
     }
     @Test
@@ -193,19 +165,11 @@ public class CasodeUso8 {
         listaEnemigos.add(Hormiga);
         listaEnemigos.add(Hormiga);  
 
+        List<List<Enemigo>> ArrayEnemigos=new ArrayList<>();
 
-        List<List<Enemigo>> listaEnemigos2=new ArrayList<>();
+        ArrayEnemigos.add(listaEnemigos);
 
-        listaEnemigos2.add(listaEnemigos);
-
-        List<Enemigo> listaEnemigos3 = new ArrayList<>();
-        listaEnemigos2.add(listaEnemigos3);
-        listaEnemigos2.add(listaEnemigos3);
-        listaEnemigos2.add(listaEnemigos3);
-
-
-
-        Mapa mapa=new Mapa(parcelas,listaEnemigos2);
+        Mapa mapa=new Mapa(parcelas,ArrayEnemigos);
 
         Jugador jugador=new Jugador("Juan Cruz");
 
@@ -276,20 +240,11 @@ public class CasodeUso8 {
 
         listaEnemigos.add(araña);
 
-        List<List<Enemigo>> listaEnemigos2=new ArrayList<>();
+        List<List<Enemigo>> ArrayEnemigos=new ArrayList<>();       
 
-        List<Enemigo> listaEnemigos3 = new ArrayList<>();
+        ArrayEnemigos.add(listaEnemigos);
 
-
-        listaEnemigos2.add(listaEnemigos);
-        listaEnemigos2.add(listaEnemigos3);
-        listaEnemigos2.add(listaEnemigos3);
-        listaEnemigos2.add(listaEnemigos3);
-        listaEnemigos2.add(listaEnemigos3);
-
-        listaEnemigos2.add(listaEnemigos);
-
-        Mapa mapa=new Mapa(parcelas,listaEnemigos2);
+        Mapa mapa=new Mapa(parcelas,ArrayEnemigos);
 
         Jugador jugador=new Jugador("Juan Cruz");
 

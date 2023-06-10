@@ -16,4 +16,8 @@ public class ParcelaFactory
         tiposDeParcelas.put("Pasarela", new Pasarela(cordenada));
         return (tiposDeParcelas.get(tipo));
     }
+    public static Pasarela obtenerPasarela(Cordenada cordenada)
+    {
+        return (new Pasarela(cordenada));
+    }
 }

@@ -54,8 +54,7 @@ public class Mapa
                    torre.atacar(listaEnemigos); 
         }
 
-        List<Enemigo> listaEnemigosVivos = new ArrayList<>();
-        
+        List<Enemigo> listaEnemigosVivos = new ArrayList<>();        
         
         for(Enemigo enemigo:listaEnemigos)
         {
@@ -70,14 +69,11 @@ public class Mapa
                 enemigo.otorgarCreditos(jugador);                
                 enemigo.sumarEnemigoMuerto(jugador);
             }
-
-           
-
         }
 
         listaEnemigos=listaEnemigosVivos;
 
-        if(Spawn.size()<=turno)
+        if(Spawn.size()>turno)
         {
             List<Enemigo> enemigos=Spawn.get(turno);        
 

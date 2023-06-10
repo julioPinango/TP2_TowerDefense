@@ -13,11 +13,14 @@ import java.util.Queue;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONString;
 
 import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
+import edu.fiuba.algo3.models.Enemigos.EnemigoFactory;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
+import edu.fiuba.algo3.models.Parcelas.ParcelaFactory;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 import edu.fiuba.algo3.models.Parcelas.Rocoso;
 import edu.fiuba.algo3.models.Parcelas.Tierra;
@@ -28,10 +31,13 @@ public class Parser {
 
     public static List<List<Enemigo>> desglosarEnemigos(String rutaArchivo,Queue<Pasarela> camino) {
         try{
-            String json = new String(Files.readAllBytes(Paths.get(rutaArchivo)));
+            
+            String json=new String(Files.readAllBytes(Paths.get(rutaArchivo)));
+            
+
             List<List<Enemigo>> enemigosList = new ArrayList<>();
             JSONArray jsonArray = new JSONArray(json);
-    
+
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 JSONObject enemigosObj = jsonObject.getJSONObject("enemigos");
@@ -40,23 +46,10 @@ public class Parser {
                 for (String enemigoKey : enemigosObj.keySet()) {
                     int cantidad = enemigosObj.getInt(enemigoKey);
                     for (int j = 0; j < cantidad; j++) {
-                        Enemigo enemigo;
-    
-                        switch (enemigoKey) {
-                            case "arana":
-                                enemigo = new Araña(camino);
-                                break;
-                            case "hormiga":
-                                enemigo = new Hormiga(camino);
-                                break;
-                            default:
-                                throw new IllegalArgumentException("Tipo de enemigo desconocido: " + enemigoKey);
-                        }
-    
+                        Enemigo enemigo=EnemigoFactory.obtenerEnemigo(camino, enemigoKey);    
                         enemigos.add(enemigo);
                     }
-                }
-    
+                }    
                 enemigosList.add(enemigos);
             }
     
@@ -83,26 +76,15 @@ public class Parser {
         JSONObject mapaObj = jsonObject.getJSONObject("Mapa");  // Obtener el objeto JSON que representa el mapa
             
         for (int i = 0; i < mapaObj.length(); i++) {  // Recorrer cada elemento en el objeto del mapa
-                JSONArray filaArray = mapaObj.getJSONArray(String.valueOf(i+1));  // Obtener el array JSON que representa una fila del mapa
+                
+            JSONArray filaArray = mapaObj.getJSONArray(String.valueOf(i+1));  // Obtener el array JSON que representa una fila del mapa
+               
                 for (int j = 0; j < filaArray.length(); j++) {
+
                     String elemento = filaArray.getString(j);  // Obtener el elemento de la fila actual como una cadena
                     Cordenada cordenada=new Cordenada(i,j);
-                    Parcela nuevParcela=null;
-                    switch(elemento)
-                    {
-                        case "Tierra":
-                            nuevParcela=new Tierra(cordenada);
-                            break;
-                        case "Rocoso":
-                            nuevParcela=new Rocoso(cordenada);
-                            break;
-                        case "Pasarela":
-                            nuevParcela=new Pasarela(cordenada);
-                            break;
-                        default:
-                            //Errror
-                        break;
-                    }
+                    Parcela nuevParcela=ParcelaFactory.obtenerParcela(cordenada,elemento);
+
                     mapa.put(cordenada,nuevParcela);  // Agregar el elemento al hash
                 }
             }
@@ -134,14 +116,13 @@ public class Parser {
 
                         String elemento = filaArray.getString(j);  // Obtener el elemento de la fila actual como una cadena
                         Cordenada cordenada=new Cordenada(i,j);
-                        switch(elemento)
-                        {
-                            case "Pasarela":
-                                Pasarela nuevParcela=new Pasarela(cordenada);
 
-                                camino.add(nuevParcela);
-                                break;           
+                        if(elemento=="Pasarela")
+                        {
+                            Pasarela nuevParcela=ParcelaFactory.obtenerPasarela(cordenada);
+                            camino.add(nuevParcela);
                         }
+
                           // Agregar el elemento al camino
                     }
                 }
