@@ -93,10 +93,13 @@ public class Mapa
 
         listaEnemigos=listaEnemigosVivos;
 
-        List<Enemigo> enemigos=Spawn.get(turno);
+        if(Spawn.size()<=turno)
+        {
+            List<Enemigo> enemigos=Spawn.get(turno);        
 
-        for (Enemigo enemigo : enemigos) 
-            listaEnemigos.add(enemigo);
+            for (Enemigo enemigo : enemigos) 
+                listaEnemigos.add(enemigo);
+        }
             
             
         
