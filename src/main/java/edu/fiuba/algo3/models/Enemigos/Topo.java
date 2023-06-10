@@ -11,7 +11,7 @@ public class Topo extends Enemigo
 {
     public Topo(Queue<Pasarela> pasarelas)
     {
-        this.Energia = inf; //nunca lo atacan asi que no se que poner en energia
+        this.Energia = 0; //nunca lo atacan asi que no se que poner en energia
         this.Velocidad = 1; //va aumentando
         this.Danio = 2; //si el turno es impar causa 5
         this.nombre = "Topo";

@@ -3,8 +3,7 @@ package edu.fiuba.algo3.models;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
 import edu.fiuba.algo3.models.Defensas.Defensa;
-import edu.fiuba.algo3.models.Defensas.TorreBlanca;
-import edu.fiuba.algo3.models.Defensas.TorrePlateada;
+import edu.fiuba.algo3.models.Defensas.DefensaFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,20 +16,11 @@ public class Mapa
     private List<Defensa> listaDefensas=new ArrayList<>();
     private List<List<Enemigo>> Spawn;
     private Map<Cordenada, Parcela> parcelas = new HashMap<>();
-    private Map<String, Defensa> tiposDeTorre = new HashMap<>();
     private List<Enemigo> listaEnemigos=new ArrayList<>();
 
 
 
-/* 
-    public Mapa(Map<Cordenada, Parcela> parcelas2 , List<Defensa> listaDefensas2, List<List<Enemigo>> listaEnemigos2) {
 
-        parcelas=parcelas2;
-        listaDefensas=listaDefensas2;
-        listaEnemigos=listaEnemigos2;
-
-
-    }*/
     public Mapa(Map<Cordenada, Parcela> parcelas2 , List<List<Enemigo>> spawn) {
         parcelas=parcelas2;
         Spawn=spawn;
@@ -38,14 +28,8 @@ public class Mapa
 
     public boolean colocarDefensaEnEstaPosicion(int x,int y, String tipo){
 
-        Cordenada cordenada=new Cordenada(x, y);
-
-        //registracion de torres en el hash
-        tiposDeTorre.put("Torre Blanca", new TorreBlanca(cordenada));
-        tiposDeTorre.put("Torre Plateada", new TorrePlateada(cordenada));
-
-        //asignacion de defensa segun registradas
-        Defensa defensaNueva=this.tiposDeTorre.get(tipo);
+        Cordenada cordenada=new Cordenada(x, y); 
+        Defensa defensaNueva= DefensaFactory.obtenerDefensa(cordenada,tipo);
 
         if(parcelas.get(cordenada).puedoConstruirDefensa(defensaNueva))
         {
@@ -67,7 +51,7 @@ public class Mapa
     public void realizarTurno(Jugador jugador,int turno) {
 
         for (var torre : listaDefensas) {
-                   torre.realizarTurno(listaEnemigos); 
+                   torre.atacar(listaEnemigos); 
         }
 
         List<Enemigo> listaEnemigosVivos = new ArrayList<>();

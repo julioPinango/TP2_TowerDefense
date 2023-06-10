@@ -16,20 +16,6 @@ public abstract class Defensa
     protected Estado estado;
     protected String nombre;
 
-    public void atacar(List<Enemigo> enemigos){
-        for (Enemigo enemigo : enemigos) {
-            
-            if(Cordenada.estaEnRango(RangoAtaque, cordenadas, enemigo.getCordenada()))
-            {
-                var log = Log.obtenetInstancia();
-                
-                enemigo.recibirAtaque(danio);
-                log.imprimirAtaque(this,enemigo,enemigo.getCordenada());
-                break;
-            }
-        }
-    }
-
     public String getNombre(){
         return nombre;
     }
@@ -41,24 +27,25 @@ public abstract class Defensa
         return false;
     }
 
-    public boolean puedoConstruirEnRocoso(){
-        return false;
-    }
-
     public boolean puedoConstruirEnTierra(Boolean estaLibre){
         return estaLibre;
     }
-    public boolean puedoAtacar(){
-       return false;
-    }
-    public void realizarTurno(List<Enemigo> listaEnemigos2){
-
+    public void atacar(List<Enemigo> enemigos){
+        
         if (this.estado.puedoAtacar()) {
             this.estado=new Operativo();
-            this.atacar(listaEnemigos2);
+            for (Enemigo enemigo : enemigos) {
+                
+                if(Cordenada.estaEnRango(RangoAtaque, cordenadas, enemigo.getCordenada()))
+                {
+                    var log = Log.obtenetInstancia();
+                    
+                    enemigo.recibirAtaque(danio);
+                    log.imprimirAtaque(this,enemigo,enemigo.getCordenada());
+                    break;
+                }
+            }
+            
         }
-
-        return;
     }
-
 }

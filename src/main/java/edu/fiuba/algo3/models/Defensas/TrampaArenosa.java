@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.models.Defensas;
 
+import java.util.List;
+
 import edu.fiuba.algo3.models.Cordenada;
+import edu.fiuba.algo3.models.Enemigos.Enemigo;
 
 public class TrampaArenosa extends Defensa{
     public TrampaArenosa(Cordenada cordenadas){
@@ -21,6 +24,14 @@ public class TrampaArenosa extends Defensa{
             
             
         }
+    }
+    
+    public boolean puedoConstruirEnPasarela(){
+        return true;
+    }
+
+    public boolean puedoConstruirEnTierra(Boolean estaLibre){
+        return false;
     }
     
 }
