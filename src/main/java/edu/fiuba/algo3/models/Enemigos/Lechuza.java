@@ -19,7 +19,7 @@ public class Lechuza extends Enemigo
     }
 
     public void mover(Jugador jugador) {
-        if (pasarelas.size()<3)
+        if (pasarelas.size()<6)
         {
             atacarJugador(jugador);
         }
