@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.CasosdeUso;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.*;
@@ -86,9 +88,12 @@ public class CasodeUso11 {
 
         Juego juego=new Juego(jugador,mapa);
 
-        juego.jugar(jugador);
+        do{
+                juego.realizarTurno(jugador);              
+        }
+        while (juego.getResultado()=="En proceso") ;  
 
-        assertTrue(juego.resultado()=="Gana");
+        assertEquals(juego.getResultado(),"Gana");
 
     }
 }

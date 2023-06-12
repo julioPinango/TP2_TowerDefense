@@ -29,8 +29,11 @@ public class CasodeUso18 {
 
         var juego=new Juego(Jugador, mapa);
 
-        juego.jugar(Jugador);
+        do{
+                juego.realizarTurno(Jugador);              
+        }
+        while (juego.getResultado()=="En proceso") ; 
 
-        assertEquals("Gana",juego.resultado());
+        assertEquals("Gana",juego.getResultado());
     }
 }

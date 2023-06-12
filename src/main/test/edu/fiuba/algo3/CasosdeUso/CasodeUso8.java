@@ -91,7 +91,10 @@ public class CasodeUso8 {
 
         Juego juego=new Juego(jugador,mapa);
 
-        juego.jugar(jugador);
+        do{
+            juego.realizarTurno(jugador);              
+        }
+        while (juego.getResultado()=="En proceso") ; 
 
         assertEquals(jugador.getCreditos(),101);
 
@@ -175,7 +178,10 @@ public class CasodeUso8 {
 
         Juego juego=new Juego(jugador,mapa);
 
-        juego.jugar(jugador);
+        do{
+            juego.realizarTurno(jugador);              
+        }
+        while (juego.getResultado()=="En proceso") ; 
 
         assertTrue(jugador.getCreditos()==112);
 
@@ -250,7 +256,10 @@ public class CasodeUso8 {
 
         Juego juego=new Juego(jugador,mapa);
 
-        juego.jugar(jugador);
+        do{
+            juego.realizarTurno(jugador);              
+        }
+        while (juego.getResultado()=="En proceso") ; 
         //Como probamos lo aleatorio?
         assertTrue(jugador.getCreditos()>=100);
 

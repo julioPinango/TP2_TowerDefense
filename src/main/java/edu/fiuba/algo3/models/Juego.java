@@ -16,28 +16,22 @@ public class Juego
         mapa=mapa2;
     }
 
-   
-
-   
-
-    public void SiguienteTurno(Jugador jugador) {        
-        do{
-            mapa.realizarTurno(jugador,Turno);              
-            Turno++;
-        }
-        while (!(jugador.jugadorDerrotado())&&(mapa.quedanEnemigos())) ;                          
-
-        terminarPartida(!jugador.jugadorDerrotado()&&Turno!=0);//True es gano false es perdio.
-        
+    public String getResultado() {
+        return resultadoJuego;
     }
 
+    public int getTurno()
+    {
+        return Turno;
+    }
+   
+  
     public boolean colocarDefensas(int x, int y, String tipoDeTorre){
         if(!(this.mapa.colocarDefensaEnEstaPosicion(x,y,tipoDeTorre))){
             return false;
         }
         return true;
     }
-
 
     public void terminarPartida(boolean gano)
     {
@@ -49,23 +43,21 @@ public class Juego
         log.imprimirResultado(resultadoJuego);
     }
 
-    public String resultado() {
-        return resultadoJuego;
-    }
+   
 
-    public int getTurno()
-    {
-        return Turno;
-    }
+    public void realizarTurno(Jugador jugador) {
+       //Efectua un turno y deja el juego en el estado correspondiente.
 
-    public void jugar(Jugador jugador) {
+        mapa.realizarTurno(jugador,Turno);                   
 
-            do{
-                mapa.realizarTurno(jugador,Turno);              
-                Turno++;
-            }
-            while (!(jugador.jugadorDerrotado())&&(mapa.quedanEnemigos())) ;                          
-    
-            terminarPartida(!jugador.jugadorDerrotado()&&Turno!=0);//True es gano false es perdio.
+        if(jugador.jugadorDerrotado())
+        {
+            terminarPartida(!jugador.jugadorDerrotado());
+        }
+        else if (mapa.quedanEnemigos()==false&&Turno!=0)
+        {
+            terminarPartida(!jugador.jugadorDerrotado());
+        }
+        Turno++;    
     }
 }

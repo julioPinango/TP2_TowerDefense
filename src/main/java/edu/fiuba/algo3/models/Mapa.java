@@ -51,7 +51,7 @@ public class Mapa
     public void realizarTurno(Jugador jugador,int turno) {
 
         for (var torre : listaDefensas) {
-                   torre.atacar(listaEnemigos); 
+            torre.atacar(listaEnemigos); 
         }
 
         List<Enemigo> listaEnemigosVivos = new ArrayList<>();        
@@ -80,16 +80,10 @@ public class Mapa
             for (Enemigo enemigo : enemigos) 
                 listaEnemigos.add(enemigo);
         }
-            
-            
-        
-
-        //CHEQUEO SI GANO.
-
-        //SPAWN HACE COSAS.
-
-
-
     }
 
+    public List<Defensa> defensasDisponibles()
+    {
+        return listaDefensas;
+    }
 }

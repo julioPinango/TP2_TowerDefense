@@ -108,9 +108,12 @@ public class CasodeUso12 {
 
         Juego juego=new Juego(jugador,mapa);
 
-        juego.jugar(jugador);
+        do{
+                juego.realizarTurno(jugador);              
+        }
+        while (juego.getResultado()=="En proceso") ; 
 
-        assertTrue(juego.resultado()=="Pierde"); 
+        assertTrue(juego.getResultado()=="Pierde"); 
     }
 } 
  

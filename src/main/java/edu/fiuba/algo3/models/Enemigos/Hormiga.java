@@ -26,8 +26,7 @@ public class Hormiga extends Enemigo
 
         if (pasarelas.size()==1)
         {
-            atacarJugador(jugador);
-            
+            atacarJugador(jugador);            
         }
         else 
             pasarelas.poll();

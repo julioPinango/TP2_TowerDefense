@@ -116,8 +116,7 @@ public class Parser {
 
                         String elemento = filaArray.getString(j);  // Obtener el elemento de la fila actual como una cadena
                         Cordenada cordenada=new Cordenada(i,j);
-
-                        if(elemento=="Pasarela")
+                        if(elemento.equals("Pasarela"))
                         {
                             Pasarela nuevParcela=ParcelaFactory.obtenerPasarela(cordenada);
                             camino.add(nuevParcela);

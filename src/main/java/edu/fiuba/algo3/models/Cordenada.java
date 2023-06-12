@@ -10,7 +10,14 @@ public class Cordenada {
         this.X = x;
         this.Y = y;
     }
-
+    public int getX()
+    {
+        return X;
+    }
+    public int getY()
+    {
+        return Y;
+    }
     public static int calcularDistancia(int x1, int y1, int x2, int y2) {
         int distanciaX = Math.abs(x2 - x1);
         int distanciaY = Math.abs(y2 - y1);
@@ -32,6 +39,8 @@ public class Cordenada {
     public String getCoordenadas() {
         return "(" + this.X + "," + this.Y + ")";
     }
+
+   
 
     @Override
     public boolean equals(Object o) {
