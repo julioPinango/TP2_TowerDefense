@@ -55,6 +55,10 @@ public class Lechuza extends Enemigo
     public void sumarEnemigoMuerto(Jugador jugador) {
     }
 
+    public Cordenada getCordenada() {
+        return coordenadaActual;
+    }
+
     public void volar() {
 
         Integer mitadEnergia = 2;
@@ -71,8 +75,8 @@ public class Lechuza extends Enemigo
             }
 
                 // Mover en forma de L hacia la meta
-                int movimientosX = Math.min(catetoX, 5);
-                int movimientosY = Math.min(catetoY, 5);
+                int movimientosX = Math.min(catetoX, 2);
+                int movimientosY = Math.min(catetoY, 3);
 
                 int newCoordenadaX = coordenadaActual.getX();
                 int newCoordenadaY = coordenadaActual.getY();
@@ -111,6 +115,8 @@ public class Lechuza extends Enemigo
 
             coordenadaActual=new Cordenada(newCoordenadaX, newCoordenadaY);
         }
+
+
     }
   
 

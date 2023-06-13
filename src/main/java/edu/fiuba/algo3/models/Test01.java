@@ -30,6 +30,21 @@ public class Test01 {
 
             lechuza.volar();
 
+            var cordenadas=lechuza.getCordenada();
+
+            lechuza.volar();
+            cordenadas=lechuza.getCordenada();
+                        lechuza.volar();
+                        cordenadas=lechuza.getCordenada();
+            lechuza.volar();
+            cordenadas=lechuza.getCordenada();
+            lechuza.volar();
+            cordenadas=lechuza.getCordenada();
+            lechuza.volar();
+            cordenadas=lechuza.getCordenada();
+
+
+
 
            // assertEquals(lechuza.getCordenada().getX(),4);
            // assertEquals(lechuza.getCordenada().getY(),4);
