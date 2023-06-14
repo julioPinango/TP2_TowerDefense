@@ -29,8 +29,7 @@ public class Mapa
         Spawn=spawn;
     }
     */
-    public Mapa(String rutaArchivo) {
-        Parser parser= new Parser();
+    public Mapa(String rutaArchivo, Parser parser) {
         this.parcelas=inicializarParcelas(parser.leerMapa(rutaArchivo));
         this.Spawn=inicializarEnemigos(parser.desglosarEnemigos(rutaArchivo),parser.formarCamino(rutaArchivo));
     }
@@ -68,8 +67,8 @@ public class Mapa
                 String enemigo=enemigosDelTurno.get(j);
                 Enemigo nuevoEnemigo=EnemigoFactory.obtenerEnemigo(nuevoCamino,enemigo);
                 nuevosEnemigos.add(nuevoEnemigo);
-                Spawn.add(nuevosEnemigos);
             }
+            Spawn.add(nuevosEnemigos);
         }
         return Spawn;
     }
