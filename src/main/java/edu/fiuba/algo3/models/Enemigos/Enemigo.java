@@ -59,7 +59,9 @@ public abstract class Enemigo{
     }
 
     public void otorgarCreditos(Jugador jugador)
-    {}
+    {
+        jugador.agregarCreditos(0);
+    }
 
     public void atacarJugador(Jugador jugador,int danio){
         jugador.recibirAtaque(Danio);

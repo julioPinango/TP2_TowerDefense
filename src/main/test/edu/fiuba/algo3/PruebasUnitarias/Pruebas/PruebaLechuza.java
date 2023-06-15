@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.PruebasUnitarias.PruebasAEnemigos;
+package edu.fiuba.algo3.PruebasUnitarias.Pruebas;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,7 +10,7 @@ import edu.fiuba.algo3.models.Turno;
 import edu.fiuba.algo3.models.Enemigos.Lechuza;
 import java.io.IOException;
 
-public class Test01Enemigos {    
+public class PruebaLechuza {    
     @Test
     public void Test01LechuzaVuelaEnFormadeL() throws IOException{
    

@@ -12,9 +12,5 @@ public class TorreBlanca extends Defensa{
         
         this.cordenada=cordenadas;
         this.estado=estado;
-    }
-    public boolean puedoAtacar(){
-        return(this.estado.puedoAtacar());
-    }
-    
+    }    
 }

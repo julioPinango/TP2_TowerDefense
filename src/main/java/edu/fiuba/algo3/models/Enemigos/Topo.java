@@ -55,5 +55,6 @@ public class Topo extends Enemigo
     }
     public boolean recibirAtaque(int danio) {
         return false; //nunca lo atacan
-    }    
+    }
+ 
 }

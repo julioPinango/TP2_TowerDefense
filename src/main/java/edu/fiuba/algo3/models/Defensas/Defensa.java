@@ -63,4 +63,8 @@ public abstract class Defensa
     {
         this.estado=new EstadoDestruido();
     }
+
+    public boolean puedoAtacar(){
+        return(this.estado.puedoAtacar());
+    }
 }

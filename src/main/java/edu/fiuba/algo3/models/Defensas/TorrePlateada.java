@@ -16,8 +16,6 @@ public class TorrePlateada extends Defensa
         this.cordenada=cordenadas;
         this.estado=estado;
     }
-    public boolean puedoAtacar(){
-        return(this.estado.puedoAtacar());
-    }
+    
     
 }

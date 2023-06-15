@@ -21,9 +21,6 @@ public class TrampaArenosa extends Defensa{
         this.cordenada=cordenadas;
         this.estado=estado;
     }
-    public boolean puedoAtacar(){
-        return(this.estado.puedoAtacar());
-    }
 
     public void atacar(List<Enemigo> enemigos){ //implementar un atacar distinto
 
