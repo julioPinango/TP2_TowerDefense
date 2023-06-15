@@ -10,6 +10,7 @@ import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Juego;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Mapa;
+import edu.fiuba.algo3.models.Parser;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
@@ -21,6 +22,11 @@ public class CasodeUso11 {
     @Test
     public void Prueba01(){
         
+        String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosReducido.json";
+        String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapaReducido.json";
+        Parser parser = new Parser();
+        Mapa mapa=new Mapa(path,path2,parser);
+
         Cordenada cordenada1 = new Cordenada(0, 0);
         Cordenada cordenada2 = new Cordenada(0, 1);
         Cordenada cordenada3 = new Cordenada(0, 2);
@@ -80,9 +86,7 @@ public class CasodeUso11 {
         listaEnemigos.add(listaEnemigos3);
         listaEnemigos.add(listaEnemigos3);
              
-        listaEnemigos.add(listaEnemigos2);
-
-        Mapa mapa=new Mapa(parcelas,listaEnemigos);       
+        listaEnemigos.add(listaEnemigos2);      
 
         Jugador jugador=new Jugador("Juan Cruz");
 

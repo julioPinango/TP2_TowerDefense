@@ -29,9 +29,9 @@ public class Mapa
         Spawn=spawn;
     }
     */
-    public Mapa(String rutaArchivo, Parser parser) {
-        this.parcelas=inicializarParcelas(parser.leerMapa(rutaArchivo));
-        this.Spawn=inicializarEnemigos(parser.desglosarEnemigos(rutaArchivo),parser.formarCamino(rutaArchivo));
+    public Mapa(String rutaArchivoEnemigos,String rutaArchivoMapa, Parser parser) {
+        this.parcelas=inicializarParcelas(parser.leerMapa(rutaArchivoMapa));
+        this.Spawn=inicializarEnemigos(parser.desglosarEnemigos(rutaArchivoEnemigos),parser.formarCamino(rutaArchivoMapa));
     }
     private Map<Cordenada, Parcela>  inicializarParcelas(List<List<String>> mapa){
         Map<Cordenada, Parcela> nuevoMapa= new HashMap<>();

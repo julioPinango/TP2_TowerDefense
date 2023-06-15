@@ -11,7 +11,8 @@ public class CasodeUso13 {
     public void Prueba01()throws Exception{
       
        String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosRoto.json";
-        
-       assertThrows(Exception.class, () -> {Parser.desglosarEnemigos(path2, null);});
+        Parser parser = new Parser();
+
+       assertThrows(Exception.class, () -> {parser.desglosarEnemigos(path2);});
     }
 }

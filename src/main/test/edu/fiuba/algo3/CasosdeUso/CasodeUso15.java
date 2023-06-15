@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.fiuba.algo3.models.Mapa;
 import edu.fiuba.algo3.models.Parser;
 import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
@@ -16,12 +17,13 @@ public class CasodeUso15 {
     public void Prueba01(){
 
         String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json";
+        Parser parser = new Parser();
 
-       var camino=Parser.formarCamino(path);
+       var camino=parser.formarCamino(path);
 
        String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosReducido.json";
 
-       var enemigosJson=Parser.desglosarEnemigos(path2,camino);
+       var enemigosJson=parser.desglosarEnemigos(path2);
 
         // Crear la lista de listas
         List<List<Enemigo>> enemigos = new ArrayList<>();
