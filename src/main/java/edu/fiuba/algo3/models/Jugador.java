@@ -25,8 +25,8 @@ public class Jugador{
    public String getNombre() {
       return this.Nombre;
    }
-   public boolean creditosSuficientes(Defensa torre) {   
-      return getCreditos()>=torre.getCosto();
+   public boolean creditosSuficientes(int costo) {   
+      return getCreditos()>=costo;
    }
    public void descontarCredito(int costo) {
       this.Creditos=Creditos-costo;

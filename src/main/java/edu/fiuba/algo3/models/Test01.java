@@ -6,6 +6,9 @@ import edu.fiuba.algo3.models.Juego;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Mapa;
 import edu.fiuba.algo3.models.Parser;
+import edu.fiuba.algo3.models.Enemigos.Araña;
+import edu.fiuba.algo3.models.Enemigos.Enemigo;
+import edu.fiuba.algo3.models.Enemigos.Hormiga;
 import edu.fiuba.algo3.models.Enemigos.Lechuza;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
@@ -20,38 +23,43 @@ public class Test01 {
    
     public static void Prueba01() throws IOException{
    
-        //Pruebo que la lechuza se mueve en forma de L
+             String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json";
+        String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosReducido.json";
+        Parser parser = new Parser();
+        Mapa mapa=new Mapa(path2,path,parser);
 
-             String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json"; 
-            String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosReducido.json";    
-            Parser parser=new Parser();  
-            Mapa mapa=new Mapa(path2, path, parser);
-    
-            var list= parser.formarCamino(path);
+       //var camino=parser.formarCamino(path);
 
-            var camino=mapa.inicializarCaminoDeEnemigos(list);   
-            Lechuza lechuza=new Lechuza(camino);
+       var enemigosJson=parser.desglosarEnemigos(path2);
+       
+        // Crear la lista de listas
+        List<List<Enemigo>> enemigos = new ArrayList<>();
 
-            lechuza.volar();
+        var camino=mapa.inicializarCaminoDeEnemigos(parser.formarCamino(path));
 
-            var cordenadas=lechuza.getCordenada();
+        var Hormiga=new Hormiga(camino);
+        var Araña=new Araña(camino);
 
-            lechuza.volar();
-            cordenadas=lechuza.getCordenada();
-                        lechuza.volar();
-                        cordenadas=lechuza.getCordenada();
-            lechuza.volar();
-            cordenadas=lechuza.getCordenada();
-            lechuza.volar();
-            cordenadas=lechuza.getCordenada();
-            lechuza.volar();
-            cordenadas=lechuza.getCordenada();
+        // Crear el primer turno y añade a la lista de enemigos
+        List<Enemigo> primerTurno = new ArrayList<>();        
+        primerTurno.add(Hormiga);
+        enemigos.add(primerTurno);
 
+        // Crear el primer turno y añade a la lista de enemigos
+        List<Enemigo> segundoTurno = new ArrayList<>();
+        segundoTurno.add(Hormiga);
+        segundoTurno.add(Araña);
+        enemigos.add(segundoTurno);
 
+        // Crear la tercera lista y añadirla a la lista de listas
+        List<Enemigo> tercerTurno = new ArrayList<>();
+        tercerTurno.add(Hormiga);
+        tercerTurno.add(Hormiga);
+        tercerTurno.add(Araña);
+        enemigos.add(tercerTurno);
 
-
-           // assertEquals(lechuza.getCordenada().getX(),4);
-           // assertEquals(lechuza.getCordenada().getY(),4);
+        var hormigaaa=enemigos.get(0).get(0);
+        var hormigaEE=enemigosJson.get(0).get(0);
 
 
     }

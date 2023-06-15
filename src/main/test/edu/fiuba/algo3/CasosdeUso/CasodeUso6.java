@@ -2,7 +2,6 @@ package edu.fiuba.algo3.CasosdeUso;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -10,8 +9,8 @@ import java.util.List;
 import java.util.Queue;
 
 import edu.fiuba.algo3.models.Cordenada;
-import edu.fiuba.algo3.models.Defensas.TorreBlanca;
-import edu.fiuba.algo3.models.Defensas.TorrePlateada;
+import edu.fiuba.algo3.models.Defensas.Defensa;
+import edu.fiuba.algo3.models.Defensas.DefensaFactory;
 import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
@@ -29,7 +28,8 @@ public class CasodeUso6 {
               var pasarela=new Pasarela(cordenaPasarela);
               pasarelas.add(pasarela);
               var enemigo=new Hormiga(pasarelas);
-              var torre=new TorreBlanca(cordenaTorre);
+              Defensa torre=DefensaFactory.obtenerDefensa(cordenaTorre,"Torre Blanca");
+
       
               List<Enemigo> enemigos = new ArrayList<>();
               enemigos.add(enemigo);
@@ -52,8 +52,8 @@ public class CasodeUso6 {
               var pasarela=new Pasarela(cordenaPasarela);
               pasarelas.add(pasarela);
               var enemigo=new Araña(pasarelas);
-              var torre=new TorrePlateada(cordenaTorre);
-      
+              Defensa torre=DefensaFactory.obtenerDefensa(cordenaTorre,"Torre Plateada");
+
               List<Enemigo> enemigos = new ArrayList<>();
               enemigos.add(enemigo);
       
