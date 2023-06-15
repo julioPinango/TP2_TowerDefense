@@ -18,7 +18,7 @@ public class Araña extends Enemigo
         this.pasarelas=pasarelas;
     }
 
-    public void mover(Jugador jugador) {
+    public void mover() {
         if (pasarelas.size()<3)
         {
             Energia=0;

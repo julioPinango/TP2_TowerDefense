@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.fiuba.algo3.models.Cordenada;
-import edu.fiuba.algo3.models.Defensas.TorreBlanca;
+import edu.fiuba.algo3.models.Defensas.TorrePlateada;
 import edu.fiuba.algo3.models.Defensas.Estados.Estado;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 
-public class PruebaTorreBlanca {
+public class PruebaTorrePlateada {
     @Test
     public void TestPuedoAtacar(){
         Estado estado = mock(Estado.class);
@@ -23,8 +23,8 @@ public class PruebaTorreBlanca {
 
         when (estado.puedoAtacar()). thenReturn(true);
 
-        TorreBlanca torreBlanca = new TorreBlanca(cordenada, estado);
-        assertTrue(torreBlanca.puedoAtacar());
+        TorrePlateada torrePlateada = new TorrePlateada(cordenada, estado);
+        assertTrue(torrePlateada.puedoAtacar());
     }
 
     @Test
@@ -38,22 +38,23 @@ public class PruebaTorreBlanca {
      
         when(araña.getEnergia()).thenReturn(2);
         
-        when(araña.recibirAtaque(1)).thenReturn(true);
+        when(araña.recibirAtaque(2)).thenReturn(true);
 
-        when(cordenada.estaEnRango(3, cordenada)).thenReturn(true);
+        when(cordenada.estaEnRango(5, cordenada)).thenReturn(true);
 
         when(estado.puedoAtacar()).thenReturn(true);
 
         lista.add(0, araña);
 
-        TorreBlanca torreBlanca = new TorreBlanca(cordenada, estado);
-        torreBlanca.atacar(lista);
+        TorrePlateada torrePlateada = new TorrePlateada(cordenada, estado);
+        torrePlateada.atacar(lista);
 
         verify(estado).puedoAtacar();
+        verify(cordenada).estaEnRango(5,cordenada);
         verify(araña,times(2)).getCordenada();
         verify(araña).getEnergia();
-        verify(araña).recibirAtaque(1);
-        verify(cordenada).estaEnRango(3,araña.getCordenada());
+        verify(araña).recibirAtaque(2);
+        
     }
 
     @Test
@@ -63,9 +64,9 @@ public class PruebaTorreBlanca {
 
         when(estado.destruido()).thenReturn(true);
 
-        TorreBlanca torreBlanca = new TorreBlanca(cordenada, estado);
+        TorrePlateada torrePlateada = new TorrePlateada(cordenada, estado);
         
-        assertTrue(torreBlanca.destruido());
+        assertTrue(torrePlateada.destruido());
     }
 
     @Test
@@ -75,8 +76,8 @@ public class PruebaTorreBlanca {
 
         when(estado.destruido()).thenReturn(false);
 
-        TorreBlanca torreBlanca = new TorreBlanca(cordenada, estado);
+        TorrePlateada torrePlateada = new TorrePlateada(cordenada, estado);
         
-        assertFalse(torreBlanca.destruido());
+        assertFalse(torrePlateada.destruido());
     }
 }

@@ -21,12 +21,12 @@ public class Hormiga extends Enemigo
     }
   
   
-    public void mover(Jugador jugador) {
+    public void mover() {
 
         if (pasarelas.size()==1)
         {
             Energia=0;
-            //atacarJugador(jugador);            
+                       
         }
         else if(this.ralentizado==true)
             this.ralentizado=false;

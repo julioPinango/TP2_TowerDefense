@@ -52,7 +52,7 @@ public abstract class Enemigo{
         return true;
     }
 
-    public void mover(Jugador jugador) {
+    public void mover() {
           
     }
     public void sumarEnemigoMuerto(Jugador jugador) {

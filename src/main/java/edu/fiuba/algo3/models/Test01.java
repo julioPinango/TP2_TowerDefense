@@ -1,66 +1,48 @@
 package edu.fiuba.algo3.models;
 
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 
-import edu.fiuba.algo3.models.Cordenada;
-import edu.fiuba.algo3.models.Juego;
-import edu.fiuba.algo3.models.Jugador;
-import edu.fiuba.algo3.models.Mapa;
-import edu.fiuba.algo3.models.Parser;
-import edu.fiuba.algo3.models.Enemigos.Araña;
-import edu.fiuba.algo3.models.Enemigos.Enemigo;
-import edu.fiuba.algo3.models.Enemigos.Hormiga;
-import edu.fiuba.algo3.models.Enemigos.Lechuza;
-import edu.fiuba.algo3.models.Parcelas.Parcela;
-import edu.fiuba.algo3.models.Parcelas.Pasarela;
-import edu.fiuba.algo3.models.Parcelas.Rocoso;
-import edu.fiuba.algo3.models.Parcelas.Tierra;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import edu.fiuba.algo3.models.Cordenada;
+import edu.fiuba.algo3.models.Defensas.TorrePlateada;
+import edu.fiuba.algo3.models.Defensas.Estados.Estado;
+import edu.fiuba.algo3.models.Enemigos.Enemigo;
 
 public class Test01 {    
    
     public static void Prueba01() throws IOException{
-   
-             String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json";
-        String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosReducido.json";
-        Parser parser = new Parser();
-        Mapa mapa=new Mapa(path2,path,parser);
+        Estado estado = Mockito.mock(Estado.class);
+        Cordenada cordenada = Mockito.mock(Cordenada.class);
+        List<Enemigo> lista = new ArrayList<Enemigo>();
+        Enemigo araña = Mockito.mock(Enemigo.class);
+        
+        when(araña.getCordenada()).thenReturn(cordenada);
+     
+        when(araña.getEnergia()).thenReturn(2);
+        
+        when(araña.recibirAtaque(1)).thenReturn(true);
 
-       //var camino=parser.formarCamino(path);
+        when(cordenada.estaEnRango(5, cordenada)).thenReturn(true);
 
-       var enemigosJson=parser.desglosarEnemigos(path2);
-       
-        // Crear la lista de listas
-        List<List<Enemigo>> enemigos = new ArrayList<>();
+        when(estado.puedoAtacar()).thenReturn(true);
 
-        var camino=mapa.inicializarCaminoDeEnemigos(parser.formarCamino(path));
+        lista.add(0, araña);
 
-        var Hormiga=new Hormiga(camino);
-        var Araña=new Araña(camino);
+        TorrePlateada torrePlateada = new TorrePlateada(cordenada, estado);
+        torrePlateada.atacar(lista);
 
-        // Crear el primer turno y añade a la lista de enemigos
-        List<Enemigo> primerTurno = new ArrayList<>();        
-        primerTurno.add(Hormiga);
-        enemigos.add(primerTurno);
-
-        // Crear el primer turno y añade a la lista de enemigos
-        List<Enemigo> segundoTurno = new ArrayList<>();
-        segundoTurno.add(Hormiga);
-        segundoTurno.add(Araña);
-        enemigos.add(segundoTurno);
-
-        // Crear la tercera lista y añadirla a la lista de listas
-        List<Enemigo> tercerTurno = new ArrayList<>();
-        tercerTurno.add(Hormiga);
-        tercerTurno.add(Hormiga);
-        tercerTurno.add(Araña);
-        enemigos.add(tercerTurno);
-
-        var hormigaaa=enemigos.get(0).get(0);
-        var hormigaEE=enemigosJson.get(0).get(0);
-
-
+        verify(estado).puedoAtacar();
+        verify(cordenada).estaEnRango(5,araña.getCordenada());
+        verify(araña,times(1)).getCordenada();
+        verify(araña).getEnergia();
+        verify(araña).recibirAtaque(1);
+        
+    }
     }
 }

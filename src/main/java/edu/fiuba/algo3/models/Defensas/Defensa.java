@@ -38,7 +38,7 @@ public abstract class Defensa
         if (this.estado.puedoAtacar()) {
             this.estado=new EstadoOperativo();
             for (Enemigo enemigo : enemigos) {
-                
+
                 if(cordenada.estaEnRango(RangoAtaque, enemigo.getCordenada()))
                 {
                     if(enemigo.getEnergia()>0)
