@@ -96,7 +96,7 @@ public class CasodeUso8 {
         Juego juego=new Juego(jugador,mapa);
 
         do{
-            juego.realizarTurno(jugador);              
+            juego.realizarTurno();              
         }
         while (juego.getResultado()=="En proceso") ; 
 
@@ -183,7 +183,7 @@ public class CasodeUso8 {
         Juego juego=new Juego(jugador,mapa);
 
         do{
-            juego.realizarTurno(jugador);              
+            juego.realizarTurno();              
         }
         while (juego.getResultado()=="En proceso") ; 
 
@@ -262,7 +262,7 @@ public class CasodeUso8 {
         Juego juego=new Juego(jugador,mapa);
 
         do{
-            juego.realizarTurno(jugador);              
+            juego.realizarTurno();              
         }
         while (juego.getResultado()=="En proceso") ; 
         //Como probamos lo aleatorio?

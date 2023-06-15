@@ -2,7 +2,7 @@ package edu.fiuba.algo3.CasosdeUso;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -19,7 +19,7 @@ public class CasodeUso5 {
     @Test
     public void Prueba01(){
         
-        //Caso positivo
+        //Caso Negativo
 
         Cordenada cordenaTorre=new Cordenada(2,2);
         Cordenada cordenaPasarela=new Cordenada(2,1);
@@ -43,7 +43,7 @@ public class CasodeUso5 {
     @Test
     public void Prueba02(){
         
-        //Caso Negativo        
+        //Caso Positivo       
         Cordenada cordenaTorre=new Cordenada(2,2);
         Cordenada cordenaPasarela=new Cordenada(6,1);
         Queue<Pasarela> pasarelas = new LinkedList<>();
@@ -62,6 +62,6 @@ public class CasodeUso5 {
         torre.atacar(enemigos);        
         int energiaEnemigoAtacado=enemigo.getEnergia();
 
-        assertTrue(energiaEnemigo==energiaEnemigoAtacado);
+        assertEquals(energiaEnemigo,energiaEnemigoAtacado);
     }
 }

@@ -102,7 +102,7 @@ public class CasodeUso10 {
         Juego juego=new Juego(jugador,mapa);
 
      do{
-                juego.realizarTurno(jugador);              
+                juego.realizarTurno();              
         }
         while (juego.getResultado()=="En proceso") ; 
 

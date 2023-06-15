@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
+import javax.net.ssl.TrustManagerFactory;
+
 public class Mapa
 {
     
@@ -103,7 +105,7 @@ public class Mapa
     {
         return getEnemigos().size()>0;
     }
-    public void realizarTurno(Jugador jugador,int turno) {
+    public void realizarTurno(Jugador jugador,Turno turno) {
 
         for (var torre : listaDefensas) {
             torre.atacar(listaEnemigos); 
@@ -128,7 +130,6 @@ public class Mapa
                     }
                 }
 
-
                 //enemigo.atacarJugador(jugador);
                 enemigo.otorgarCreditos(jugador);                
                 enemigo.sumarEnemigoMuerto(jugador);
@@ -137,9 +138,9 @@ public class Mapa
 
         listaEnemigos=listaEnemigosVivos;
 
-        if(Spawn.size()>turno)
+        if(Spawn.size()>turno.getTurno())
         {
-            List<Enemigo> enemigos=Spawn.get(turno);        
+            List<Enemigo> enemigos=Spawn.get(turno.getTurno());        
 
             for (Enemigo enemigo : enemigos) 
                 listaEnemigos.add(enemigo);

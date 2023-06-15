@@ -6,14 +6,14 @@ public class Juego
 {
     private Mapa mapa;
     private Jugador jugador;
-    private int Turno;
     private String resultadoJuego="En proceso";
     private Log log= Log.obtenetInstancia();
+    private Turno turno;
     
-    public Juego(Jugador jugador,Mapa mapa2){
+    public Juego(Jugador jugador,Mapa mapa2, Turno turnoActual){
         this.jugador=jugador;
-        this.Turno=0;
         mapa=mapa2;
+        turno=turnoActual;
     }
 
     public String getResultado() {
@@ -22,7 +22,7 @@ public class Juego
 
     public int getTurno()
     {
-        return Turno;
+        return jugador.getTurno();
     }
    
   
@@ -48,16 +48,16 @@ public class Juego
     public void realizarTurno() {
        //Efectua un turno y deja el juego en el estado correspondiente.
 
-        mapa.realizarTurno(jugador,Turno);                   
+        mapa.realizarTurno(jugador,turno);                   
 
         if(jugador.jugadorDerrotado())
         {
             terminarPartida(!jugador.jugadorDerrotado());
         }
-        else if (mapa.quedanEnemigos()==false&&Turno!=0)
+        else if (mapa.quedanEnemigos()==false&&jugador.getTurno()!=0)
         {
             terminarPartida(!jugador.jugadorDerrotado());
         }
-        Turno++;    
+        jugador.pasarTurno();    
     }
 }

@@ -45,10 +45,14 @@ public class Topo extends Enemigo
         return; //nunca lo atacan
     }
     public void atacarJugador(Jugador jugador){
-        //if (turno%2!=0){jugador.recibirAtaque(5)};
-        //else{
+        if (jugador.getTurno()%2!=0)
+        {
+            jugador.recibirAtaque(5);
+        }
+        else
+        {
         jugador.recibirAtaque(Danio);
-        //}
+        }
         var log = Log.obtenetInstancia();
         log.imprimirDanioEnemigo(this);
         Energia=0;

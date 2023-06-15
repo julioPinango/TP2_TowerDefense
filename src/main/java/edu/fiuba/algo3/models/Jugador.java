@@ -9,14 +9,22 @@ public class Jugador{
    private int Creditos;
    private String Nombre;
    private int hormigasDestruidas;
+   private int turno;
 
    public Jugador(String nombreJugador){ 
       this.Vida=20;
       this.Creditos=100;
       this.Nombre=nombreJugador;
       this.hormigasDestruidas=0;
+      this.turno=0;
    }
 
+   public int getTurno(){
+      return turno;
+   }
+   public void pasarTurno(){
+      turno++;
+   }
    public int getVida() {
       return this.Vida;
    }

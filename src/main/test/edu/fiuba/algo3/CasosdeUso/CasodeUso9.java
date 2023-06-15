@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.CasosdeUso;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -39,7 +39,7 @@ public class CasodeUso9 {
 
         hormiga.mover(jugador);
 
-        assertTrue(hormiga.getCordenada() == cordenada1);
+        assertEquals(hormiga.getCordenada() , cordenada1);
     }
     @Test
     public void Prueba02(){
@@ -66,6 +66,6 @@ public class CasodeUso9 {
 
         araña.mover(jugador);
 
-        assertTrue(araña.getCordenada() == cordenada2);
+        assertEquals(araña.getCordenada() , cordenada2);
     }
 }

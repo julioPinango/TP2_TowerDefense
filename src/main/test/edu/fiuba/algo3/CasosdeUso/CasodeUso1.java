@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.CasosdeUso;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import edu.fiuba.algo3.models.Jugador;
 
 public class CasodeUso1 {    
@@ -8,7 +8,7 @@ public class CasodeUso1 {
     public void Prueba01(){
         Jugador prueba=new Jugador("Juan");
         
-        assertTrue(prueba.getCreditos()==100);
-        assertTrue(prueba.getVida()==20);
+        assertEquals(prueba.getCreditos(),100);
+        assertEquals(prueba.getVida(),20);
     }
 }
