@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import edu.fiuba.algo3.models.Cordenada;
-import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
@@ -33,11 +32,9 @@ public class CasodeUso9 {
         pasarelas.add(pasarela3);
 
         Enemigo hormiga = new Hormiga(pasarelas);
-
-        Jugador jugador=new Jugador("Juan Cruz");
         
 
-        hormiga.mover(jugador);
+        hormiga.mover();
 
         assertEquals(hormiga.getCordenada() , cordenada1);
     }
@@ -62,9 +59,7 @@ public class CasodeUso9 {
 
         Enemigo araña = new Araña(pasarelas);
 
-        Jugador jugador=new Jugador("Juan Cruz");
-
-        araña.mover(jugador);
+        araña.mover();
 
         assertEquals(araña.getCordenada() , cordenada2);
     }
