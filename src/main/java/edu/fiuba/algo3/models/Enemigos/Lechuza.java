@@ -30,7 +30,7 @@ public class Lechuza extends Enemigo
         coordenadaObjetivo = listaPasarelas.get(tamaño - 1).getCordenada();
     }
 
-    public void mover(Jugador jugador) {
+    public void mover() {
         if (pasarelas.size()<6)
         {
             Energia=0;

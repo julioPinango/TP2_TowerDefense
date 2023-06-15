@@ -9,11 +9,11 @@ public class TorrePlateada extends Defensa
     public TorrePlateada(Cordenada cordenadas,Estado estado)
     {
         this.Costo=20;
-        this.RangoAtaque=3;
+        this.RangoAtaque=5;
         this.danio=2;
         this.nombre= "Torre Plateada";
         
-        this.cordenadas=cordenadas;
+        this.cordenada=cordenadas;
         this.estado=estado;
     }
     public boolean puedoAtacar(){

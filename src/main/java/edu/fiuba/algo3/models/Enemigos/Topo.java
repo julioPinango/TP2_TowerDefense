@@ -21,7 +21,7 @@ public class Topo extends Enemigo
         this.contMovimientos= 0;
     }
 
-    public void mover(Jugador jugador) {
+    public void mover() {
         if (pasarelas.size()<(this.Velocidad+1))
         {
             Energia=0;
