@@ -147,7 +147,7 @@ public class Mapa
             if(enemigo.getEnergia()>0)
             { 
                 listaEnemigosVivos.add(enemigo);
-                enemigo.mover(jugador);
+                enemigo.mover();
             }
             else
             {
