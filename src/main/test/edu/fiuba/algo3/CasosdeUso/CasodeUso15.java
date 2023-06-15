@@ -17,19 +17,18 @@ public class CasodeUso15 {
     public void Prueba01(){
 
         String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json";
+        String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosReducido.json";
         Parser parser = new Parser();
+        Mapa mapa=new Mapa(path,path2,parser);
 
-       var camino=parser.formarCamino(path);
-
-       String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosReducido.json";
+       //var camino=parser.formarCamino(path);
 
        var enemigosJson=parser.desglosarEnemigos(path2);
-
+       
         // Crear la lista de listas
         List<List<Enemigo>> enemigos = new ArrayList<>();
 
-
-        var Hormiga=new Hormiga(camino);
+        /*var Hormiga=new Hormiga(camino);
         var Araña=new Araña(camino);
 
         // Crear el primer turno y añade a la lista de enemigos
@@ -49,6 +48,7 @@ public class CasodeUso15 {
         tercerTurno.add(Hormiga);
         tercerTurno.add(Araña);
         enemigos.add(tercerTurno);
+*/
 
         assertEquals(enemigos.get(0).get(0),enemigosJson.get(0).get(0));
 
