@@ -22,10 +22,14 @@ public class Test01 {
    
         //Pruebo que la lechuza se mueve en forma de L
 
-            String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json";    
+             String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json"; 
+            String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosReducido.json";    
+            Parser parser=new Parser();  
+            Mapa mapa=new Mapa(path2, path, parser);
     
-            var camino=Parser.formarCamino(path);          
-    
+            var list= parser.formarCamino(path);
+
+            var camino=mapa.inicializarCaminoDeEnemigos(list);   
             Lechuza lechuza=new Lechuza(camino);
 
             lechuza.volar();

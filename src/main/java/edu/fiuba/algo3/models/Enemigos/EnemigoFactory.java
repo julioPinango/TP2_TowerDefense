@@ -14,6 +14,9 @@ public class EnemigoFactory
     public static Enemigo obtenerEnemigo(Queue<Pasarela> pasarelas, String tipo){
         tiposDeEnemigos.put("hormiga", new Hormiga(pasarelas));
         tiposDeEnemigos.put("arana", new Araña(pasarelas));
+        tiposDeEnemigos.put("lechuza", new Lechuza(pasarelas));
+        tiposDeEnemigos.put("topo", new Topo(pasarelas));
+
         return (tiposDeEnemigos.get(tipo));
     }
 }

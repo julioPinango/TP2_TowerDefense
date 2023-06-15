@@ -102,8 +102,8 @@ public class Parser {
                     String elemento = filaArray.getString(j); // Obtener el elemento de la fila actual como una cadena
                     if(elemento.equals("Pasarela")){
                         pasarela.add(elemento);
-                        pasarela.add(String.valueOf(i-1));
                         pasarela.add(String.valueOf(j));
+                        pasarela.add(String.valueOf(i));
                         camino.add(pasarela);
                     }
                 }

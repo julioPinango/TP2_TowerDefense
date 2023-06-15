@@ -30,6 +30,7 @@ public class CasodeUso8 {
         Parser parser = new Parser();
         Mapa mapa=new Mapa(path,path2,parser);
     
+        /* 
         Cordenada cordenada1 = new Cordenada(0, 0);
         Cordenada cordenada2 = new Cordenada(0, 1);
         Cordenada cordenada3 = new Cordenada(0, 2);
@@ -87,7 +88,7 @@ public class CasodeUso8 {
 
         List<List<Enemigo>> ArrayEnemigos=new ArrayList<>();
 
-        ArrayEnemigos.add(listaEnemigos);
+        ArrayEnemigos.add(listaEnemigos);*/
 
 
         Jugador jugador=new Jugador("Juan Cruz");

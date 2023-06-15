@@ -2,6 +2,7 @@ package edu.fiuba.algo3.models;
 
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.EnemigoFactory;
+import edu.fiuba.algo3.models.Enemigos.Lechuza;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
 import edu.fiuba.algo3.models.Parcelas.ParcelaFactory;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
@@ -29,6 +30,13 @@ public class Mapa
         Spawn=spawn;
     }
     */
+
+
+
+    public List<Defensa> getDefensas(){
+        return listaDefensas;
+    }
+
     public Mapa(String rutaArchivoEnemigos,String rutaArchivoMapa, Parser parser) {
         this.parcelas=inicializarParcelas(parser.leerMapa(rutaArchivoMapa));
         this.Spawn=inicializarEnemigos(parser.desglosarEnemigos(rutaArchivoEnemigos),parser.formarCamino(rutaArchivoMapa));
@@ -46,7 +54,7 @@ public class Mapa
         }
         return nuevoMapa;
     }
-    private Queue<Pasarela> inicializarCaminoDeEnemigos(List<List<String>>camino){
+    public Queue<Pasarela> inicializarCaminoDeEnemigos(List<List<String>>camino){
         Queue<Pasarela> nuevoCamino=new LinkedList<>(); 
         for (int i = 0; i < camino.size(); i++) {
             List<String> unaPasarela=camino.get(i);
@@ -112,7 +120,16 @@ public class Mapa
             }
             else
             {
-                enemigo.atacarJugador(jugador);
+                if(enemigo.getNombre()=="Lechuza")            
+                {    
+                    if(listaDefensas.size()>0)//Si tiene torres elimino la primera. 
+                    {  
+                        listaDefensas.remove(0);
+                    }
+                }
+
+
+                //enemigo.atacarJugador(jugador);
                 enemigo.otorgarCreditos(jugador);                
                 enemigo.sumarEnemigoMuerto(jugador);
             }
@@ -129,8 +146,4 @@ public class Mapa
         }
     }
 
-    public List<Defensa> defensasDisponibles()
-    {
-        return listaDefensas;
-    }
 }

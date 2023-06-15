@@ -50,7 +50,6 @@ public class CasodeUso15 {
         tercerTurno.add(Araña);
         enemigos.add(tercerTurno);
 
-
         assertEquals(enemigos.get(0).get(0),enemigosJson.get(0).get(0));
 
         assertEquals(enemigos.get(2).get(2),enemigosJson.get(2).get(2));

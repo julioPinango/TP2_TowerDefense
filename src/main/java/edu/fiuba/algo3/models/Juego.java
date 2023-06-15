@@ -5,13 +5,13 @@ package edu.fiuba.algo3.models;
 public class Juego
 {
     private Mapa mapa;
-    private Jugador Jugador;
+    private Jugador jugador;
     private int Turno;
     private String resultadoJuego="En proceso";
     private Log log= Log.obtenetInstancia();
     
     public Juego(Jugador jugador,Mapa mapa2){
-        this.Jugador=jugador;
+        this.jugador=jugador;
         this.Turno=0;
         mapa=mapa2;
     }
@@ -45,7 +45,7 @@ public class Juego
 
    
 
-    public void realizarTurno(Jugador jugador) {
+    public void realizarTurno() {
        //Efectua un turno y deja el juego en el estado correspondiente.
 
         mapa.realizarTurno(jugador,Turno);                   

@@ -3,13 +3,10 @@ package edu.fiuba.algo3.models.Enemigos;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
-import java.util.Random;
 
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Log;
-import edu.fiuba.algo3.models.Mapa;
-import edu.fiuba.algo3.models.Defensas.Defensa;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class Lechuza extends Enemigo
@@ -31,26 +28,17 @@ public class Lechuza extends Enemigo
         coordenadaActual=listaPasarelas.get(0).getCordenada();
 
         coordenadaObjetivo = listaPasarelas.get(tamaño - 1).getCordenada();
-
-
-
     }
 
-    public void mover(Jugador jugador,Mapa mapa) {
+    public void mover(Jugador jugador) {
         if (pasarelas.size()<6)
         {
-            List<Defensa> torres=mapa.defensasDisponibles();
-
-            if(torres.size()>0)//Si tiene torres elimino la primera. 
-                torres.remove(0);
-
             atacarJugador(jugador);//Como el danio es 0 no tiene efecto en la vida del jugador.
         }
         else 
         {
             volar();           
-        }       
-
+        }
     }
     public void sumarEnemigoMuerto(Jugador jugador) {
     }
@@ -75,8 +63,8 @@ public class Lechuza extends Enemigo
             }
 
                 // Mover en forma de L hacia la meta
-                int movimientosX = Math.min(catetoX, 2);
-                int movimientosY = Math.min(catetoY, 3);
+                int movimientosX = 2;
+                int movimientosY = 3;
 
                 int newCoordenadaX = coordenadaActual.getX();
                 int newCoordenadaY = coordenadaActual.getY();

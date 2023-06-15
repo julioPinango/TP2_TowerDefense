@@ -12,6 +12,7 @@ public class DefensaFactory
     public static Defensa obtenerDefensa(Cordenada cordenada, String tipo){
         tiposDeTorre.put("Torre Blanca", new TorreBlanca(cordenada));
         tiposDeTorre.put("Torre Plateada", new TorrePlateada(cordenada));
+        tiposDeTorre.put("Trampa Arenosa", new TrampaArenosa(cordenada));
         return (tiposDeTorre.get(tipo));
     }
 }
