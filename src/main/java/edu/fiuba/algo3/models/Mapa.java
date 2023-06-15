@@ -119,6 +119,11 @@ public class Mapa
     public List<Enemigo> getEnemigos() {
         return listaEnemigos;
     }
+
+    public Map<Cordenada, Parcela> getParcelas() {
+        return parcelas;
+    }
+
     
     public boolean quedanEnemigos()
     {
