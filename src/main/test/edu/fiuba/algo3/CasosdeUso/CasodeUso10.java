@@ -2,24 +2,12 @@ package edu.fiuba.algo3.CasosdeUso;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.*;
-
-import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Juego;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Mapa;
 import edu.fiuba.algo3.models.Parser;
 import edu.fiuba.algo3.models.Turno;
-import edu.fiuba.algo3.models.Defensas.Defensa;
-import edu.fiuba.algo3.models.Defensas.TorrePlateada;
-import edu.fiuba.algo3.models.Enemigos.Enemigo;
-import edu.fiuba.algo3.models.Enemigos.Hormiga;
-import edu.fiuba.algo3.models.Parcelas.Parcela;
-import edu.fiuba.algo3.models.Parcelas.Pasarela;
-import edu.fiuba.algo3.models.Parcelas.Rocoso;
-import edu.fiuba.algo3.models.Parcelas.Tierra;
 
 public class CasodeUso10 { 
     
@@ -50,6 +38,6 @@ public class CasodeUso10 {
         while (juego.getResultado()=="En proceso") ; 
 
         //Como probamos lo aleatorio.
-        assertTrue(juego.getResultado()=="Gana");
+        assertEquals(juego.getResultado(),"Gana");
     }
 }

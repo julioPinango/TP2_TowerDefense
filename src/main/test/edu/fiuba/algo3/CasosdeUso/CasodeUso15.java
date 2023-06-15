@@ -16,14 +16,14 @@ public class CasodeUso15 {
     @Test
     public void Prueba01(){
 
-        String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json";
+        String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapaReducido.json";
         String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosReducido.json";
         Parser parser = new Parser();
         Mapa mapa=new Mapa(path2,path,parser);
+        List<List<Enemigo>> enemigosEsperados = new ArrayList<>();
        
         // Crear la lista de listas
-        List<List<Enemigo>> enemigos = new ArrayList<>();
-
+        
         var camino=mapa.inicializarCaminoDeEnemigos(parser.formarCamino(path));
 
         var Hormiga=new Hormiga(camino);
@@ -32,24 +32,21 @@ public class CasodeUso15 {
         // Crear el primer turno y añade a la lista de enemigos
         List<Enemigo> primerTurno = new ArrayList<>();        
         primerTurno.add(Hormiga);
-        enemigos.add(primerTurno);
+        enemigosEsperados.add(primerTurno);
 
         // Crear el primer turno y añade a la lista de enemigos
         List<Enemigo> segundoTurno = new ArrayList<>();
         segundoTurno.add(Hormiga);
         segundoTurno.add(Araña);
-        enemigos.add(segundoTurno);
+        enemigosEsperados.add(segundoTurno);
 
         // Crear la tercera lista y añadirla a la lista de listas
         List<Enemigo> tercerTurno = new ArrayList<>();
         tercerTurno.add(Hormiga);
         tercerTurno.add(Hormiga);
         tercerTurno.add(Araña);
-        enemigos.add(tercerTurno);
+        enemigosEsperados.add(tercerTurno);
 
-        assertEquals(enemigos.get(0).get(0),Hormiga);
-
-        assertEquals(enemigos.get(2).get(2),Araña);
-
+        assertEquals(enemigosEsperados,mapa.getSpawn());
     }
 }

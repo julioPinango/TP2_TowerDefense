@@ -7,48 +7,46 @@ import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Mapa;
 import edu.fiuba.algo3.models.Parser;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
-import edu.fiuba.algo3.models.Parcelas.Pasarela;
-import edu.fiuba.algo3.models.Parcelas.Rocoso;
-import edu.fiuba.algo3.models.Parcelas.Tierra;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class CasodeUso16 {    
     @Test
     public void Prueba01(){
 
-                String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json";
+                String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapaReducido.json";
                 String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosReducido.json";
                 Parser parser = new Parser();
-                Mapa mapa2=new Mapa(path2,path,parser);
-
-                Mapa mapa=new Mapa(path2,path,parser);
-
+                Mapa mapaLogica=new Mapa(path2,path,parser); //Solo para usar un metodo del mapa
+                List<List<String>> mapaEsperado=new ArrayList<>();
 
                 // Crear la primera lista y añadirla a la lista de listas
                 List<String> primeraLista = new ArrayList<>();
                 primeraLista.add("Rocoso");
                 primeraLista.add("Pasarela");
                 primeraLista.add("Tierra");
-                mapa.add(primeraLista);
+                mapaEsperado.add(primeraLista);
         
                 // Crear la segunda lista y añadirla a la lista de listas
                 List<String> segundaLista = new ArrayList<>();
                 segundaLista.add("Tierra");
                 segundaLista.add("Pasarela");
                 segundaLista.add("Tierra");
-                mapa.add(segundaLista);
+                mapaEsperado.add(segundaLista);
         
                 // Crear la tercera lista y añadirla a la lista de listas
                 List<String> terceraLista = new ArrayList<>();
                 terceraLista.add("Tierra");
                 terceraLista.add("Pasarela");
                 terceraLista.add("Tierra");
-                mapa.add(terceraLista);
+                mapaEsperado.add(terceraLista);
             
-                var mapa3=mapa2.inicializarParcelas(mapa);
+                Map<Cordenada, Parcela> parcelasEsperadas=mapaLogica.inicializarParcelas(mapaEsperado); //Uso metodo de un mapa para convertirlo en objetos validos
 
-                assertEquals(mapa3,mapa2);
+                Mapa mapaObtenido=new Mapa(path2,path,parser);
+
+                assertEquals(mapaObtenido.getParcelas(),parcelasEsperadas);
     }
 }

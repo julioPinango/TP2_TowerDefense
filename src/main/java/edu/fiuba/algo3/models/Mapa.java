@@ -119,21 +119,30 @@ public class Mapa
     public List<Enemigo> getEnemigos() {
         return listaEnemigos;
     }
+
+    public List<List<Enemigo>> getSpawn() {
+        return Spawn;
+    }
+
+    public Map<Cordenada, Parcela> getParcelas() {
+        return parcelas;
+    }
     
     public boolean quedanEnemigos()
     {
         return getEnemigos().size()>0;
     }
     
-    public void realizarTurno(Jugador jugador,Turno turno) {
 
+    private void turnoDeDefensas(){
         for (var torre : listaDefensas) {
             torre.atacar(listaEnemigos); 
         }
+    }
 
-        List<Enemigo> listaEnemigosVivos = new ArrayList<>();        
-        
-        for(Enemigo enemigo:listaEnemigos)
+    private List<Enemigo> enemigosRestantes(List<Enemigo> enemigosActuales, Jugador jugador, Turno turno){
+        List<Enemigo> listaEnemigosVivos = new ArrayList<>();   
+        for(Enemigo enemigo:enemigosActuales)
         {
             if(enemigo.getEnergia()>0)
             { 
@@ -158,9 +167,24 @@ public class Mapa
                 enemigo.sumarEnemigoMuerto(jugador);
             }
         }
+        return listaEnemigosVivos;
+    }
 
-        listaEnemigos=listaEnemigosVivos;
+    private List<Defensa> defensasDisponibles(List<Defensa> defensasActuales){
+        List<Defensa> defensasDisponibles= new ArrayList<>(); 
 
+        for (Defensa defensa : defensasActuales) {
+
+            if(defensa.destruido()==false)
+                defensasDisponibles.add(defensa);
+        }
+
+        return defensasDisponibles;
+    }
+
+    public void realizarTurno(Jugador jugador,Turno turno) {
+        this.turnoDeDefensas();
+        listaEnemigos=this.enemigosRestantes(listaEnemigos,jugador, turno);
         if(Spawn.size()>turno.getTurno())
         {
             List<Enemigo> enemigos=Spawn.get(turno.getTurno());        
@@ -168,16 +192,7 @@ public class Mapa
             for (Enemigo enemigo : enemigos) 
                 listaEnemigos.add(enemigo);
         }
- 
-        List<Defensa> defensasDisponibles= new ArrayList<>(); 
-
-        for (Defensa defensa : listaDefensas) {
-
-            if(defensa.destruido()==false)
-                defensasDisponibles.add(defensa);
-        }
-
-        listaDefensas=defensasDisponibles;
+        listaDefensas=this.defensasDisponibles(listaDefensas);
     }
 
 }
