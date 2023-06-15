@@ -41,11 +41,11 @@ public abstract class Defensa
                 
                 if(Cordenada.estaEnRango(RangoAtaque, cordenadas, enemigo.getCordenada()))
                 {
-                    var log = Log.obtenetInstancia();
                     if(enemigo.getEnergia()>0)
                     {
                         if(enemigo.recibirAtaque(danio))
                         {
+                            var log = Log.obtenetInstancia();
                             log.imprimirAtaque(this,enemigo,enemigo.getCordenada());
                             break;
                         }
