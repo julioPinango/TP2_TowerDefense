@@ -31,7 +31,8 @@ public class Lechuza extends Enemigo
     }
 
     public void mover(Jugador jugador) {
-        if (pasarelas.size()<6)
+        if (Cordenada.calcularDistancia(coordenadaActual.getX(), coordenadaActual.getY(),
+         coordenadaObjetivo.getX(), coordenadaObjetivo.getY())<6)
         {
             Energia=0;
             //atacarJugador(jugador);//Como el danio es 0 no tiene efecto en la vida del jugador.

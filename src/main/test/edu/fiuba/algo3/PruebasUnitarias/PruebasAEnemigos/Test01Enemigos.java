@@ -65,12 +65,8 @@ public class Test01Enemigos {
             juego.realizarTurno();
             juego.realizarTurno();
             juego.realizarTurno();
-            juego.realizarTurno();
-            juego.realizarTurno();
-            juego.realizarTurno();
-            juego.realizarTurno();
+            juego.realizarTurno();   
 
-    
             assertEquals(0,mapa.getDefensas().size());
     }
     @Test

@@ -22,8 +22,6 @@ public class PruebaJuego {
         Jugador jugador = mock(Jugador.class);
         Turno turno = mock(Turno.class);
 
-
-
         when (mapa.colocarDefensaEnEstaPosicion(5, 
         7, "hola",jugador)). thenReturn (true);      
             
