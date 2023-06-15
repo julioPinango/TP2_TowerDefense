@@ -6,6 +6,7 @@ import edu.fiuba.algo3.models.Juego;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Mapa;
 import edu.fiuba.algo3.models.Parser;
+import edu.fiuba.algo3.models.Turno;
 import edu.fiuba.algo3.models.Enemigos.Lechuza;
 import java.io.IOException;
 
@@ -48,10 +49,27 @@ public class Test01Enemigos {
             var camino=mapa.inicializarCaminoDeEnemigos(list); 
     
             var Jugador=new Jugador("Julianna");
-    
-            var juego=new Juego(Jugador, mapa);
 
-            juego.colocarDefensas(0, 1, "Torre Plateada");    
+            var turno= new Turno();
+    
+            var juego=new Juego(Jugador, mapa,turno);
+
+            juego.colocarDefensas(0, 1, "Torre Plateada");   
+            
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+
     
             assertEquals(0,mapa.getDefensas().size());
     }
@@ -72,7 +90,9 @@ public class Test01Enemigos {
     
             var Jugador=new Jugador("Julianna");
     
-            var juego=new Juego(Jugador, mapa);
+            var turno= new Turno();
+    
+            var juego=new Juego(Jugador, mapa,turno);
     
             assertEquals(20,Jugador.getVida());
     }
@@ -93,7 +113,9 @@ public class Test01Enemigos {
     
             var Jugador=new Jugador("Julianna");
     
-            var juego=new Juego(Jugador, mapa);
+            var turno= new Turno();
+    
+            var juego=new Juego(Jugador, mapa,turno);
 
             assertEquals(100,Jugador.getCreditos());
     }

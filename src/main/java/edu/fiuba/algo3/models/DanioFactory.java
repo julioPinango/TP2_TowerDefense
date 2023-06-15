@@ -8,10 +8,10 @@ public class DanioFactory
 
     public static int obtenerAtaque(String tipo,Turno turno){
 
-        tipodeDanio.put("hormiga",1);
-        tipodeDanio.put("arana", 2);
-        tipodeDanio.put("lechuza",0);
-        tipodeDanio.put("topo",2);
+        tipodeDanio.put("Hormiga",1);
+        tipodeDanio.put("Araña", 2);
+        tipodeDanio.put("Lechuza",0);
+        tipodeDanio.put("Topo",2);
         
         if(tipo=="topo"&&!turno.esTurnoPar())            
         {

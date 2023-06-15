@@ -33,13 +33,13 @@ public class Mapa
         this.Spawn=inicializarEnemigos(parser.desglosarEnemigos(rutaArchivoEnemigos),parser.formarCamino(rutaArchivoMapa));
     }
 
-    private Map<Cordenada, Parcela>  inicializarParcelas(List<List<String>> mapa){
+    public Map<Cordenada, Parcela>  inicializarParcelas(List<List<String>> mapa){
         Map<Cordenada, Parcela> nuevoMapa= new HashMap<>();
         for (int i = 0; i < mapa.size(); i++) {
             List<String> columna=mapa.get(i);
             for (int j = 0; j < columna.size(); j++) {
                 String parcela=columna.get(j);
-                Cordenada nuevaCordenada= new Cordenada(i, j);
+                Cordenada nuevaCordenada= new Cordenada(j, i);
                 Parcela nuevaParcela=ParcelaFactory.obtenerParcela(nuevaCordenada, parcela);
                 nuevoMapa.put(nuevaCordenada, nuevaParcela);
             }
@@ -75,15 +75,20 @@ public class Mapa
         return Spawn;
     }
 
-    public boolean colocarDefensaEnEstaPosicion(int x,int y, String tipo){
-
+    public boolean colocarDefensaEnEstaPosicion(int x,int y, String tipo,Jugador jugador){
 
         Cordenada cordenada=new Cordenada(x, y); 
         Defensa defensaNueva= DefensaFactory.obtenerDefensa(cordenada,tipo);
-
-        if(parcelas.get(cordenada).puedoConstruirDefensa(defensaNueva)&&posicionValida(cordenada))
+        var preuba=parcelas.get(cordenada);
+        if(preuba.puedoConstruirDefensa(defensaNueva)
+        &&posicionValida(cordenada)
+        &&jugador.creditosSuficientes(defensaNueva.getCosto()))
         {
+
+            jugador.descontarCredito(defensaNueva.getCosto());
+
             this.listaDefensas.add(defensaNueva);
+            
             var log = Log.obtenetInstancia();
             log.imprimirConstruccion(defensaNueva,cordenada);
             return true;
@@ -91,7 +96,8 @@ public class Mapa
         return false;
 
     }
-    
+
+
     private boolean posicionValida(Cordenada cordenada) {
         List<Pasarela> listaPasarelas = new ArrayList<>(caminoEnemigos);
         int tamaño = listaPasarelas.size();

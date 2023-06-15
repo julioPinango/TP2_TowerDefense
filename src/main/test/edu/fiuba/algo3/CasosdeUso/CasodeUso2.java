@@ -2,15 +2,12 @@ package edu.fiuba.algo3.CasosdeUso;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.*;
 
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Defensas.Defensa;
-import edu.fiuba.algo3.models.Defensas.TorreBlanca;
-import edu.fiuba.algo3.models.Defensas.TorrePlateada;
+import edu.fiuba.algo3.models.Defensas.DefensaFactory;
 import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
@@ -53,7 +50,9 @@ public class CasodeUso2 {
         pasarelas.add(Pasarela9);
 
         Cordenada cordenadatorre= new Cordenada(1, 1);
-        Defensa torre=new TorrePlateada(cordenadatorre);
+
+        Defensa torre=DefensaFactory.obtenerDefensa(cordenadatorre,"Torre Plateada");
+
         Enemigo araña= new Araña(pasarelas);
         List<Enemigo> listaEnemigos = new ArrayList<>();
         listaEnemigos.add(araña);
@@ -106,7 +105,9 @@ public class CasodeUso2 {
         pasarelas.add(Pasarela9);
 
         Cordenada cordenadatorre= new Cordenada(1, 1);
-        Defensa torre=new TorreBlanca(cordenadatorre);
+
+        Defensa torre=DefensaFactory.obtenerDefensa(cordenadatorre,"Torre Blanca");
+
         Enemigo hormiga= new Hormiga(pasarelas);
         List<Enemigo> listaEnemigos = new ArrayList<>();
         listaEnemigos.add(hormiga);

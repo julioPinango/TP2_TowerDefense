@@ -6,31 +6,32 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
-import edu.fiuba.algo3.models.Defensas.TorreBlanca;
-import edu.fiuba.algo3.models.Defensas.TorrePlateada;
+import edu.fiuba.algo3.models.Defensas.Defensa;
+import edu.fiuba.algo3.models.Defensas.DefensaFactory;
 
 public class CasodeUso3 {    
     @Test
     public void Prueba01(){
   
         Jugador jugador=new Jugador("Julio Piñango");
+
         Cordenada cordena=new Cordenada(2,1);
 
-        TorrePlateada torre=new TorrePlateada(cordena);
+        Defensa torre=DefensaFactory.obtenerDefensa(cordena,"Torre Plateada");
 
-        assertTrue(jugador.creditosSuficientes(torre));
+        assertTrue(jugador.creditosSuficientes(torre.getCosto()));
     }
     @Test
     public void Prueba02(){
   
         Jugador jugador=new Jugador("Julio Piñango");
         Cordenada cordena=new Cordenada(2,1);
-        
-        TorreBlanca torre=new TorreBlanca(cordena);
+
+        Defensa torre=DefensaFactory.obtenerDefensa(cordena,"Torre Blanca");
 
         jugador.descontarCredito(100);
 
-        assertFalse(jugador.creditosSuficientes(torre));
+        assertFalse(jugador.creditosSuficientes(torre.getCosto()));
     }
     @Test
     public void Prueba03(){
@@ -38,10 +39,10 @@ public class CasodeUso3 {
         Jugador jugador=new Jugador("Julio Piñango");
         Cordenada cordena=new Cordenada(2,1);
 
-        TorreBlanca torre=new TorreBlanca(cordena);
+        Defensa torre=DefensaFactory.obtenerDefensa(cordena,"Torre Blanca");
 
         jugador.descontarCredito(90);
 
-        assertTrue(jugador.creditosSuficientes(torre));
+        assertTrue(jugador.creditosSuficientes(torre.getCosto()));
     }
 }

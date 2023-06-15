@@ -8,33 +8,38 @@ import edu.fiuba.algo3.models.Juego;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Mapa;
 import edu.fiuba.algo3.models.Parser;
+import edu.fiuba.algo3.models.Turno;
 
 public class CasodeUso19 {    
     @Test
     public void Prueba01(){
         
-            String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapaReducido.json";
-    
-            var mapaParseado=Parser.leerMapa(path);
-    
-            var camino=Parser.formarCamino(path);          
-    
-            String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigos.json";
-    
-            var enemigosJson=Parser.desglosarEnemigos(path2,camino);
-    
-            var mapa=new Mapa(mapaParseado,enemigosJson);
-    
-            var Jugador=new Jugador("Julianna");
-    
-            var juego=new Juego(Jugador, mapa);
-    
-            do{
-                juego.realizarTurno(Jugador);              
-            }
-            while (juego.getResultado()=="En proceso") ; 
-    
-            assertEquals("Pierde",juego.getResultado());
-        
+        String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/Enemigos.json";
+        String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json";
+        Parser parser = new Parser();
+        Mapa mapa=new Mapa(path,path2,parser);
+        Turno turno=new Turno();
+        Jugador jugador=new Jugador("Juan Cruz");   
+
+
+        Juego juego=new Juego(jugador,mapa,turno);
+
+        juego.realizarTurno();
+        juego.realizarTurno();
+        juego.realizarTurno();
+        juego.realizarTurno();
+        juego.realizarTurno();
+        juego.realizarTurno();
+        juego.realizarTurno();
+        juego.realizarTurno();
+        juego.realizarTurno();
+        juego.realizarTurno();
+        juego.realizarTurno();
+        juego.realizarTurno();
+        juego.realizarTurno();
+        juego.realizarTurno();
+
+        //Como probamos lo aleatorio.
+        assertEquals("Pierde",juego.getResultado());        
     }
 }

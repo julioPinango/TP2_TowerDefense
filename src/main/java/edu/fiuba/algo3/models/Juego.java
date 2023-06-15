@@ -27,7 +27,8 @@ public class Juego
    
   
     public boolean colocarDefensas(int x, int y, String tipoDeTorre){
-        if(!(this.mapa.colocarDefensaEnEstaPosicion(x,y,tipoDeTorre))){
+
+        if(!(this.mapa.colocarDefensaEnEstaPosicion(x,y,tipoDeTorre,jugador))){
             return false;
         }
         return true;
