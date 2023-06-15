@@ -11,7 +11,7 @@ import java.util.List;
 
 public abstract class Defensa
 {
-    protected Cordenada cordenadas;
+    protected Cordenada cordenada;
 
     protected int Costo;
     protected int RangoAtaque;
@@ -39,7 +39,7 @@ public abstract class Defensa
             this.estado=new EstadoOperativo();
             for (Enemigo enemigo : enemigos) {
                 
-                if(Cordenada.estaEnRango(RangoAtaque, cordenadas, enemigo.getCordenada()))
+                if(cordenada.estaEnRango(RangoAtaque, enemigo.getCordenada()))
                 {
                     if(enemigo.getEnergia()>0)
                     {

@@ -25,13 +25,11 @@ public class Cordenada {
         return distanciaManhattan;
     }
 
-    public static boolean estaEnRango(int rango, Cordenada cordenada1, Cordenada cordenada2) {
-        int x1 = cordenada1.X;
-        int y1 = cordenada1.Y;
+    public boolean estaEnRango(int rango, Cordenada cordenada2) {
         int x2 = cordenada2.X;
         int y2 = cordenada2.Y;
 
-        int distancia = calcularDistancia(x1, y1, x2, y2);
+        int distancia = calcularDistancia(this.X, this.Y, x2, y2);
 
         return distancia <= rango;
     }

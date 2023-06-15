@@ -22,8 +22,10 @@ public class PruebaJuego {
         Jugador jugador = mock(Jugador.class);
         Turno turno = mock(Turno.class);
 
-        when (mapa.colocarDefensaEnEstaPosicion(Mockito.anyInt(), 
-        Mockito.anyInt(), Mockito.anyString())). thenReturn (true);      
+
+
+        when (mapa.colocarDefensaEnEstaPosicion(5, 
+        7, "hola",jugador)). thenReturn (true);      
             
         Juego juego = new Juego(jugador, mapa, turno);
 
@@ -36,8 +38,8 @@ public class PruebaJuego {
         Jugador jugador = mock(Jugador.class);
         Turno turno = mock(Turno.class);
 
-        when (mapa.colocarDefensaEnEstaPosicion(Mockito.anyInt(), 
-        Mockito.anyInt(), Mockito.anyString())). thenReturn (false);      
+        when (mapa.colocarDefensaEnEstaPosicion(5, 
+        7, "hola",jugador)). thenReturn (false);    
             
         Juego juego = new Juego(jugador, mapa, turno);
 
