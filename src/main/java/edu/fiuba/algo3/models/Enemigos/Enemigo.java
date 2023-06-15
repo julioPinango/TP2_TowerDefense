@@ -16,6 +16,7 @@ public abstract class Enemigo{
     protected int Danio ;
     protected int Energia ;
     protected String nombre;
+    protected boolean ralentizado;
 
     protected Queue<Pasarela> pasarelas = new LinkedList<>();
 
@@ -46,8 +47,9 @@ public abstract class Enemigo{
         return pasarelas.peek().getCordenada();
     }
 
-    public void recibirAtaque(int danio) {
+    public boolean recibirAtaque(int danio) {
         Energia=Energia-danio;
+        return true;
     }
 
     public void mover(Jugador jugador) {
@@ -59,10 +61,13 @@ public abstract class Enemigo{
     public void otorgarCreditos(Jugador jugador)
     {}
 
-    public void atacarJugador(Jugador jugador){
+    public void atacarJugador(Jugador jugador,int danio){
         jugador.recibirAtaque(Danio);
         var log = Log.obtenetInstancia();
         log.imprimirDanioEnemigo(this);
-        Energia=0;
+    }
+
+    public void ralentizar() {
+        this.ralentizado=true;
     }
 }

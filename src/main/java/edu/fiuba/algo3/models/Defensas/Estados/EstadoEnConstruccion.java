@@ -1,11 +1,11 @@
-package edu.fiuba.algo3.models.Defensas;
+package edu.fiuba.algo3.models.Defensas.Estados;
 
-public class EnConstruccion implements Estado{
+public class EstadoEnConstruccion implements Estado{
 
 
     protected int tiempoDeConstruccion=0;
 
-    EnConstruccion(int turnos)
+    public EstadoEnConstruccion(int turnos)
     {
         this.tiempoDeConstruccion=turnos;
     }
@@ -17,6 +17,11 @@ public class EnConstruccion implements Estado{
         }
 
         return true;
+    }
+
+    public boolean destruido()
+    {
+        return false;
     }
     
 }

@@ -15,7 +15,6 @@ public class Hormiga extends Enemigo
     {
         this.Energia = 1;
         this.Velocidad = 1;
-        this.Danio = 1;
         this.nombre = "Hormiga";
         this.pasarelas=pasarelas;
         
@@ -26,9 +25,12 @@ public class Hormiga extends Enemigo
 
         if (pasarelas.size()==1)
         {
-            atacarJugador(jugador);            
+            Energia=0;
+            //atacarJugador(jugador);            
         }
-        else 
+        else if(this.ralentizado==true)
+            this.ralentizado=false;
+        else        
             pasarelas.poll();
 
     }

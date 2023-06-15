@@ -5,27 +5,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
+
 import java.util.List;
-import java.util.Map;
-import java.util.Queue;
+
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONString;
-
-import edu.fiuba.algo3.models.Enemigos.Araña;
-import edu.fiuba.algo3.models.Enemigos.Enemigo;
-import edu.fiuba.algo3.models.Enemigos.EnemigoFactory;
-import edu.fiuba.algo3.models.Enemigos.Hormiga;
-import edu.fiuba.algo3.models.Parcelas.Parcela;
-import edu.fiuba.algo3.models.Parcelas.ParcelaFactory;
-import edu.fiuba.algo3.models.Parcelas.Pasarela;
-import edu.fiuba.algo3.models.Parcelas.Rocoso;
-import edu.fiuba.algo3.models.Parcelas.Tierra;
-
-
 
 public class Parser {
 

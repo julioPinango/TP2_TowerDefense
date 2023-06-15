@@ -3,6 +3,9 @@ package edu.fiuba.algo3.models.Defensas;
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Log;
+import edu.fiuba.algo3.models.Defensas.Estados.Estado;
+import edu.fiuba.algo3.models.Defensas.Estados.EstadoDestruido;
+import edu.fiuba.algo3.models.Defensas.Estados.EstadoOperativo;
 
 import java.util.List;
 
@@ -33,19 +36,31 @@ public abstract class Defensa
     public void atacar(List<Enemigo> enemigos){
         
         if (this.estado.puedoAtacar()) {
-            this.estado=new Operativo();
+            this.estado=new EstadoOperativo();
             for (Enemigo enemigo : enemigos) {
                 
                 if(Cordenada.estaEnRango(RangoAtaque, cordenadas, enemigo.getCordenada()))
                 {
                     var log = Log.obtenetInstancia();
-                    
-                    enemigo.recibirAtaque(danio);
-                    log.imprimirAtaque(this,enemigo,enemigo.getCordenada());
-                    break;
+                    if(enemigo.getEnergia()>0)
+                    {
+                        if(enemigo.recibirAtaque(danio))
+                        {
+                            log.imprimirAtaque(this,enemigo,enemigo.getCordenada());
+                            break;
+                        }
+                    }
                 }
             }
-            
         }
+    }
+
+    public boolean destruido(){
+        return this.estado.destruido();
+    }
+
+    public void destruir()
+    {
+        this.estado=new EstadoDestruido();
     }
 }

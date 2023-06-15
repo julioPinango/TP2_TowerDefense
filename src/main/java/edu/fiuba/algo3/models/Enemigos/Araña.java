@@ -21,7 +21,13 @@ public class Araña extends Enemigo
     public void mover(Jugador jugador) {
         if (pasarelas.size()<3)
         {
-            atacarJugador(jugador);
+            Energia=0;
+           // atacarJugador(jugador);
+        }
+        else if(this.ralentizado==true)
+        {  
+            this.ralentizado=false;  
+            pasarelas.poll();
         }
         else 
         {

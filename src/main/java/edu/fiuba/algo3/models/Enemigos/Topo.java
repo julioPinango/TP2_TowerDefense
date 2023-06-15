@@ -24,16 +24,28 @@ public class Topo extends Enemigo
     public void mover(Jugador jugador) {
         if (pasarelas.size()<(this.Velocidad+1))
         {
-            atacarJugador(jugador);
+            Energia=0;
+           // atacarJugador(jugador);
         }
         else 
         {
-            if (this.contMovimientos==6){
+
+            if(this.contMovimientos<6){
+                this.Velocidad=1;
+            }
+            else if (this.contMovimientos>5){
                 this.Velocidad=2;
             } 
-            if (this.contMovimientos==11){
+            else if (this.contMovimientos>10){
                 this.Velocidad=3;
-            }  
+            }
+
+            if(this.ralentizado==true)
+            {
+                this.ralentizado=false;  
+                Velocidad=Velocidad%2;                
+            }
+            
             for (var i =0; i<this.Velocidad; i++){
                 pasarelas.poll();  
             }    
@@ -41,21 +53,7 @@ public class Topo extends Enemigo
         this.contMovimientos++;      
 
     }
-    public void recibirAtaque(int danio) {
-        return; //nunca lo atacan
-    }
-    public void atacarJugador(Jugador jugador){
-        if (jugador.getTurno()%2!=0)
-        {
-            jugador.recibirAtaque(5);
-        }
-        else
-        {
-        jugador.recibirAtaque(Danio);
-        }
-        var log = Log.obtenetInstancia();
-        log.imprimirDanioEnemigo(this);
-        Energia=0;
-    }
-    
+    public boolean recibirAtaque(int danio) {
+        return false; //nunca lo atacan
+    }    
 }

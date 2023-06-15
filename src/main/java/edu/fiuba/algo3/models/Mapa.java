@@ -2,7 +2,6 @@ package edu.fiuba.algo3.models;
 
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.EnemigoFactory;
-import edu.fiuba.algo3.models.Enemigos.Lechuza;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
 import edu.fiuba.algo3.models.Parcelas.ParcelaFactory;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
@@ -16,8 +15,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-import javax.net.ssl.TrustManagerFactory;
-
 public class Mapa
 {
     
@@ -25,15 +22,7 @@ public class Mapa
     private List<List<Enemigo>> Spawn;
     private Map<Cordenada, Parcela> parcelas = new HashMap<>();
     private List<Enemigo> listaEnemigos=new ArrayList<>();
-
-    /*
-    public Mapa(Map<Cordenada, Parcela> parcelas2 , List<List<Enemigo>> spawn) {
-        parcelas=parcelas2;
-        Spawn=spawn;
-    }
-    */
-
-
+    private Queue<Pasarela> caminoEnemigos = new LinkedList<>();
 
     public List<Defensa> getDefensas(){
         return listaDefensas;
@@ -43,6 +32,7 @@ public class Mapa
         this.parcelas=inicializarParcelas(parser.leerMapa(rutaArchivoMapa));
         this.Spawn=inicializarEnemigos(parser.desglosarEnemigos(rutaArchivoEnemigos),parser.formarCamino(rutaArchivoMapa));
     }
+
     private Map<Cordenada, Parcela>  inicializarParcelas(List<List<String>> mapa){
         Map<Cordenada, Parcela> nuevoMapa= new HashMap<>();
         for (int i = 0; i < mapa.size(); i++) {
@@ -56,17 +46,19 @@ public class Mapa
         }
         return nuevoMapa;
     }
+
     public Queue<Pasarela> inicializarCaminoDeEnemigos(List<List<String>>camino){
         Queue<Pasarela> nuevoCamino=new LinkedList<>(); 
         for (int i = 0; i < camino.size(); i++) {
             List<String> unaPasarela=camino.get(i);
                 Cordenada nuevaCordenada= new Cordenada(Integer.parseInt(unaPasarela.get(1)),Integer.parseInt(unaPasarela.get(2)));
-                var nuevaPasarela=ParcelaFactory.obtenerParcela(nuevaCordenada, unaPasarela.get(0));
-                nuevoCamino.add((Pasarela) nuevaPasarela);
+                Pasarela nuevaPasarela=(Pasarela)ParcelaFactory.obtenerParcela(nuevaCordenada, unaPasarela.get(0));
+                nuevoCamino.add(nuevaPasarela);
         }
+        caminoEnemigos=nuevoCamino;
         return nuevoCamino;
-
     }
+
     private List<List<Enemigo>>  inicializarEnemigos(List<List<String>> enemigos, List<List<String>> camino){
          Queue<Pasarela> nuevoCamino=this.inicializarCaminoDeEnemigos(camino);
         List<List<Enemigo>> Spawn =new ArrayList<>();
@@ -85,10 +77,11 @@ public class Mapa
 
     public boolean colocarDefensaEnEstaPosicion(int x,int y, String tipo){
 
+
         Cordenada cordenada=new Cordenada(x, y); 
         Defensa defensaNueva= DefensaFactory.obtenerDefensa(cordenada,tipo);
 
-        if(parcelas.get(cordenada).puedoConstruirDefensa(defensaNueva))
+        if(parcelas.get(cordenada).puedoConstruirDefensa(defensaNueva)&&posicionValida(cordenada))
         {
             this.listaDefensas.add(defensaNueva);
             var log = Log.obtenetInstancia();
@@ -98,13 +91,34 @@ public class Mapa
         return false;
 
     }
+    
+    private boolean posicionValida(Cordenada cordenada) {
+        List<Pasarela> listaPasarelas = new ArrayList<>(caminoEnemigos);
+        int tamaño = listaPasarelas.size();
+        
+        if(cordenada==listaPasarelas.get(0).getCordenada())
+        {
+            return false;
+        }
+
+        if(cordenada == listaPasarelas.get(tamaño - 1).getCordenada())
+        {   
+            return false;
+        }
+
+        return true;
+        
+    }
+
     public List<Enemigo> getEnemigos() {
         return listaEnemigos;
     }
+    
     public boolean quedanEnemigos()
     {
         return getEnemigos().size()>0;
     }
+    
     public void realizarTurno(Jugador jugador,Turno turno) {
 
         for (var torre : listaDefensas) {
@@ -126,11 +140,14 @@ public class Mapa
                 {    
                     if(listaDefensas.size()>0)//Si tiene torres elimino la primera. 
                     {  
-                        listaDefensas.remove(0);
+                        var torre= listaDefensas.get(0);
+                        torre.destruir();                        
                     }
                 }
 
-                //enemigo.atacarJugador(jugador);
+                int danio=DanioFactory.obtenerAtaque(enemigo.getNombre(), turno);
+
+                enemigo.atacarJugador(jugador,danio);
                 enemigo.otorgarCreditos(jugador);                
                 enemigo.sumarEnemigoMuerto(jugador);
             }
@@ -145,6 +162,16 @@ public class Mapa
             for (Enemigo enemigo : enemigos) 
                 listaEnemigos.add(enemigo);
         }
+ 
+        List<Defensa> defensasDisponibles= new ArrayList<>(); 
+
+        for (Defensa defensa : listaDefensas) {
+
+            if(defensa.destruido()==false)
+                defensasDisponibles.add(defensa);
+        }
+
+        listaDefensas=defensasDisponibles;
     }
 
 }

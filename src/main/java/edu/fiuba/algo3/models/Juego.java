@@ -22,7 +22,7 @@ public class Juego
 
     public int getTurno()
     {
-        return jugador.getTurno();
+        return turno.getTurno();
     }
    
   
@@ -54,10 +54,10 @@ public class Juego
         {
             terminarPartida(!jugador.jugadorDerrotado());
         }
-        else if (mapa.quedanEnemigos()==false&&jugador.getTurno()!=0)
+        else if (mapa.quedanEnemigos()==false&&turno.getTurno()!=0)
         {
             terminarPartida(!jugador.jugadorDerrotado());
         }
-        jugador.pasarTurno();    
+        turno.pasarTurno();    
     }
 }
