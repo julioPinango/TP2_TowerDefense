@@ -120,6 +120,10 @@ public class Mapa
         return listaEnemigos;
     }
 
+    public List<List<Enemigo>> getSpawn() {
+        return Spawn;
+    }
+
     public Map<Cordenada, Parcela> getParcelas() {
         return parcelas;
     }

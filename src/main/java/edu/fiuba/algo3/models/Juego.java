@@ -1,6 +1,11 @@
 
 package edu.fiuba.algo3.models;
 
+import java.util.List;
+import java.util.Map;
+
+import edu.fiuba.algo3.models.Enemigos.Enemigo;
+import edu.fiuba.algo3.models.Parcelas.Parcela;
 
 public class Juego
 {
@@ -23,6 +28,14 @@ public class Juego
     public int getTurno()
     {
         return turno.getTurno();
+    }
+
+    public List<List<Enemigo>> getSpaw(){
+        return mapa.getSpawn();        
+    }
+
+    public Map<Cordenada, Parcela> getParcelas(){
+        return mapa.getParcelas();        
     }
    
   

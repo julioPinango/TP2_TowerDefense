@@ -13,7 +13,7 @@ public class TorrePlateada extends Defensa
         this.danio=2;
         this.nombre= "Torre Plateada";
         
-        this.cordenadas=cordenadas;
+        this.cordenada=cordenadas;
         this.estado=estado;
     }
     public boolean puedoAtacar(){

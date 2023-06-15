@@ -18,7 +18,7 @@ public class TrampaArenosa extends Defensa{
         this.danio=0;
         this.nombre= "Trampa Arenosa";
         this.contadorTurnos=3;
-        this.cordenadas=cordenadas;
+        this.cordenada=cordenadas;
         this.estado=estado;
     }
     public boolean puedoAtacar(){
