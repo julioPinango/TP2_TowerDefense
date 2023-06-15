@@ -33,6 +33,7 @@ public abstract class Defensa
     public boolean puedoConstruirEnTierra(Boolean estaLibre){
         return estaLibre;
     }
+    
     public void atacar(List<Enemigo> enemigos){
         
         if (this.estado.puedoAtacar()) {

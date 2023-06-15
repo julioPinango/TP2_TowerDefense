@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.fiuba.algo3.models.Cordenada;
-import edu.fiuba.algo3.models.Defensas.TorreBlanca;
 import edu.fiuba.algo3.models.Defensas.TrampaArenosa;
 import edu.fiuba.algo3.models.Defensas.Estados.Estado;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
@@ -53,7 +52,28 @@ public class PruebaTrampaArenosa {
         trampa.atacar(lista);
 
         verify(araña).ralentizar();
-        //verify()
+    }
+
+    @Test
+    public void TestEstaDestruido(){
+        Cordenada cordenada = mock(Cordenada.class);
+        Estado estado = mock(Estado.class);
+
+        when(estado.destruido()).thenReturn(true);
+
+        TrampaArenosa trampa = new TrampaArenosa(cordenada, estado);
+        assertTrue(trampa.destruido());
+    }
+
+    @Test
+    public void TestNoEstaDestruido(){
+        Cordenada cordenada = mock(Cordenada.class);
+        Estado estado = mock(Estado.class);
+
+        when(estado.destruido()).thenReturn(false);
+
+        TrampaArenosa trampa = new TrampaArenosa(cordenada, estado);
+        assertFalse(trampa.destruido());
     }
     
 }

@@ -4,8 +4,6 @@ import java.util.List;
 
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Defensas.Estados.Estado;
-import edu.fiuba.algo3.models.Defensas.Estados.EstadoDestruido;
-import edu.fiuba.algo3.models.Defensas.Estados.EstadoEnConstruccion;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 
 public class TrampaArenosa extends Defensa{
