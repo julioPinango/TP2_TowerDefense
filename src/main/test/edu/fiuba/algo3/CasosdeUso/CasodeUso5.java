@@ -12,8 +12,11 @@ import java.util.Queue;
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Defensas.Defensa;
 import edu.fiuba.algo3.models.Defensas.DefensaFactory;
+import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoAraña;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoHormiga;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class CasodeUso5 {    
@@ -28,7 +31,8 @@ public class CasodeUso5 {
         Queue<Pasarela> pasarelas = new LinkedList<>();
         var pasarela=new Pasarela(cordenaPasarela);
         pasarelas.add(pasarela);
-        var enemigo=new Hormiga(pasarelas);
+
+        var enemigo=new Hormiga(pasarelas,new MovimientoHormiga());
         Defensa torre=DefensaFactory.obtenerDefensa(cordenaTorre,"Torre Blanca");
 
         List<Enemigo> enemigos = new ArrayList<>();
@@ -52,7 +56,7 @@ public class CasodeUso5 {
         var pasarela=new Pasarela(cordenaPasarela);
         pasarelas.add(pasarela);
         
-        var enemigo=new Hormiga(pasarelas);
+        var enemigo=new Hormiga(pasarelas,new MovimientoHormiga());
 
         Defensa torre=DefensaFactory.obtenerDefensa(cordenaTorre,"Torre Blanca");
 

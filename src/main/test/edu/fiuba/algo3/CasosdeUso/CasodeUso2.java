@@ -11,6 +11,8 @@ import edu.fiuba.algo3.models.Defensas.DefensaFactory;
 import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoAraña;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoHormiga;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class CasodeUso2 {    
@@ -53,9 +55,10 @@ public class CasodeUso2 {
 
         Defensa torre=DefensaFactory.obtenerDefensa(cordenadatorre,"Torre Plateada");
 
-        Enemigo araña= new Araña(pasarelas);
+
+        var Araña=new Araña(pasarelas,new MovimientoAraña());
         List<Enemigo> listaEnemigos = new ArrayList<>();
-        listaEnemigos.add(araña);
+        listaEnemigos.add(Araña);
 
         int vidaEnemigoEsperada=listaEnemigos.get(0).getEnergia();
         
@@ -108,7 +111,8 @@ public class CasodeUso2 {
 
         Defensa torre=DefensaFactory.obtenerDefensa(cordenadatorre,"Torre Blanca");
 
-        Enemigo hormiga= new Hormiga(pasarelas);
+          var hormiga=new Hormiga(pasarelas,new MovimientoHormiga());
+
         List<Enemigo> listaEnemigos = new ArrayList<>();
         listaEnemigos.add(hormiga);
 

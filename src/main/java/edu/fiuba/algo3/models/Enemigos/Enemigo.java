@@ -9,14 +9,17 @@ import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Log;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
+import edu.fiuba.algo3.models.Enemigos.Ataques.Ataque;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.Movimiento;
 
 public abstract class Enemigo{
 
     protected int Velocidad ;
-    protected int Danio ;
+    protected Ataque ataque ;
     protected int Energia ;
     protected String nombre;
     protected boolean ralentizado;
+    protected Movimiento movimiento;
 
     protected Queue<Pasarela> pasarelas = new LinkedList<>();
 
@@ -29,13 +32,13 @@ public abstract class Enemigo{
         }
         Enemigo otra = (Enemigo) obj;
         return Objects.equals(Velocidad, otra.Velocidad) &&
-               Objects.equals(Danio, otra.Danio)&&
+               Objects.equals(ataque, otra.ataque)&&
                Objects.equals(Energia, otra.Energia)&&
                Objects.equals(nombre, otra.nombre);
     }
 
-    public int getdanio() {
-        return Danio;
+    public Ataque getAtaque() {
+        return ataque;
     }
     public int getEnergia() {
         return Energia;
@@ -45,6 +48,11 @@ public abstract class Enemigo{
     }
     public Cordenada getCordenada() {
         return pasarelas.peek().getCordenada();
+    }
+
+    public void definirAtaque(Ataque ataque)
+    {
+        this.ataque=ataque;
     }
 
     public boolean recibirAtaque(int danio) {
@@ -63,8 +71,8 @@ public abstract class Enemigo{
         jugador.agregarCreditos(0);
     }
 
-    public void atacarJugador(Jugador jugador,int danio){
-        jugador.recibirAtaque(Danio);
+    public void atacarJugador(Jugador jugador){
+        this.ataque.dañar(jugador);
         var log = Log.obtenetInstancia();
         log.imprimirDanioEnemigo(this);
     }

@@ -1,38 +1,38 @@
 package edu.fiuba.algo3.models.Enemigos;
 
-import java.util.Objects;
 import java.util.Queue;
 
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Log;
+import edu.fiuba.algo3.models.Enemigos.Ataques.Ataque;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.Movimiento;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoHormiga;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoHormigaRalentizado;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class Hormiga extends Enemigo
 {
     //Queue<Pasarela> pasarelas = new LinkedList<>();
 
-    public Hormiga(Queue<Pasarela> pasarelas)
+    public Hormiga(Queue<Pasarela> pasarelas,Movimiento mov)
     {
         this.Energia = 1;
         this.Velocidad = 1;
         this.nombre = "Hormiga";
         this.pasarelas=pasarelas;
-        
+        this.movimiento=mov;
     }
   
   
     public void mover() {
 
         if (pasarelas.size()==1)
-        {
             Energia=0;
-                       
+        else
+        { 
+            movimiento.mover(pasarelas);
+            movimiento=new MovimientoHormiga();
         }
-        else if(this.ralentizado==true)
-            this.ralentizado=false;
-        else        
-            pasarelas.poll();
-
     }
 
     public void otorgarCreditos(Jugador jugador)
@@ -47,6 +47,9 @@ public class Hormiga extends Enemigo
         jugador.sumarHormigaMuerta();
     }
 
+     public void ralentizar() {
+        this.movimiento=new MovimientoHormigaRalentizado();
+    }
 
 
 }

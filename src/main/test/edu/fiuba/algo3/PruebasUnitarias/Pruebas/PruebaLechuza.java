@@ -8,6 +8,8 @@ import edu.fiuba.algo3.models.Mapa;
 import edu.fiuba.algo3.models.Parser;
 import edu.fiuba.algo3.models.Turno;
 import edu.fiuba.algo3.models.Enemigos.Lechuza;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoLechuzaenDiagonal;
+
 import java.io.IOException;
 
 public class PruebaLechuza {    
@@ -26,17 +28,17 @@ public class PruebaLechuza {
 
             var camino=mapa.inicializarCaminoDeEnemigos(list);          
     
-            Lechuza lechuza=new Lechuza(camino);
+            Lechuza lechuza=new Lechuza(camino,new MovimientoLechuzaenDiagonal());
 
             lechuza.volar();                        
 
             assertEquals(3,lechuza.getCordenada().getX());
             assertEquals(3,lechuza.getCordenada().getY());
     }
-@Test
-    public void Test02LechuzaEliminaUnaTorre() throws IOException{
+    @Test
+    public void Test02LechuzaVuelaEnDiagonSiTieneMenosDel50PorcientoDeVida() throws IOException{
    
-        //Pruebo que la lechuza elimina una torre   
+        //Pruebo que la lechuza se mueve en forma de L
 
             String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json"; 
             String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosLechuza.json";    
@@ -46,7 +48,27 @@ public class PruebaLechuza {
     
             var list= parser.formarCamino(path);
 
-            var camino=mapa.inicializarCaminoDeEnemigos(list); 
+            var camino=mapa.inicializarCaminoDeEnemigos(list);          
+    
+            Lechuza lechuza=new Lechuza(camino,new MovimientoLechuzaenDiagonal());
+
+            lechuza.recibirAtaque(4);            
+
+            lechuza.volar();                        
+
+            assertEquals(lechuza.getCordenada().getX(),6);
+            assertEquals(lechuza.getCordenada().getY(),5);
+    }
+@Test
+    public void Test03LechuzaEliminaUnaTorre() throws IOException{
+   
+        //Pruebo que la lechuza elimina una torre   
+
+            String path="src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json"; 
+            String path2="src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosLechuza.json";    
+            Parser parser=new Parser();       
+
+            Mapa mapa=new Mapa(path2, path, parser);
     
             var Jugador=new Jugador("Julianna");
 
@@ -70,7 +92,7 @@ public class PruebaLechuza {
             assertEquals(0,mapa.getDefensas().size());
     }
     @Test
-        public void Test03LechuzaNoHaceDaño() throws IOException{
+        public void Test04LechuzaNoHaceDaño() throws IOException{
    
         //Pruebo que la lechuza no hace daño   
 
@@ -80,20 +102,27 @@ public class PruebaLechuza {
 
             Mapa mapa=new Mapa(path2, path, parser);
     
-            var list= parser.formarCamino(path);
-
-            var camino=mapa.inicializarCaminoDeEnemigos(list); 
-    
             var Jugador=new Jugador("Julianna");
     
             var turno= new Turno();
     
             var juego=new Juego(Jugador, mapa,turno);
+
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
     
             assertEquals(20,Jugador.getVida());
     }
     @Test
-    public void Test03LechuzaNodaCreditos() throws IOException{
+    public void Test05LechuzaNodaCreditos() throws IOException{
    
             //Pruebo que la lechuza no da creditos. 
 
@@ -102,16 +131,23 @@ public class PruebaLechuza {
             Parser parser=new Parser();       
 
             Mapa mapa=new Mapa(path2, path, parser);
-    
-            var list= parser.formarCamino(path);
-
-            var camino=mapa.inicializarCaminoDeEnemigos(list); 
-    
+        
             var Jugador=new Jugador("Julianna");
     
             var turno= new Turno();
     
             var juego=new Juego(Jugador, mapa,turno);
+
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
+            juego.realizarTurno();
 
             assertEquals(100,Jugador.getCreditos());
     }

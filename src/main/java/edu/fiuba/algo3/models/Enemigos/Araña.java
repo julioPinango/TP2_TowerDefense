@@ -5,17 +5,22 @@ import java.util.Random;
 
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Log;
+import edu.fiuba.algo3.models.Enemigos.Ataques.Ataque;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.Movimiento;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoAraña;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoArañaRalentizado;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class Araña extends Enemigo
 {
-    public Araña(Queue<Pasarela> pasarelas)
+    public Araña(Queue<Pasarela> pasarelas,Movimiento mov)
     {
         this.Energia = 2;
         this.Velocidad = 2;
-        this.Danio = 2;
+        this.ataque = ataque;
         this.nombre = "Araña";
         this.pasarelas=pasarelas;
+        this.movimiento=mov;
     }
 
     public void mover() {
@@ -24,15 +29,10 @@ public class Araña extends Enemigo
             Energia=0;
            // atacarJugador(jugador);
         }
-        else if(this.ralentizado==true)
-        {  
-            this.ralentizado=false;  
-            pasarelas.poll();
-        }
         else 
         {
-            pasarelas.poll();        
-            pasarelas.poll(); 
+            pasarelas=movimiento.mover(pasarelas);
+            this.movimiento=new MovimientoAraña();
         }       
 
     }
@@ -47,4 +47,8 @@ public class Araña extends Enemigo
         jugador.agregarCreditos(numeroAleatorio);
 
     }  
+
+    public void ralentizar() {
+        this.movimiento=new MovimientoArañaRalentizado();
+    }
 }
