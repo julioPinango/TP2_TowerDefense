@@ -142,6 +142,16 @@ public class Mapa
         }
     }
 
+
+    private void turnoAtaqueDeEnemigos(Enemigo enemigo, Turno turno, Jugador jugador){
+        Ataque ataque=AtaqueFactory.obtenerAtaque(enemigo,turno,listaDefensas);
+        enemigo.definirAtaque(ataque);
+        enemigo.atacarJugador(jugador);
+        enemigo.otorgarCreditos(jugador);                
+        enemigo.sumarEnemigoMuerto(jugador);
+    }
+
+    
     private List<Enemigo> enemigosRestantes(List<Enemigo> enemigosActuales, Jugador jugador, Turno turno){
         List<Enemigo> listaEnemigosVivos = new ArrayList<>();   
         for(Enemigo enemigo:enemigosActuales)
@@ -153,21 +163,7 @@ public class Mapa
             }
             else
             {
-                Ataque ataque=AtaqueFactory.obtenerAtaque(enemigo,turno,listaDefensas);
-
-                enemigo.definirAtaque(ataque);
-
-               /* if(enemigo.getNombre()=="Lechuza")            
-                {    
-                    if(listaDefensas.size()>0)//Si tiene torres elimino la primera. 
-                    {  
-                        var torre= listaDefensas.get(0);
-                        torre.destruir();                        
-                    }
-                }*/
-                enemigo.atacarJugador(jugador);
-                enemigo.otorgarCreditos(jugador);                
-                enemigo.sumarEnemigoMuerto(jugador);
+                this.turnoAtaqueDeEnemigos(enemigo, turno, jugador);
             }
         }
         return listaEnemigosVivos;
