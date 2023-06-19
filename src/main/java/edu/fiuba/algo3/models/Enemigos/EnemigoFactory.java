@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.models.Enemigos;
 
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
+import edu.fiuba.algo3.models.Jugador;
+import edu.fiuba.algo3.models.Enemigos.Enemigo.*;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.*;
 
 import java.util.HashMap;

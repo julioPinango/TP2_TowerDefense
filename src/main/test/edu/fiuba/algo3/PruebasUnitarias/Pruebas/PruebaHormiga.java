@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
+import edu.fiuba.algo3.models.Enemigos.Ataques.AtaqueHormiga;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoHormiga;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
@@ -104,7 +105,10 @@ public class PruebaHormiga {
         Jugador jugador = mock(Jugador.class);
 
         Hormiga hormiga = new Hormiga(pasarelas,new MovimientoHormiga());
-        hormiga.atacarJugador(jugador, 7);
+
+        hormiga.definirAtaque(new AtaqueHormiga());
+
+        hormiga.atacarJugador(jugador);
 
         verify(jugador).recibirAtaque(anyInt());
     }

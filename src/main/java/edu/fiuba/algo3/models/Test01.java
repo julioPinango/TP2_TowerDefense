@@ -8,7 +8,7 @@ import java.util.List;
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Defensas.TorrePlateada;
 import edu.fiuba.algo3.models.Defensas.Estados.Estado;
-import edu.fiuba.algo3.models.Enemigos.Enemigo;
+import edu.fiuba.algo3.models.Enemigos.Ataque;
 import edu.fiuba.algo3.models.Enemigos.Lechuza;
 
 public class Test01 {    

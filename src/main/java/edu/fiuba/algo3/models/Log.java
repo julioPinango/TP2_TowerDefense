@@ -18,7 +18,7 @@ public class Log{
 
     public void imprimirDanioEnemigo(Enemigo enemigo){
         System.out.println(enemigo.getNombre()+" llega a la meta, produce "
-        +enemigo.getdanio()+" daño al jugador");
+        +enemigo.getAtaque()+" daño al jugador");
     }
 
     public void imprimirAtaque(Defensa defensa, Enemigo enemigo, Cordenada coordenada){

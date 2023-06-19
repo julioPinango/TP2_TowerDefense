@@ -14,6 +14,8 @@ import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
+import edu.fiuba.algo3.models.Enemigos.Ataques.AtaqueAraña;
+import edu.fiuba.algo3.models.Enemigos.Ataques.AtaqueFactory;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoAraña;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
@@ -88,7 +90,9 @@ public class PruebaAraña {
 
         Araña araña = new Araña(pasarelas,new MovimientoAraña());
 
-        araña.atacarJugador(jugador, 7);
+        araña.definirAtaque(new AtaqueAraña());
+
+        araña.atacarJugador(jugador);
 
         verify(jugador).recibirAtaque(anyInt());
     }

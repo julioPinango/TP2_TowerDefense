@@ -12,7 +12,10 @@ import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
+import edu.fiuba.algo3.models.Turno;
 import edu.fiuba.algo3.models.Enemigos.Topo;
+import edu.fiuba.algo3.models.Enemigos.Ataques.AtaqueHormiga;
+import edu.fiuba.algo3.models.Enemigos.Ataques.AtaqueTopo;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoTopo;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
@@ -83,7 +86,15 @@ public class PruebaTopo {
         Jugador jugador = mock(Jugador.class);
 
         Topo topo = new Topo(pasarelas,new MovimientoTopo());
-        topo.atacarJugador(jugador, 7);
+
+        Turno turno=mock(Turno.class);
+        
+        when(turno.esTurnoPar()).thenReturn(true);
+
+        topo.definirAtaque(new AtaqueTopo(turno));
+
+
+        topo.atacarJugador(jugador);
 
         verify(jugador).recibirAtaque(anyInt());
     }

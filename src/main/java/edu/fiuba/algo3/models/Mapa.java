@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.models;
 
-import edu.fiuba.algo3.models.Enemigos.Enemigo;
+import edu.fiuba.algo3.models.Enemigos.Ataques.*;
 import edu.fiuba.algo3.models.Enemigos.EnemigoFactory;
+import edu.fiuba.algo3.models.Enemigos.Ataques.AtaqueFactory;
+import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
 import edu.fiuba.algo3.models.Parcelas.ParcelaFactory;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
@@ -151,18 +153,19 @@ public class Mapa
             }
             else
             {
-                if(enemigo.getNombre()=="Lechuza")            
+                Ataque ataque=AtaqueFactory.obtenerAtaque(enemigo,turno,listaDefensas);
+
+                enemigo.definirAtaque(ataque);
+
+               /* if(enemigo.getNombre()=="Lechuza")            
                 {    
                     if(listaDefensas.size()>0)//Si tiene torres elimino la primera. 
                     {  
                         var torre= listaDefensas.get(0);
                         torre.destruir();                        
                     }
-                }
-
-                int danio=DanioFactory.obtenerAtaque(enemigo.getNombre(), turno);
-
-                enemigo.atacarJugador(jugador,danio);
+                }*/
+                enemigo.atacarJugador(jugador);
                 enemigo.otorgarCreditos(jugador);                
                 enemigo.sumarEnemigoMuerto(jugador);
             }

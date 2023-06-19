@@ -7,6 +7,7 @@ import java.util.Queue;
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Log;
+import edu.fiuba.algo3.models.Enemigos.Ataques.Ataque;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.Movimiento;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
@@ -19,7 +20,7 @@ public class Lechuza extends Enemigo
     {
         this.Energia = 5;
         this.Velocidad = 5;
-        this.Danio = 0;
+
         this.nombre = "Lechuza";
         this.pasarelas=pasarelas; //se mueve por cualquier parcela
         this.movimiento=mov;

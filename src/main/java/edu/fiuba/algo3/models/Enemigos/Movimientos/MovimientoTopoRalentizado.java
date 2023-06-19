@@ -3,7 +3,7 @@ package edu.fiuba.algo3.models.Enemigos.Movimientos;
 import java.util.Queue;
 
 import edu.fiuba.algo3.models.Cordenada;
-
+import edu.fiuba.algo3.models.Enemigos.Movimientos.Movimiento;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoLechuzaenDiagonal;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 

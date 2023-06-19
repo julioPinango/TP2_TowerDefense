@@ -5,6 +5,7 @@ import java.util.Random;
 
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Log;
+import edu.fiuba.algo3.models.Enemigos.Ataques.Ataque;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.Movimiento;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoHormigaRalentizado;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoTopo;
@@ -19,7 +20,6 @@ public class Topo extends Enemigo
     {
         this.Energia = 1; //nunca lo atacan asi que no se que poner en energia
         this.Velocidad = 1; //va aumentando
-        this.Danio = 2; //si el turno es impar causa 5
         this.nombre = "Topo";
         this.pasarelas=pasarelas;
         this.contMovimientos= 0;
@@ -47,5 +47,5 @@ public class Topo extends Enemigo
 
     public void ralentizar() {
         this.movimiento=new MovimientoTopoRalentizado();
-    }
+    }    
 }
