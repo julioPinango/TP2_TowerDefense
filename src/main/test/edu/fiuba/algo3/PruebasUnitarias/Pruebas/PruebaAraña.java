@@ -14,6 +14,7 @@ import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoAraña;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class PruebaAraña {
@@ -33,7 +34,7 @@ public class PruebaAraña {
         pasarelas.add(pasarela3);
 
 
-        Araña araña = new Araña(pasarelas);
+        Araña araña = new Araña(pasarelas,new MovimientoAraña());
         araña.mover();
         assertEquals(araña.getCordenada(),cordenada);
     }
@@ -49,7 +50,8 @@ public class PruebaAraña {
         pasarelas.add(pasarela1);
         pasarelas.add(pasarela2);
 
-        Araña araña = new Araña(pasarelas);
+        Araña araña = new Araña(pasarelas,new MovimientoAraña());
+
         araña.ralentizar();
         araña.mover();
         assertEquals(araña.getCordenada(),cordenada);
@@ -62,7 +64,8 @@ public class PruebaAraña {
 
         when(jugador.getHormigasDestruidas()). thenReturn(0);
 
-        Araña araña = new Araña(pasarelas);
+        Araña araña = new Araña(pasarelas,new MovimientoAraña());
+
         araña.otorgarCreditos(jugador);
         
         verify(jugador).agregarCreditos(anyInt());
@@ -72,7 +75,8 @@ public class PruebaAraña {
     public void TestRecibirAtaque(){
         Queue<Pasarela> pasarelas = new LinkedList<>();
 
-        Araña araña = new Araña(pasarelas);
+        Araña araña = new Araña(pasarelas,new MovimientoAraña());
+
 
         assertTrue(araña.recibirAtaque(anyInt()));
     }
@@ -82,7 +86,8 @@ public class PruebaAraña {
         Queue<Pasarela> pasarelas = new LinkedList<>();
         Jugador jugador = mock(Jugador.class);
 
-        Araña araña = new Araña(pasarelas);
+        Araña araña = new Araña(pasarelas,new MovimientoAraña());
+
         araña.atacarJugador(jugador, 7);
 
         verify(jugador).recibirAtaque(anyInt());

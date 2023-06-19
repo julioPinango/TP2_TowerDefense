@@ -2,7 +2,6 @@ package edu.fiuba.algo3.PruebasUnitarias.Pruebas;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
@@ -13,9 +12,8 @@ import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
-import edu.fiuba.algo3.models.Enemigos.Araña;
-import edu.fiuba.algo3.models.Enemigos.Hormiga;
 import edu.fiuba.algo3.models.Enemigos.Topo;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoTopo;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class PruebaTopo {
@@ -35,7 +33,7 @@ public class PruebaTopo {
         pasarelas.add(pasarela3);
 
 
-        Topo topo = new Topo(pasarelas);
+        Topo topo = new Topo(pasarelas,new MovimientoTopo());
         topo.mover();
         assertEquals(topo.getCordenada(),cordenada);
     }
@@ -46,12 +44,12 @@ public class PruebaTopo {
         Pasarela pasarela2 = mock(Pasarela.class);
         Cordenada cordenada = mock(Cordenada.class);
         
-        when(pasarela2.getCordenada()).thenReturn(cordenada);
+        when(pasarela1.getCordenada()).thenReturn(cordenada);
 
         pasarelas.add(pasarela1);
         pasarelas.add(pasarela2);
 
-        Topo topo = new Topo(pasarelas);
+        Topo topo = new Topo(pasarelas,new MovimientoTopo());
         topo.ralentizar();
         topo.mover();
         assertEquals(topo.getCordenada(),cordenada);
@@ -64,7 +62,7 @@ public class PruebaTopo {
 
         when(jugador.getHormigasDestruidas()). thenReturn(0);
 
-        Topo topo = new Topo(pasarelas);
+        Topo topo = new Topo(pasarelas,new MovimientoTopo());
         topo.otorgarCreditos(jugador);
         
         verify(jugador).agregarCreditos(0);
@@ -74,7 +72,7 @@ public class PruebaTopo {
     public void TestRecibirAtaque(){
         Queue<Pasarela> pasarelas = new LinkedList<>();
 
-        Topo topo = new Topo(pasarelas);
+        Topo topo = new Topo(pasarelas,new MovimientoTopo());
 
         assertFalse(topo.recibirAtaque(anyInt()));
     }
@@ -84,7 +82,7 @@ public class PruebaTopo {
         Queue<Pasarela> pasarelas = new LinkedList<>();
         Jugador jugador = mock(Jugador.class);
 
-        Topo topo = new Topo(pasarelas);
+        Topo topo = new Topo(pasarelas,new MovimientoTopo());
         topo.atacarJugador(jugador, 7);
 
         verify(jugador).recibirAtaque(anyInt());

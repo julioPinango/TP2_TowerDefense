@@ -9,6 +9,7 @@ import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Log;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.Movimiento;
 
 public abstract class Enemigo{
 
@@ -17,6 +18,7 @@ public abstract class Enemigo{
     protected int Energia ;
     protected String nombre;
     protected boolean ralentizado;
+    protected Movimiento movimiento;
 
     protected Queue<Pasarela> pasarelas = new LinkedList<>();
 

@@ -14,6 +14,8 @@ import edu.fiuba.algo3.models.Defensas.DefensaFactory;
 import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoAraña;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoHormiga;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class CasodeUso6 {    
@@ -27,7 +29,7 @@ public class CasodeUso6 {
               Queue<Pasarela> pasarelas = new LinkedList<>();
               var pasarela=new Pasarela(cordenaPasarela);
               pasarelas.add(pasarela);
-              var enemigo=new Hormiga(pasarelas);
+              var enemigo=new Hormiga(pasarelas,new MovimientoHormiga());
               Defensa torre=DefensaFactory.obtenerDefensa(cordenaTorre,"Torre Blanca");
 
       
@@ -51,7 +53,7 @@ public class CasodeUso6 {
               Queue<Pasarela> pasarelas = new LinkedList<>();
               var pasarela=new Pasarela(cordenaPasarela);
               pasarelas.add(pasarela);
-              var enemigo=new Araña(pasarelas);
+              var enemigo=new Araña(pasarelas,new MovimientoAraña());
               Defensa torre=DefensaFactory.obtenerDefensa(cordenaTorre,"Torre Plateada");
 
               List<Enemigo> enemigos = new ArrayList<>();

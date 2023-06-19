@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoHormiga;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class PruebaHormiga {
@@ -27,7 +28,7 @@ public class PruebaHormiga {
         pasarelas.add(pasarela1);
         pasarelas.add(pasarela2);
 
-        Hormiga hormiga = new Hormiga(pasarelas);
+        Hormiga hormiga = new Hormiga(pasarelas,new MovimientoHormiga());
         hormiga.mover();
         assertEquals(hormiga.getCordenada(),cordenada);
     }
@@ -44,7 +45,7 @@ public class PruebaHormiga {
         pasarelas.add(pasarela1);
         pasarelas.add(pasarela2);
 
-        Hormiga hormiga = new Hormiga(pasarelas);
+        Hormiga hormiga = new Hormiga(pasarelas,new MovimientoHormiga());
         hormiga.ralentizar();
         hormiga.mover();
         assertEquals(hormiga.getCordenada(),cordenada);
@@ -56,7 +57,7 @@ public class PruebaHormiga {
 
         when(jugador.getHormigasDestruidas()). thenReturn(0);
 
-        Hormiga hormiga = new Hormiga(pasarelas);
+        Hormiga hormiga = new Hormiga(pasarelas,new MovimientoHormiga());
         hormiga.otorgarCreditos(jugador);
 
         verify(jugador).getHormigasDestruidas();
@@ -68,7 +69,7 @@ public class PruebaHormiga {
         Queue<Pasarela> pasarelas = new LinkedList<>();
         Jugador jugador = mock(Jugador.class);
 
-        Hormiga hormiga = new Hormiga(pasarelas);
+        Hormiga hormiga = new Hormiga(pasarelas,new MovimientoHormiga());
         hormiga.sumarEnemigoMuerto(jugador);
 
         verify(jugador).sumarHormigaMuerta();
@@ -81,7 +82,7 @@ public class PruebaHormiga {
 
         when(jugador.getHormigasDestruidas()). thenReturn(10);
 
-        Hormiga hormiga = new Hormiga(pasarelas);
+        Hormiga hormiga = new Hormiga(pasarelas,new MovimientoHormiga());
         hormiga.otorgarCreditos(jugador);
 
         verify(jugador).getHormigasDestruidas();
@@ -92,7 +93,7 @@ public class PruebaHormiga {
     public void TestRecibirAtaque(){
         Queue<Pasarela> pasarelas = new LinkedList<>();
 
-        Hormiga hormiga = new Hormiga(pasarelas);
+        Hormiga hormiga = new Hormiga(pasarelas,new MovimientoHormiga());
 
         assertTrue(hormiga.recibirAtaque(anyInt()));
     }
@@ -102,7 +103,7 @@ public class PruebaHormiga {
         Queue<Pasarela> pasarelas = new LinkedList<>();
         Jugador jugador = mock(Jugador.class);
 
-        Hormiga hormiga = new Hormiga(pasarelas);
+        Hormiga hormiga = new Hormiga(pasarelas,new MovimientoHormiga());
         hormiga.atacarJugador(jugador, 7);
 
         verify(jugador).recibirAtaque(anyInt());

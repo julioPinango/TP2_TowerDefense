@@ -16,6 +16,8 @@ import edu.fiuba.algo3.models.Turno;
 import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoAraña;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoHormiga;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
 
 
@@ -38,9 +40,10 @@ public class CasodeUso17 {
         
         var camino=mapa.inicializarCaminoDeEnemigos(parser.formarCamino(path));
 
-        var Hormiga=new Hormiga(camino);
-        var Araña=new Araña(camino);
+      var Hormiga=new Hormiga(camino,new MovimientoHormiga());
 
+        var Araña=new Araña(camino,new MovimientoAraña());
+        
         // Crear el primer turno y añade a la lista de enemigos
         List<Enemigo> primerTurno = new ArrayList<>();        
         primerTurno.add(Hormiga);

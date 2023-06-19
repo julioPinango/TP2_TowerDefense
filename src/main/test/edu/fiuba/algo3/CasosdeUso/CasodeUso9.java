@@ -9,6 +9,8 @@ import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoAraña;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoHormiga;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class CasodeUso9 {    
@@ -31,7 +33,7 @@ public class CasodeUso9 {
         pasarelas.add(pasarela2);
         pasarelas.add(pasarela3);
 
-        Enemigo hormiga = new Hormiga(pasarelas);
+        Enemigo hormiga = new Hormiga(pasarelas,new MovimientoHormiga());
         
 
         hormiga.mover();
@@ -57,7 +59,7 @@ public class CasodeUso9 {
         pasarelas.add(pasarela2);
         pasarelas.add(pasarela3);
 
-        Enemigo araña = new Araña(pasarelas);
+        var araña=new Araña(pasarelas,new MovimientoAraña());
 
         araña.mover();
 
