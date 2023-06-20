@@ -18,25 +18,29 @@ public class ContenedorPrincipal{
         this.juego=j;
     }
     public GridPane ventanaPrincipal() {
-
-      
-
         Image imagen1 = new Image("file:src/main/img/tierra.jpg");
-        ImageView imageView1 = new ImageView(imagen1);
-
+        Image imagen2 = new Image("file:src/main/img/rocoso.png");
         GridPane gridPane = new GridPane();
-        gridPane.setHgap(5); 
-        gridPane.setVgap(5);
-        gridPane.setPadding(new Insets(10)); 
+        gridPane.setHgap(0); 
+        gridPane.setVgap(0); 
+        gridPane.setPadding(new Insets(0));
 
-        for (int fila = 0; fila < 5; fila++) {
-            for (int columna = 0; columna < 5; columna++) {
-                
-               
-                gridPane.add(imageView1, columna, fila);
+        for (int fila = 0; fila < 15; fila++) {
+            for (int columna = 0; columna < 15; columna++) {
+                if (columna%2==0&&fila%2==0) {
+                    ImageView imageView = new ImageView(imagen2); 
+                    imageView.setFitWidth(30); 
+                    imageView.setFitHeight(30); 
+                    gridPane.add(imageView, columna, fila);
+                }
+                else{                    
+                    ImageView imageView2 = new ImageView(imagen1); 
+                    imageView2.setFitWidth(30); 
+                    imageView2.setFitHeight(30); 
+                    gridPane.add(imageView2, columna, fila);
+                }
             }
-        }
-                        
+        }   
 
         return gridPane;
     }
