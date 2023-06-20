@@ -37,7 +37,7 @@ public class Test01 {
             lechuza.volar();                        
 
             var cordenadax=lechuza.getCordenada().getX();
-                        var cordenaday=lechuza.getCordenada().getY(); */
+                        var cordenaday=lechuza.getCordenada().getY(); 
 
     }
 }*/
