@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.models.Parcelas;
 
 import edu.fiuba.algo3.models.Cordenada;
-import edu.fiuba.algo3.models.Defensas.Defensa;
-import java.util.Objects;
 
 public class Rocoso extends Parcela
 {

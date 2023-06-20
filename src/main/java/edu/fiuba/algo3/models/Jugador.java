@@ -33,7 +33,7 @@ public class Jugador{
    }
 
    public void recibirAtaque(int danio) {
-   this.Vida=Vida-danio;
+      this.Vida=Vida-danio;
    }
 
    public Boolean jugadorDerrotado() {
