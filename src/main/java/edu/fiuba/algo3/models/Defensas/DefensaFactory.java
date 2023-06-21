@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.models.Defensas;
 
 import edu.fiuba.algo3.models.Cordenada;
-import edu.fiuba.algo3.models.Defensas.Estados.Estado;
 import edu.fiuba.algo3.models.Defensas.Estados.EstadoEnConstruccion;
 import edu.fiuba.algo3.models.Defensas.Estados.EstadoOperativo;
 

@@ -14,7 +14,6 @@ import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Turno;
 import edu.fiuba.algo3.models.Enemigos.Topo;
-import edu.fiuba.algo3.models.Enemigos.Ataques.AtaqueHormiga;
 import edu.fiuba.algo3.models.Enemigos.Ataques.AtaqueTopo;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoTopo;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
