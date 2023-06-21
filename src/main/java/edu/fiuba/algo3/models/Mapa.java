@@ -2,7 +2,6 @@ package edu.fiuba.algo3.models;
 
 import edu.fiuba.algo3.models.Enemigos.Ataques.*;
 import edu.fiuba.algo3.models.Enemigos.EnemigoFactory;
-import edu.fiuba.algo3.models.Enemigos.Ataques.AtaqueFactory;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Parcelas.Parcela;
 import edu.fiuba.algo3.models.Parcelas.ParcelaFactory;
@@ -192,6 +191,11 @@ public class Mapa
                 listaEnemigos.add(enemigo);
         }
         listaDefensas=this.defensasDisponibles(listaDefensas);
+    }
+
+    public String obtenerTipoParcela(int x,int y){
+        Cordenada cordenada = new Cordenada(x, y);
+        return parcelas.get(cordenada).getTipo();
     }
 
 }

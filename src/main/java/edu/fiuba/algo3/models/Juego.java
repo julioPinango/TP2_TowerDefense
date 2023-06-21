@@ -37,6 +37,10 @@ public class Juego
     public Map<Cordenada, Parcela> getParcelas(){
         return mapa.getParcelas();        
     }
+
+    public String obtenerParcela(int x, int y){
+        return mapa.obtenerTipoParcela(x,y);
+    }
    
   
     public boolean colocarDefensas(int x, int y, String tipoDeTorre){

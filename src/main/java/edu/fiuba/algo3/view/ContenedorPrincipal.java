@@ -1,15 +1,20 @@
 package edu.fiuba.algo3.view;
 
-import java.io.File;
+
+
+import java.util.HashMap;
+import java.util.Map;
 
 import edu.fiuba.algo3.models.Juego;
 import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
-public class ContenedorPrincipal{
+public class ContenedorPrincipal extends GridPane{
     private Stage stage;
     private Juego juego;
 
@@ -18,27 +23,29 @@ public class ContenedorPrincipal{
         this.juego=j;
     }
     public GridPane ventanaPrincipal() {
-        Image imagen1 = new Image("file:src/main/img/tierra.jpg");
-        Image imagen2 = new Image("file:src/main/img/rocoso.png");
+        Image imagenTierra = new Image("file:src/main/img/tierra.jpg");
+        Image imagenRocoso = new Image("file:src/main/img/rocoso.png");
+        Image imagenPasarela = new Image("file:src/main/img/pasarela.png");
+        Image imagenArenoso = new Image("file:src/main/img/arenoso.png");
+
+        Map<String,Image> mapa = new HashMap<>();
+        mapa.put("Tierra", imagenTierra);
+        mapa.put("Rocoso", imagenRocoso);
+        mapa.put("Pasarela", imagenPasarela);
+
         GridPane gridPane = new GridPane();
-        gridPane.setHgap(0); 
-        gridPane.setVgap(0); 
         gridPane.setPadding(new Insets(0));
+        gridPane.setHgap(0);
+        gridPane.setVgap(0);
 
         for (int fila = 0; fila < 15; fila++) {
+
             for (int columna = 0; columna < 15; columna++) {
-                if (columna%2==0&&fila%2==0) {
-                    ImageView imageView = new ImageView(imagen2); 
-                    imageView.setFitWidth(30); 
-                    imageView.setFitHeight(30); 
-                    gridPane.add(imageView, columna, fila);
-                }
-                else{                    
-                    ImageView imageView2 = new ImageView(imagen1); 
-                    imageView2.setFitWidth(30); 
-                    imageView2.setFitHeight(30); 
-                    gridPane.add(imageView2, columna, fila);
-                }
+                String tipo = this.juego.obtenerParcela(fila, columna);
+                ImageView imageView = new ImageView(mapa.get(tipo)); 
+                imageView.setFitWidth(50); 
+                imageView.setFitHeight(50);                   
+                gridPane.add(imageView, fila, columna);
             }
         }   
 
