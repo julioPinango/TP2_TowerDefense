@@ -38,6 +38,10 @@ public class Juego
         return mapa.getParcelas();        
     }
 
+    public int getTamañoParcelas(){
+        return mapa.getTamañoParcelas();        
+    }
+
     public String obtenerParcela(int x, int y){
         return mapa.obtenerTipoParcela(x,y);
     }

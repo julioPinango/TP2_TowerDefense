@@ -128,6 +128,10 @@ public class Mapa
     public Map<Cordenada, Parcela> getParcelas() {
         return parcelas;
     }
+
+    public int getTamañoParcelas(){
+        return (int)Math.sqrt(parcelas.size());        
+    }
     
     public boolean quedanEnemigos()
     {
