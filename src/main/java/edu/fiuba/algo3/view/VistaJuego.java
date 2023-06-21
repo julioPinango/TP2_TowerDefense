@@ -37,24 +37,6 @@ public class VistaJuego extends GridPane{
         this.setHgap(0);
         this.setVgap(0);
 
-        VBox cuadroInfoJugador = new VBox(); // VBox para organizar los Labels verticalmente
-        cuadroInfoJugador.setStyle("-fx-background-color: white; -fx-border-color: black;"); // Personalizar el estilo del cuadro
-        cuadroInfoJugador.setSpacing(0); // Espacio entre los Labels
-        cuadroInfoJugador.setPadding(new Insets(0)); // Espacio interno del cuadro
-
-        Label labelHormigasMuertas = new Label("Hormigas muertas: "); // Label para las hormigas muertas
-        Label labelOtroDato = new Label("Otro dato: "); // Label para otro dato
-
-        cuadroInfoJugador.getChildren().addAll(labelHormigasMuertas, labelOtroDato); // Agregar los Labels al VBox
-
-        StackPane stackPaneCuadro = new StackPane(cuadroInfoJugador);
-        stackPaneCuadro.setTranslateX(-20); // Desplazamiento horizontal
-        stackPaneCuadro.setTranslateY(40); // Desplazamiento vertical
-
-        AnchorPane anchorPaneCuadro = new AnchorPane(stackPaneCuadro);
-        AnchorPane.setTopAnchor(anchorPaneCuadro, 0.0);
-        AnchorPane.setRightAnchor(anchorPaneCuadro, 0.0);
-
         for (int fila = 0; fila < tamañoMapa; fila++) {
             for (int columna = 0; columna < tamañoMapa; columna++) {
                 ImageView imageViewMarco = new ImageView(imagenMarco);
@@ -75,8 +57,6 @@ public class VistaJuego extends GridPane{
                 this.add(stackPane, fila, columna);
             }
         }
-
-        this.add(anchorPaneCuadro, tamañoMapa, 0);
     }
 
     private void movimientoMouse(ImageView imagen, StackPane stackPane){

@@ -64,9 +64,19 @@ public class Juego
             
         log.imprimirResultado(resultadoJuego);
     }
+    public int obtenerCantidadDeHormigasEliminadasPorElJugador(){
+        return jugador.getHormigasDestruidas();
+    }
 
-   
-
+    public int obtenerVidaRestanteDelJugador(){
+        return jugador.getVida();
+    }
+    public String obtenerNombreDelJugador(){
+        return jugador.getNombre();
+    }
+    public int obtenerCreditosDelJugador(){
+        return jugador.getCreditos();
+    }
     public void realizarTurno() {
        //Efectua un turno y deja el juego en el estado correspondiente.
 
