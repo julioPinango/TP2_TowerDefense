@@ -8,17 +8,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class ContenedorInicial {
+public class ContenedorInicial extends VBox{
     
-    public VBox ventanaInicial(Stage stage){
-        VBox vbox = new VBox();
-        vbox.setAlignment(Pos.CENTER);
-        vbox.setSpacing(20);
-        vbox.setPadding(new Insets(25));
+    public ContenedorInicial(Stage stage){
+        this.setAlignment(Pos.CENTER);
+        this.setSpacing(20);
+        this.setPadding(new Insets(25));
 
         Label titulo = new Label("Tower Defense");
         titulo.setFont(new Font("Aria", 20));
@@ -35,7 +32,7 @@ public class ContenedorInicial {
         buttonIniciar.disableProperty().bind(nombreJugador.textProperty().length().lessThan(5));
         BotonIniciarEventHandler iniciarEventHandler = new BotonIniciarEventHandler(stage);
 
-        vbox.getChildren().addAll(
+        this.getChildren().addAll(
             titulo,
             label,
             nombreJugador,
@@ -44,6 +41,5 @@ public class ContenedorInicial {
         );
 
         buttonIniciar.setOnAction(iniciarEventHandler);
-        return vbox;
     }
 }

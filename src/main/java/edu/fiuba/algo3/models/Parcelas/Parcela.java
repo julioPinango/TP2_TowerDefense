@@ -14,6 +14,10 @@ public abstract class Parcela
       return false;
    }
 
+   public String getTipo(){
+        return TipoDeParcela;
+   }
+
    public Cordenada getCordenada() {
       return cordenadas;
   }

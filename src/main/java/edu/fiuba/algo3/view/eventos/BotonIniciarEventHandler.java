@@ -29,7 +29,7 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent>{
         Juego nuevoJuego = this.iniciarJuego(this.nombreJugador);
 
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(this.stage, nuevoJuego);
-        Scene proximaVentana = new Scene(contenedorPrincipal.ventanaPrincipal(), 1080, 720);
+        Scene proximaVentana = new Scene(contenedorPrincipal, 1080, 720);
         
         stage.setScene(proximaVentana);
         stage.setFullScreen(true);
