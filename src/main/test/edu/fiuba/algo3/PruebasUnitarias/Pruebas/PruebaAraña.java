@@ -13,9 +13,7 @@ import org.junit.jupiter.api.Test;
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Enemigos.Araña;
-import edu.fiuba.algo3.models.Enemigos.Hormiga;
 import edu.fiuba.algo3.models.Enemigos.Ataques.AtaqueAraña;
-import edu.fiuba.algo3.models.Enemigos.Ataques.AtaqueFactory;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoAraña;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 

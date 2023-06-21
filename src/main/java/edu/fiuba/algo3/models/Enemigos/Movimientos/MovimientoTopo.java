@@ -15,7 +15,7 @@ public class MovimientoTopo extends Movimiento{
 
          if(contMovimientos<6)
                Velocidad=1;
-         else if (contMovimientos>5)
+         else if (contMovimientos>5 && contMovimientos<11)
                Velocidad=2;
          else
                Velocidad=3;         
