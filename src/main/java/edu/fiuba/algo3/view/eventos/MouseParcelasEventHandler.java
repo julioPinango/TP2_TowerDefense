@@ -7,16 +7,18 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 public class MouseParcelasEventHandler implements EventHandler<MouseEvent>{
-    private Image img;
+    private ImageView img;
 
-    public MouseParcelasEventHandler(Image imagen){
+
+    public MouseParcelasEventHandler(ImageView imagen){
         this.img=imagen;
     }
      public void handle(MouseEvent mouseEvent){
-        
+       this.img.setVisible(true);
     }
 }

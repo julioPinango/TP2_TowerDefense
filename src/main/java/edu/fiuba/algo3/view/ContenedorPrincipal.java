@@ -23,9 +23,4 @@ public class ContenedorPrincipal extends GridPane{
         this.juego=j;
         this.add(new VistaJuego(j),1,0);
     }
-    //public GridPane ventanaPrincipal() {
-       // VistaJuego vistaJuego = new VistaJuego(this.juego);   
-
-        //return //vistaJuego(this.juego);
-    //}
 }
