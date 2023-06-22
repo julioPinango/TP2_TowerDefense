@@ -29,8 +29,8 @@ public class ContenedorInicial extends VBox {
 
         Button buttonIniciar = new Button();
         buttonIniciar.setText("Iniciar juego");
-        buttonIniciar.setDisable(true);
-        buttonIniciar.disableProperty().bind(nombreJugador.textProperty().length().lessThan(5));
+        //buttonIniciar.setDisable(true);
+        //buttonIniciar.disableProperty().bind(nombreJugador.textProperty().length().lessThan(5));
         BotonIniciarEventHandler iniciarEventHandler = new BotonIniciarEventHandler(stage, nombreJugador);
         buttonIniciar.setOnAction(iniciarEventHandler);
 

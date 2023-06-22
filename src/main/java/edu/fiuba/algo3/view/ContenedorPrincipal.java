@@ -6,12 +6,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 import edu.fiuba.algo3.models.Juego;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ContenedorPrincipal extends GridPane{
@@ -22,6 +29,13 @@ public class ContenedorPrincipal extends GridPane{
         this.stage=s;
         this.juego=j;
         this.add(new VistaJuego(j),0,0);
-        this.add(new VistaJugador(j),1,0);
+
+        VBox ContenedorMenu=new VBox();
+        Separator separator = new Separator(Orientation.HORIZONTAL);        
+        ContenedorMenu.getChildren().addAll(new VistaOpciones(s));
+        ContenedorMenu.getChildren().addAll(separator);
+        ContenedorMenu.getChildren().addAll(new VistaJugador(j));
+
+        this.add(ContenedorMenu,1,0);
     }
 }
