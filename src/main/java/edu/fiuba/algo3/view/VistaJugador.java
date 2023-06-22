@@ -6,6 +6,7 @@ import java.util.Map;
 import edu.fiuba.algo3.models.Juego;
 import edu.fiuba.algo3.view.eventos.MouseFueraParcelasEventHandler;
 import edu.fiuba.algo3.view.eventos.MouseParcelasEventHandler;
+import edu.fiuba.algo3.view.eventos.SeleccionDefensaEventHandle;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -19,10 +20,14 @@ import javafx.scene.layout.VBox;
 
 public class VistaJugador extends GridPane{
     private Juego juego;
+    private VistaMapa vistaMapa;
 
-    public VistaJugador(Juego j) {
+    public VistaJugador(Juego j, VistaMapa vM) {
         this.juego = j;
-
+        this.vistaMapa = vM;
+    }
+    
+    public GridPane mostrarDatos(){
         this.setPadding(new Insets(0));
         this.setHgap(0);
         this.setVgap(0);
@@ -37,9 +42,8 @@ public class VistaJugador extends GridPane{
         Label labelNombre = new Label("Nombre: "+ juego.obtenerNombreDelJugador()); 
         Label labelVidaRestante = new Label("Vida: "+ juego.obtenerVidaRestanteDelJugador()); 
         Label labelCreditos = new Label("Creditos Disponibles: "+ juego.obtenerCreditosDelJugador()); 
-        Label labelHormigasMuertas = new Label("Hormigas derrotadoas: "+ juego.obtenerCantidadDeHormigasEliminadasPorElJugador()); 
 
-        cuadroInfoJugador.getChildren().addAll(estadisticasDelJugador,labelNombre,labelVidaRestante,labelCreditos,labelHormigasMuertas);
+        cuadroInfoJugador.getChildren().addAll(estadisticasDelJugador,labelNombre,labelVidaRestante,labelCreditos);
 
         StackPane stackPaneCuadro = new StackPane(cuadroInfoJugador);
         stackPaneCuadro.setTranslateX(0); 
@@ -51,14 +55,14 @@ public class VistaJugador extends GridPane{
         cuadroBotones.setAlignment(Pos.CENTER);
 
         Button botonPasarTurno = new Button("Pasar Turno");
-        Button botonCrearDefensa = new Button("Crear Defensa");
-
-        cuadroBotones.getChildren().addAll(botonPasarTurno,botonCrearDefensa);
-        this.add(stackPaneCuadro, 0, 0);
         this.listaDefensas();
-        this.add(cuadroBotones, 0,2);
-    }
 
+        cuadroBotones.getChildren().addAll(botonPasarTurno);
+        this.add(stackPaneCuadro, 0, 0);
+        this.add(cuadroBotones, 0,2);
+
+        return this;
+    }
     private void listaDefensas(){
 
         VBox cuadroDefensas = new VBox();
@@ -86,6 +90,24 @@ public class VistaJugador extends GridPane{
         ImageView imageViewBlanca = new ImageView(imgTorreBlanca);
         ImageView imageViewPlateada = new ImageView(imgTorrePlateada);
 
+        SeleccionDefensaEventHandle seleccionArena = new SeleccionDefensaEventHandle(this.vistaMapa, "Trampa Arenosa",this);
+        SeleccionDefensaEventHandle seleccionBlanca = new SeleccionDefensaEventHandle(this.vistaMapa, "Torre Blanca", this);
+        SeleccionDefensaEventHandle seleccionPlateada = new SeleccionDefensaEventHandle(this.vistaMapa, "Torre Plateada", this);
+
+        if (this.juego.obtenerCreditosDelJugador()<10){
+            imageViewArena.setDisable(true);
+        }
+        if(this.juego.obtenerCreditosDelJugador()<20){
+            imageViewBlanca.setDisable(true);
+        }
+         if (this.juego.obtenerCreditosDelJugador()<25){
+            imageViewPlateada.setDisable(true);
+        }
+
+        imageViewArena.setOnMouseClicked(seleccionArena);
+        imageViewBlanca.setOnMouseClicked(seleccionBlanca);
+        imageViewPlateada.setOnMouseClicked(seleccionPlateada);
+        
         Label trampaArenosa = new Label("Trampa Arenosa");
         Label costoTrampa = new Label("25 creditos");
 

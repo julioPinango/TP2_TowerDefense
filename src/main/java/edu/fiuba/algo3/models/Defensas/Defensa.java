@@ -64,7 +64,10 @@ public abstract class Defensa
     {
         this.estado=new EstadoDestruido();
     }
-
+    
+    public Cordenada obtenerCordenada(){
+        return this.cordenada;
+    }
     public boolean puedoAtacar(){
         return(this.estado.puedoAtacar());
     }

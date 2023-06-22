@@ -137,6 +137,28 @@ public class Mapa
     {
         return getEnemigos().size()>0;
     }
+
+    public boolean hayDefensaEnEstaPosicion(int x, int y){
+        Cordenada coordenada= new Cordenada(x, y);
+        boolean retorno = false;
+        for (int i=0; i< this.listaDefensas.size();i++){
+            if (listaDefensas.get(i).obtenerCordenada().equals(coordenada)){
+                retorno = true;
+            }
+        }
+        return retorno;
+    }
+
+      public String obtenerTipoDefensa(int x, int y){
+        Cordenada coordenada= new Cordenada(x, y);
+        String retorno = "";
+        for (int i=0; i< this.listaDefensas.size();i++){
+            if (listaDefensas.get(i).obtenerCordenada().equals(coordenada)){
+                retorno = listaDefensas.get(i).getNombre();
+            }
+        }
+        return retorno;
+    }
     
 
     private void turnoDeDefensas(){

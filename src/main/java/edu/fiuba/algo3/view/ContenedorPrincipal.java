@@ -28,13 +28,16 @@ public class ContenedorPrincipal extends GridPane{
     public ContenedorPrincipal(Stage s, Juego j){
         this.stage=s;
         this.juego=j;
-        this.add(new VistaMapa(j),0,0);
+
+        VistaMapa vistaMapa= new VistaMapa(j);
+        this.add(vistaMapa.mostrarMapa(),0,0);
 
         VBox ContenedorMenu=new VBox();
         Separator separator = new Separator(Orientation.HORIZONTAL);        
         ContenedorMenu.getChildren().addAll(new VistaOpciones(s));
         ContenedorMenu.getChildren().addAll(separator);
-        ContenedorMenu.getChildren().addAll(new VistaJugador(j));
+        VistaJugador vistaJugador = new VistaJugador(j, vistaMapa);
+        ContenedorMenu.getChildren().addAll(vistaJugador.mostrarDatos());
 
         this.add(ContenedorMenu,1,0);
     }

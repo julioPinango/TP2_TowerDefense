@@ -92,4 +92,14 @@ public class Juego
         }
         turno.pasarTurno();    
     }
+
+    public boolean hayDefensa(int x, int y){
+        boolean retorno = mapa.hayDefensaEnEstaPosicion(x, y);
+        return retorno;
+    }
+
+    public String devolverDefensa(int x, int y){
+        String retorno = mapa.obtenerTipoDefensa(x,y);
+        return retorno;
+    }
 }
