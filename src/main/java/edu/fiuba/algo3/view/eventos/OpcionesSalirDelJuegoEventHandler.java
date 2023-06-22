@@ -10,16 +10,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
-public class OpcionesSalirDelJuegoEventHandler implements EventHandler<MouseEvent>{
+public class OpcionesSalirDelJuegoEventHandler implements EventHandler<ActionEvent>{
 
+    private Stage _Stage;
 
-
-    public OpcionesSalirDelJuegoEventHandler(ImageView imagen){
-      
+    public OpcionesSalirDelJuegoEventHandler(Stage stage){
+      _Stage=stage;
     }
 
-    public void handle(MouseEvent mouseEvent){
-               
+    public void handle(ActionEvent mouseEvent){
+        _Stage.close();
     }
 }

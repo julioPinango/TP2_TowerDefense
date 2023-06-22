@@ -8,6 +8,7 @@ import edu.fiuba.algo3.view.eventos.BotonIniciarEventHandler;
 import edu.fiuba.algo3.view.eventos.MouseFueraParcelasEventHandler;
 import edu.fiuba.algo3.view.eventos.MouseParcelasEventHandler;
 import edu.fiuba.algo3.view.eventos.OpcionesPantallaCompletaEventHandler;
+import edu.fiuba.algo3.view.eventos.OpcionesSalirDelJuegoEventHandler;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -36,14 +37,18 @@ public class VistaOpciones extends GridPane{
         MenuItem silenciarEfectosItem = new MenuItem("Silenciar efectos");
         MenuItem pantallaCompletaItem = new MenuItem("Pantalla completa");
         MenuItem SalirItem = new MenuItem("Salir del Juego");       
-       
 
+        subMenuButton.setPadding(new Insets(0,50,0,50)); 
+        
         // Agregar los botones de submenú al submenú
         subMenuButton.getItems().addAll(silenciarMusicaItem, silenciarEfectosItem, pantallaCompletaItem,SalirItem);
        
         this.add(subMenuButton, 0, 0);
 
-        OpcionesPantallaCompletaEventHandler click = new OpcionesPantallaCompletaEventHandler(stage);
-        pantallaCompletaItem.setOnAction(click);
+        OpcionesPantallaCompletaEventHandler clickPantallaCompleta = new OpcionesPantallaCompletaEventHandler(stage);
+        pantallaCompletaItem.setOnAction(clickPantallaCompleta);
+
+        OpcionesSalirDelJuegoEventHandler clickSalir = new OpcionesSalirDelJuegoEventHandler(stage);
+        SalirItem.setOnAction(clickSalir);
     }    
 }
