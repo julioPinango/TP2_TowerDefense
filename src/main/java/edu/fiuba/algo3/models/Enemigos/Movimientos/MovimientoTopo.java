@@ -26,4 +26,15 @@ public class MovimientoTopo extends Movimiento{
          return cola;
      }
 
+     public int getVelocidad(int contMovimientos)
+     {
+            if(contMovimientos<6)
+                  return 1;
+            else if (contMovimientos>5 && contMovimientos<11)
+                  return 2;
+            else
+                  return 3;               
+     }
+
+
 }

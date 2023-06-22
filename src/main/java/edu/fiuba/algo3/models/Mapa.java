@@ -34,7 +34,7 @@ public class Mapa
         this.Spawn=inicializarEnemigos(parser.desglosarEnemigos(rutaArchivoEnemigos),parser.formarCamino(rutaArchivoMapa));
     }
 
-    public Map<Cordenada, Parcela>  inicializarParcelas(List<List<String>> mapa){
+    public Map<Cordenada, Parcela> inicializarParcelas(List<List<String>> mapa){
         Map<Cordenada, Parcela> nuevoMapa= new HashMap<>();
         for (int i = 0; i < mapa.size(); i++) {
             List<String> columna=mapa.get(i);
@@ -64,7 +64,7 @@ public class Mapa
         return nuevoCamino;
     }
 
-    private List<List<Enemigo>>  inicializarEnemigos(List<List<String>> enemigos, List<List<String>> camino){
+    private List<List<Enemigo>> inicializarEnemigos(List<List<String>> enemigos, List<List<String>> camino){
          Queue<Pasarela> nuevoCamino=this.inicializarCaminoDeEnemigos(camino);
         List<List<Enemigo>> Spawn =new ArrayList<>();
         for (int i = 0; i < enemigos.size(); i++) {
@@ -73,10 +73,15 @@ public class Mapa
             for (int j = 0; j < enemigosDelTurno.size(); j++) {
                 String enemigo=enemigosDelTurno.get(j);
                 Enemigo nuevoEnemigo=EnemigoFactory.obtenerEnemigo(nuevoCamino,enemigo);
+               
                 nuevosEnemigos.add(nuevoEnemigo);
             }
             Spawn.add(nuevosEnemigos);
         }
+
+         
+
+
         return Spawn;
     }
 
@@ -183,8 +188,10 @@ public class Mapa
     
     private List<Enemigo> enemigosRestantes(List<Enemigo> enemigosActuales, Jugador jugador, Turno turno){
         List<Enemigo> listaEnemigosVivos = new ArrayList<>();   
+
+
         for(Enemigo enemigo:enemigosActuales)
-        { 
+        {             
             enemigo.mover();
 
             if(enemigo.llegoAlFinal())

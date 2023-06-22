@@ -6,6 +6,9 @@ public class MovimientoLechuzaenDiagonal extends Movimiento{
 
     public Cordenada mover(Cordenada coordenadaObjetivo,Cordenada coordenadaActual)
     {
+
+        System.out.println("X:"+coordenadaActual.getX()+"Y:"+coordenadaActual.getY());
+
         int distanciaX = coordenadaObjetivo.getX() - coordenadaActual.getX();
         int distanciaY = coordenadaObjetivo.getY() - coordenadaActual.getY();
 
@@ -17,6 +20,9 @@ public class MovimientoLechuzaenDiagonal extends Movimiento{
 
         int newCoordenadaX = coordenadaActual.getX() + pasoX;
         int newCoordenadaY = coordenadaActual.getY() + pasoY;
+
+        System.out.println("X:"+coordenadaActual.getX()+"Y:"+coordenadaActual.getY());
+
 
         return new Cordenada(newCoordenadaX, newCoordenadaY);
     }

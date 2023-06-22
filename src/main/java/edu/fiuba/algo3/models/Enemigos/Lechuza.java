@@ -42,7 +42,14 @@ public class Lechuza extends Enemigo
                 llegoAlFinal=true;
             }
         else 
-            coordenadaActual=movimiento.mover(coordenadaObjetivo,coordenadaActual);
+            {
+                System.out.println("X:"+coordenadaActual.getX()+"Y:"+coordenadaActual.getY());
+
+                coordenadaActual=movimiento.mover(coordenadaObjetivo,coordenadaActual);
+
+                System.out.println("X:"+coordenadaActual.getX()+"Y:"+coordenadaActual.getY());
+
+            }
            // volar();           
         
     }

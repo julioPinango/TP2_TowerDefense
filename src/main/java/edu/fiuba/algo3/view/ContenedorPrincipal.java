@@ -39,11 +39,6 @@ public class ContenedorPrincipal extends GridPane{
         VistaTurno turno=new VistaTurno(j);
         VistaJugador vistaJugador = new VistaJugador(j, vistaMapa,turno);
         ContenedorMenu.getChildren().addAll(vistaJugador.mostrarDatos(),turno.mostrarTurno());
-        
-        
-        //this.add(turno.mostrarTurno(),0,0);  
-
-
 
         this.add(ContenedorMenu,1,0);
     }

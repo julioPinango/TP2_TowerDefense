@@ -27,7 +27,8 @@ public class Topo extends Enemigo
     }
 
     public void mover() {
-        if (pasarelas.size()<(this.Velocidad+1))
+
+        if (pasarelas.size()<=this.movimiento.getVelocidad(contMovimientos)+1)
         {
             Energia=0;
             llegoAlFinal=true;
@@ -35,7 +36,7 @@ public class Topo extends Enemigo
         else 
         {
             this.pasarelas=movimiento.mover(pasarelas,contMovimientos);
-            this.movimiento=new MovimientoTopo();  
+            this.movimiento=new MovimientoTopo();   
         }
         this.contMovimientos++;      
 

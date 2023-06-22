@@ -35,7 +35,7 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
 
     private Juego iniciarJuego(String nombreJugador) {
         //String path = "src/main/java/edu/fiuba/algo3/models/ArchivosJson/JSONdeEnemigosDefinitivo.json";
-        String path = "src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigos12Hormigas.json";
+        String path = "src/main/java/edu/fiuba/algo3/models/ArchivosJson/enemigosLechuza.json";
 
         String path2 = "src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json";
 

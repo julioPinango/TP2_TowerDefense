@@ -27,4 +27,10 @@ public abstract class Movimiento {
         return cola;
     }
 
+    public int getVelocidad(int argumento) {
+        return 0;
+    }
+
+    
+
 }

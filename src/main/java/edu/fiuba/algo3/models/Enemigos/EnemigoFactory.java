@@ -5,9 +5,7 @@ import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.models.Enemigos.Enemigo.*;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.*;
 
-import java.util.HashMap;
 import java.util.*;
-import java.util.Queue;
 
 public class EnemigoFactory
 {
@@ -15,10 +13,13 @@ public class EnemigoFactory
 
 
     public static Enemigo obtenerEnemigo(Queue<Pasarela> pasarelas, String tipo){
-        tiposDeEnemigos.put("hormiga", new Hormiga(pasarelas,new MovimientoHormiga()));
-        tiposDeEnemigos.put("arana", new Araña(pasarelas,new MovimientoAraña()));
-        tiposDeEnemigos.put("lechuza", new Lechuza(pasarelas,new MovimientoLechuzaenL()));
-        tiposDeEnemigos.put("topo", new Topo(pasarelas,new MovimientoTopo()));
+
+        Queue<Pasarela> copiaPasarelas = new LinkedList<>(pasarelas);
+
+        tiposDeEnemigos.put("hormiga", new Hormiga(copiaPasarelas,new MovimientoHormiga()));
+        tiposDeEnemigos.put("arana", new Araña(copiaPasarelas,new MovimientoAraña()));
+        tiposDeEnemigos.put("lechuza", new Lechuza(copiaPasarelas,new MovimientoLechuzaenL()));
+        tiposDeEnemigos.put("topo", new Topo(copiaPasarelas,new MovimientoTopo()));
 
         return (tiposDeEnemigos.get(tipo));
     }
