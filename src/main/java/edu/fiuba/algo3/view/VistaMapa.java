@@ -15,16 +15,15 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-public class VistaJuego extends GridPane{
+public class VistaMapa extends GridPane{
     private Juego juego;
 
-    public VistaJuego(Juego j) {
+    public VistaMapa(Juego j) {
         this.juego = j;
 
         Image imagenTierra = new Image("file:src/main/img/tierra.jpg");
         Image imagenRocoso = new Image("file:src/main/img/rocoso.png");
         Image imagenPasarela = new Image("file:src/main/img/pasarela.png");
-        Image imagenArenoso = new Image("file:src/main/img/arenoso.png");
         Image imagenMarco = new Image("file:src/main/img/marco (2).png");
 
         Map<String, Image> mapa = new HashMap<>();
