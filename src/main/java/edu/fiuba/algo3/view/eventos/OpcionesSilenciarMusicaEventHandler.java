@@ -11,15 +11,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
-public class OpcionesSilenciarMusicaEventHandler implements EventHandler<MouseEvent>{
+public class OpcionesSilenciarMusicaEventHandler implements EventHandler<ActionEvent>{
 
 
 
-    public OpcionesSilenciarMusicaEventHandler(ImageView imagen){
+    public OpcionesSilenciarMusicaEventHandler(){
       
     }
 
-    public void handle(MouseEvent mouseEvent){
+    public void handle(ActionEvent mouseEvent){
                
     }
 }

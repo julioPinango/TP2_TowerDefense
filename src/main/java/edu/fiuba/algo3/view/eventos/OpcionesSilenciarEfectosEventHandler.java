@@ -11,15 +11,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
-public class OpcionesSilenciarEfectosEventHandler implements EventHandler<MouseEvent>{
+public class OpcionesSilenciarEfectosEventHandler implements EventHandler<ActionEvent>{
 
 
 
-    public OpcionesSilenciarEfectosEventHandler(ImageView imagen){
+    public OpcionesSilenciarEfectosEventHandler(){
       
     }
 
-    public void handle(MouseEvent mouseEvent){
+    public void handle(ActionEvent mouseEvent){
                
     }
 }
