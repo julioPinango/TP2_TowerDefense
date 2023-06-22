@@ -13,9 +13,16 @@ public class AtaqueLechuza extends Ataque{
         _defensas=defensas;
     }
 
-    public void dañar(Jugador jugador){        
-        var torre= _defensas.get(0);
-        torre.destruir();    
+    public void dañar(Jugador jugador){ 
+        if(_defensas.size()>0)       
+        {
+            var torre= _defensas.get(0);
+            torre.destruir();   
+        } 
+    }
+
+    public int getdanio() {
+        return 0;
     }
 
 

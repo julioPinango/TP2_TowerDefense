@@ -193,11 +193,17 @@ public class Mapa
         for(Enemigo enemigo:enemigosActuales)
         {             
             enemigo.mover();
-
+        
             if(enemigo.llegoAlFinal())
                 this.turnoAtaqueDeEnemigos(enemigo, turno, jugador);
             else if(enemigo.getEnergia()>0)
                 listaEnemigosVivos.add(enemigo);
+            else
+            {
+                enemigo.otorgarCreditos(jugador);                
+                enemigo.sumarEnemigoMuerto(jugador);
+            }
+
             
         }
         return listaEnemigosVivos;
