@@ -27,7 +27,10 @@ public class Hormiga extends Enemigo
     public void mover() {
 
         if (pasarelas.size()==1)
+        { 
             Energia=0;
+            llegoAlFinal=true;
+        }
         else
         { 
             movimiento.mover(pasarelas);

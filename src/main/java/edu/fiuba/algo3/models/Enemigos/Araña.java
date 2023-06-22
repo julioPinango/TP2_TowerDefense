@@ -27,6 +27,7 @@ public class Araña extends Enemigo
         if (pasarelas.size()<3)
         {
             Energia=0;
+            llegoAlFinal=true;
            // atacarJugador(jugador);
         }
         else 

@@ -30,7 +30,7 @@ public class Topo extends Enemigo
         if (pasarelas.size()<(this.Velocidad+1))
         {
             Energia=0;
-           // atacarJugador(jugador);
+            llegoAlFinal=true;
         }
         else 
         {

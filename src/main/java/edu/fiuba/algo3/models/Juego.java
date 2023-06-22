@@ -106,4 +106,8 @@ public class Juego
     public boolean torreEnConstruccion(int fila, int columna) {
         return mapa.defensaEnConstruccion(fila,columna);
     }
+
+    public List<String> enemigosEnPosicion(int fila, int columna) {
+        return mapa.enemigosPosicion(fila,columna);
+    }
 }

@@ -49,9 +49,13 @@ public class Mapa
     }
 
     public Queue<Pasarela> inicializarCaminoDeEnemigos(List<List<String>>camino){
+
         Queue<Pasarela> nuevoCamino=new LinkedList<>(); 
+
         for (int i = 0; i < camino.size(); i++) {
-            List<String> unaPasarela=camino.get(i);
+
+            List<String> unaPasarela=camino.get(i);                
+
                 Cordenada nuevaCordenada= new Cordenada(Integer.parseInt(unaPasarela.get(1)),Integer.parseInt(unaPasarela.get(2)));
                 Pasarela nuevaPasarela=(Pasarela)ParcelaFactory.obtenerParcela(nuevaCordenada, unaPasarela.get(0));
                 nuevoCamino.add(nuevaPasarela);
@@ -180,16 +184,14 @@ public class Mapa
     private List<Enemigo> enemigosRestantes(List<Enemigo> enemigosActuales, Jugador jugador, Turno turno){
         List<Enemigo> listaEnemigosVivos = new ArrayList<>();   
         for(Enemigo enemigo:enemigosActuales)
-        {
-            if(enemigo.getEnergia()>0)
-            { 
-                listaEnemigosVivos.add(enemigo);
-                enemigo.mover();
-            }
-            else
-            {
+        { 
+            enemigo.mover();
+
+            if(enemigo.llegoAlFinal())
                 this.turnoAtaqueDeEnemigos(enemigo, turno, jugador);
-            }
+            else if(enemigo.getEnergia()>0)
+                listaEnemigosVivos.add(enemigo);
+            
         }
         return listaEnemigosVivos;
     }
@@ -235,6 +237,23 @@ public class Mapa
         }
 
         return false;
+    }
+
+    public List<String> enemigosPosicion(int fila, int columna) {
+
+        List<String> enemigos=new ArrayList<>();
+
+        Cordenada cor=new Cordenada(fila, columna);
+
+        for (Enemigo enemigo : listaEnemigos) {
+            
+            var cordenadaEnemigo=enemigo.getCordenada();
+
+            if(cordenadaEnemigo.equals(cor))                
+                    enemigos.add(enemigo.getNombre());
+                
+        }
+        return enemigos;
     }
 
 }

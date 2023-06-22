@@ -66,10 +66,6 @@ public class VistaJugador extends GridPane{
 
         Button botonPasarTurno = pasarTurno();
 
-
-
-
-
         this.listaDefensas();
 
         cuadroBotones.getChildren().addAll(botonPasarTurno);
