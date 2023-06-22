@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.view;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import edu.fiuba.algo3.models.Juego;
@@ -21,15 +22,15 @@ public class VistaMapa extends GridPane{
     private Boolean parcelasHabilitadas;
     private String tipoDefensa;
     private VistaJugador vistaJugador;
-    private Map<String, Image> mapa = new HashMap<>();
+    private Map<String, Image> imagenes = new HashMap<>();
 
     public VistaMapa(Juego j) {
         this.juego = j;
         this.parcelasHabilitadas=false;
-        mapa=setearMapa();
+        imagenes=setearImagenes();
     }
 
-    private Map<String, Image> setearMapa() {
+    private Map<String, Image> setearImagenes() {
         
         Image imagenTierra = new Image("file:src/main/img/tierra.jpg");
         Image imagenRocoso = new Image("file:src/main/img/rocoso.png");
@@ -43,60 +44,69 @@ public class VistaMapa extends GridPane{
         Image imgTorreBlancaEnConstruccion = new Image("file:src/main/img/TorreBlancaEnConstruccion.png");
         Image imgTorrePlateadaEnConstruccion = new Image("file:src/main/img/TorrePlateadaEnConstruccion.png");
 
-        Map<String, Image> mapa = new HashMap<>();
-        mapa.put("Tierra", imagenTierra);
-        mapa.put("Rocoso", imagenRocoso);
-        mapa.put("Pasarela", imagenPasarela);
-        mapa.put("Trampa Arenosa", imgArenoso);
-        mapa.put("Torre Blanca", imgTorreBlanca);
-        mapa.put("Torre Plateada", imgTorrePlateada);
-        mapa.put("Trampa Arenosa En Construccion", imgArenosoEnConstruccion);
-        mapa.put("Torre Blanca En Construccion", imgTorreBlancaEnConstruccion);
-        mapa.put("Torre Plateada En Construccion", imgTorrePlateadaEnConstruccion);
+        Image imagenHormiga = new Image("file:src/main/img/hormiga.png");
+        Image imagenAraña = new Image("file:src/main/img/arana.png");
+        Image imagenTopo = new Image("file:src/main/img/topo.png");
+        Image imagenLechuza = new Image("file:src/main/img/lechuza.png");
 
-        return mapa;
+
+        Map<String, Image> imagenes = new HashMap<>();
+        imagenes.put("Tierra", imagenTierra);
+        imagenes.put("Rocoso", imagenRocoso);
+        imagenes.put("Pasarela", imagenPasarela);
+        imagenes.put("Trampa Arenosa", imgArenoso);
+        imagenes.put("Torre Blanca", imgTorreBlanca);
+        imagenes.put("Torre Plateada", imgTorrePlateada);
+        imagenes.put("Trampa Arenosa En Construccion", imgArenosoEnConstruccion);
+        imagenes.put("Torre Blanca En Construccion", imgTorreBlancaEnConstruccion);
+        imagenes.put("Torre Plateada En Construccion", imgTorrePlateadaEnConstruccion);
+        imagenes.put("Hormiga", imagenHormiga);
+        imagenes.put("Araña", imagenAraña);
+        imagenes.put("Topo", imagenTopo);
+        imagenes.put("Lechuza", imagenLechuza);
+
+
+        return imagenes;
     }
 
     public GridPane mostrarMapa(){
 
-        this.getChildren().clear();
-
-        int tamañoMapa = juego.getTamañoParcelas();
-        Image imagenMarco = new Image("file:src/main/img/marco.png");
-
+        this.getChildren().clear();     
         this.setPadding(new Insets(0));
         this.setHgap(0);
         this.setVgap(0);
 
+        cargarMapa();
+
+        cargarEnemigos();
+
+        return this;
+    }
+
+
+    private void cargarMapa() {
+
+        int tamañoMapa = juego.getTamañoParcelas();
+        
+        Image marco=new Image("file:src/main/img/marco.png");
+        
         for (int fila = 0; fila < tamañoMapa; fila++) {
             for (int columna = 0; columna < tamañoMapa; columna++) {
-                ImageView imageViewMarco = new ImageView(imagenMarco);
-                imageViewMarco.setFitWidth(50);
-                imageViewMarco.setFitHeight(50);
-                imageViewMarco.setVisible(false);
-
-                String tipo = this.juego.obtenerParcela(fila, columna);
-                Image imagen;
 
                 CrearDefensaEventHandler crearDefensa= new CrearDefensaEventHandler(this, juego, fila, columna, tipoDefensa);
-               
-                if (juego.hayDefensa(fila, columna)){
-                    if(juego.torreEnConstruccion(fila,columna))                    
-                        imagen = mapa.get(juego.devolverDefensa(fila, columna)+" En Construccion");                    
-                    else                    
-                        imagen = mapa.get(juego.devolverDefensa(fila, columna));
-                }else{
-                    imagen=mapa.get(tipo);
-                    
-                }
+            
+                ImageView parcela=dibujarParcela(fila,columna);                 
 
-                ImageView imageView = new ImageView(imagen);
-
-                imageView.setFitWidth(50);
-                imageView.setFitHeight(50);
+                
+                ImageView imageViewMarco=dibujarMarco(marco); 
 
                 StackPane stackPane = new StackPane();
-                stackPane.getChildren().addAll(imageView, imageViewMarco);
+
+                stackPane.getChildren().addAll(parcela, imageViewMarco);
+
+                
+                stackPane=dibujarEnemigo(fila,columna,stackPane);
+
                 stackPane.setDisable(!parcelasHabilitadas);
                 stackPane.setOnMouseClicked(crearDefensa);
                 movimientoMouse(imageViewMarco, stackPane);
@@ -104,8 +114,58 @@ public class VistaMapa extends GridPane{
                 this.add(stackPane, fila, columna);
             }
         }
-        return this;
     }
+
+    private StackPane dibujarEnemigo(int fila, int columna,StackPane stackPane) {
+        
+        List<String> enemigos=this.juego.enemigosEnPosicion(fila,columna);
+
+        for (String ene : enemigos) {
+            
+            ImageView enemigo=new ImageView(imagenes.get(ene));
+            enemigo.setFitHeight(20);
+            enemigo.setFitWidth(20);
+            stackPane.getChildren().add(enemigo);
+        }
+
+        return stackPane;
+    }
+
+    private ImageView dibujarParcela(int fila,int columna) {
+
+        String tipo = this.juego.obtenerParcela(fila, columna);
+
+        Image imagen=imagenes.get(tipo);
+
+        if (juego.hayDefensa(fila, columna)){
+            if(juego.torreEnConstruccion(fila,columna))                    
+                imagen = imagenes.get(juego.devolverDefensa(fila, columna)+" En Construccion");                    
+            else                    
+                imagen = imagenes.get(juego.devolverDefensa(fila, columna));
+        }
+
+        ImageView iv=new ImageView(imagen);
+
+
+        iv.setFitWidth(50);
+        iv.setFitHeight(50);
+
+        return iv;
+    }
+
+    private ImageView dibujarMarco(Image imagenMarco) {   
+        
+        ImageView marco=new ImageView(imagenMarco);
+        marco.setFitWidth(50);
+        marco.setFitHeight(50);
+        marco.setVisible(false);
+        return marco;
+    }
+
+    private void cargarEnemigos() {
+
+    }
+
     private void movimientoMouse(ImageView imagen, StackPane stackPane){
         MouseParcelasEventHandler mouseEnParcelas = new MouseParcelasEventHandler(imagen);
         stackPane.setOnMouseEntered(mouseEnParcelas);

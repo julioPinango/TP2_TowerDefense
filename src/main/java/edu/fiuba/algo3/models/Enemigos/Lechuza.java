@@ -37,7 +37,10 @@ public class Lechuza extends Enemigo
     public void mover(Jugador jugador) {
         if (Cordenada.calcularDistancia(coordenadaActual.getX(), coordenadaActual.getY(),
          coordenadaObjetivo.getX(), coordenadaObjetivo.getY())<6)
-            Energia=0;
+            {
+                Energia=0;
+                llegoAlFinal=true;
+            }
         else 
             coordenadaActual=movimiento.mover(coordenadaObjetivo,coordenadaActual);
            // volar();           

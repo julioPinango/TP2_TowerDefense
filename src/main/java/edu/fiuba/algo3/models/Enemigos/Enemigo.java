@@ -20,6 +20,7 @@ public abstract class Enemigo{
     protected String nombre;
     protected boolean ralentizado;
     protected Movimiento movimiento;
+    protected boolean llegoAlFinal=false;
 
     protected Queue<Pasarela> pasarelas = new LinkedList<>();
 
@@ -80,4 +81,10 @@ public abstract class Enemigo{
     public void ralentizar() {
         this.ralentizado=true;
     }
+
+    public boolean llegoAlFinal() {
+        return llegoAlFinal;
+    }
+
+  
 }
