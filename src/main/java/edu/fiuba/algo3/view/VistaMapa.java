@@ -21,31 +21,48 @@ public class VistaMapa extends GridPane{
     private Boolean parcelasHabilitadas;
     private String tipoDefensa;
     private VistaJugador vistaJugador;
+    private Map<String, Image> mapa = new HashMap<>();
 
     public VistaMapa(Juego j) {
         this.juego = j;
         this.parcelasHabilitadas=false;
+        mapa=setearMapa();
     }
 
-    public GridPane mostrarMapa(){
+    private Map<String, Image> setearMapa() {
+        
         Image imagenTierra = new Image("file:src/main/img/tierra.jpg");
         Image imagenRocoso = new Image("file:src/main/img/rocoso.png");
         Image imagenPasarela = new Image("file:src/main/img/pasarela.png");
-        Image imagenMarco = new Image("file:src/main/img/marco (2).png");
 
         Image imgArenoso = new Image("file:src/main/img/arenoso.png");
-        Image imgTorreBlanca = new Image("file:src/main/img/TorreBlancaTierra.png");
-        Image imgTorrePlateada = new Image("file:src/main/img/TorrePlateadaTierra.png");
-
+        Image imgTorreBlanca = new Image("file:src/main/img/TorreBlanca.png");
+        Image imgTorrePlateada = new Image("file:src/main/img/TorrePlateada.png");
+        
+        Image imgArenosoEnConstruccion = new Image("file:src/main/img/arenosoEnConstruccion.png");
+        Image imgTorreBlancaEnConstruccion = new Image("file:src/main/img/TorreBlancaEnConstruccion.png");
+        Image imgTorrePlateadaEnConstruccion = new Image("file:src/main/img/TorrePlateadaEnConstruccion.png");
 
         Map<String, Image> mapa = new HashMap<>();
-        int tamañoMapa = juego.getTamañoParcelas();
         mapa.put("Tierra", imagenTierra);
         mapa.put("Rocoso", imagenRocoso);
         mapa.put("Pasarela", imagenPasarela);
         mapa.put("Trampa Arenosa", imgArenoso);
         mapa.put("Torre Blanca", imgTorreBlanca);
         mapa.put("Torre Plateada", imgTorrePlateada);
+        mapa.put("Trampa Arenosa En Construccion", imgArenosoEnConstruccion);
+        mapa.put("Torre Blanca En Construccion", imgTorreBlancaEnConstruccion);
+        mapa.put("Torre Plateada En Construccion", imgTorrePlateadaEnConstruccion);
+
+        return mapa;
+    }
+
+    public GridPane mostrarMapa(){
+
+        this.getChildren().clear();
+
+        int tamañoMapa = juego.getTamañoParcelas();
+        Image imagenMarco = new Image("file:src/main/img/marco.png");
 
         this.setPadding(new Insets(0));
         this.setHgap(0);
@@ -64,8 +81,10 @@ public class VistaMapa extends GridPane{
                 CrearDefensaEventHandler crearDefensa= new CrearDefensaEventHandler(this, juego, fila, columna, tipoDefensa);
                
                 if (juego.hayDefensa(fila, columna)){
-
-                    imagen = mapa.get(juego.devolverDefensa(fila, columna));
+                    if(juego.torreEnConstruccion(fila,columna))                    
+                        imagen = mapa.get(juego.devolverDefensa(fila, columna)+" En Construccion");                    
+                    else                    
+                        imagen = mapa.get(juego.devolverDefensa(fila, columna));
                 }else{
                     imagen=mapa.get(tipo);
                     

@@ -23,5 +23,7 @@ public class EstadoEnConstruccion implements Estado{
     {
         return false;
     }
-    
+    public boolean enContruccion(){
+        return true;
+    }
 }

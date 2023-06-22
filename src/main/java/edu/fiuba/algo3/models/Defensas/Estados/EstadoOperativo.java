@@ -9,4 +9,8 @@ public class EstadoOperativo implements Estado {
     {
         return false;
     }
+
+    public boolean enContruccion(){
+        return false;
+    }
 }

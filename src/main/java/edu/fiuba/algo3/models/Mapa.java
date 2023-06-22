@@ -224,4 +224,17 @@ public class Mapa
         return parcelas.get(cordenada).getTipo();
     }
 
+    public boolean defensaEnConstruccion(int fila, int columna) {
+
+        Cordenada cordenada=new Cordenada(fila,columna);
+
+        for (int i=0; i< this.listaDefensas.size();i++){
+            if (listaDefensas.get(i).obtenerCordenada().equals(cordenada)){
+                return listaDefensas.get(i).enContruccion();
+            }
+        }
+
+        return false;
+    }
+
 }

@@ -9,5 +9,7 @@ public class EstadoDestruido implements Estado {
     {
         return true;
     }
-    
+    public boolean enContruccion(){
+        return false;
+    }
 }

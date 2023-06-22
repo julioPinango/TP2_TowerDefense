@@ -102,4 +102,8 @@ public class Juego
         String retorno = mapa.obtenerTipoDefensa(x,y);
         return retorno;
     }
+
+    public boolean torreEnConstruccion(int fila, int columna) {
+        return mapa.defensaEnConstruccion(fila,columna);
+    }
 }

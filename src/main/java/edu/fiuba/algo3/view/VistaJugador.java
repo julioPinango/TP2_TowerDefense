@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import edu.fiuba.algo3.models.Juego;
+import edu.fiuba.algo3.view.eventos.BotonIniciarEventHandler;
+import edu.fiuba.algo3.view.eventos.BotonPasarTurnoHandler;
 import edu.fiuba.algo3.view.eventos.MouseFueraParcelasEventHandler;
 import edu.fiuba.algo3.view.eventos.MouseParcelasEventHandler;
 import edu.fiuba.algo3.view.eventos.SeleccionDefensaEventHandle;
@@ -21,13 +23,19 @@ import javafx.scene.layout.VBox;
 public class VistaJugador extends GridPane{
     private Juego juego;
     private VistaMapa vistaMapa;
+    private VistaTurno _VistaTurno;
 
-    public VistaJugador(Juego j, VistaMapa vM) {
+    public VistaJugador(Juego j, VistaMapa vM,VistaTurno vT) {
         this.juego = j;
         this.vistaMapa = vM;
+        this._VistaTurno=vT;
     }
     
     public GridPane mostrarDatos(){
+
+        this.getChildren().clear();
+
+
         this.setPadding(new Insets(0));
         this.setHgap(0);
         this.setVgap(0);
@@ -36,6 +44,8 @@ public class VistaJugador extends GridPane{
         VBox cuadroInfoJugador = new VBox();
         cuadroInfoJugador.setSpacing(0); 
         cuadroInfoJugador.setPadding(new Insets(20)); 
+
+        
 
         Label estadisticasDelJugador = new Label("Tus Estadisticas");
         estadisticasDelJugador.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
@@ -54,15 +64,32 @@ public class VistaJugador extends GridPane{
         cuadroBotones.setPadding(new Insets(20));
         cuadroBotones.setAlignment(Pos.CENTER);
 
-        Button botonPasarTurno = new Button("Pasar Turno");
+        Button botonPasarTurno = pasarTurno();
+
+
+
+
+
         this.listaDefensas();
 
         cuadroBotones.getChildren().addAll(botonPasarTurno);
         this.add(stackPaneCuadro, 0, 0);
         this.add(cuadroBotones, 0,2);
 
+
         return this;
     }
+
+    private Button pasarTurno() {
+
+        Button botonPasarTurno=new Button("Pasar Turno");
+
+        BotonPasarTurnoHandler pasarTurno = new BotonPasarTurnoHandler(juego,vistaMapa,this,_VistaTurno);
+        botonPasarTurno.setOnAction(pasarTurno);
+
+        return botonPasarTurno;
+    }
+
     private void listaDefensas(){
 
         VBox cuadroDefensas = new VBox();
@@ -83,26 +110,35 @@ public class VistaJugador extends GridPane{
         TorrePlateadaBox.setAlignment(Pos.CENTER);
 
         Image imgArenoso = new Image("file:src/main/img/arenoso.png");
-        Image imgTorreBlanca = new Image("file:src/main/img/TorreBlancaTierra.png");
-        Image imgTorrePlateada = new Image("file:src/main/img/TorrePlateadaTierra.png");
+        Image imgTorreBlanca = new Image("file:src/main/img/TorreBlanca.png");
+        Image imgTorrePlateada = new Image("file:src/main/img/TorrePlateada.png");
+
+        Image imgArenosoDeshabilitado = new Image("file:src/main/img/arenosoDeshabilitada.png");
+        Image imgTorreBlancaDeshabilitada = new Image("file:src/main/img/TorreBlancaDeshabilitada.png");
+        Image imgTorrePlateadaDeshabilitada= new Image("file:src/main/img/TorrePlateadaDeshabilitada.png");
 
         ImageView imageViewArena = new ImageView(imgArenoso);
         ImageView imageViewBlanca = new ImageView(imgTorreBlanca);
         ImageView imageViewPlateada = new ImageView(imgTorrePlateada);
 
+         
+
+        if (this.juego.obtenerCreditosDelJugador()<10){
+           imageViewBlanca.setImage(imgTorreBlancaDeshabilitada);
+            imageViewBlanca.setDisable(true);
+        }
+        if(this.juego.obtenerCreditosDelJugador()<20){
+            imageViewPlateada.setImage(imgTorrePlateadaDeshabilitada);
+            imageViewPlateada.setDisable(true);
+        }
+         if (this.juego.obtenerCreditosDelJugador()<25){
+            imageViewArena.setImage(imgArenosoDeshabilitado);
+            imageViewArena.setDisable(true);
+        }
+
         SeleccionDefensaEventHandle seleccionArena = new SeleccionDefensaEventHandle(this.vistaMapa, "Trampa Arenosa",this);
         SeleccionDefensaEventHandle seleccionBlanca = new SeleccionDefensaEventHandle(this.vistaMapa, "Torre Blanca", this);
         SeleccionDefensaEventHandle seleccionPlateada = new SeleccionDefensaEventHandle(this.vistaMapa, "Torre Plateada", this);
-
-        if (this.juego.obtenerCreditosDelJugador()<10){
-            imageViewArena.setDisable(true);
-        }
-        if(this.juego.obtenerCreditosDelJugador()<20){
-            imageViewBlanca.setDisable(true);
-        }
-         if (this.juego.obtenerCreditosDelJugador()<25){
-            imageViewPlateada.setDisable(true);
-        }
 
         imageViewArena.setOnMouseClicked(seleccionArena);
         imageViewBlanca.setOnMouseClicked(seleccionBlanca);

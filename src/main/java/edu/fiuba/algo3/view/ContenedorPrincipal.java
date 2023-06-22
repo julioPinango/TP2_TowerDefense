@@ -36,8 +36,14 @@ public class ContenedorPrincipal extends GridPane{
         Separator separator = new Separator(Orientation.HORIZONTAL);        
         ContenedorMenu.getChildren().addAll(new VistaOpciones(s));
         ContenedorMenu.getChildren().addAll(separator);
-        VistaJugador vistaJugador = new VistaJugador(j, vistaMapa);
-        ContenedorMenu.getChildren().addAll(vistaJugador.mostrarDatos());
+        VistaTurno turno=new VistaTurno(j);
+        VistaJugador vistaJugador = new VistaJugador(j, vistaMapa,turno);
+        ContenedorMenu.getChildren().addAll(vistaJugador.mostrarDatos(),turno.mostrarTurno());
+        
+        
+        //this.add(turno.mostrarTurno(),0,0);  
+
+
 
         this.add(ContenedorMenu,1,0);
     }

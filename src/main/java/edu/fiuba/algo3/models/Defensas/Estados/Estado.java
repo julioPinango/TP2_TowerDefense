@@ -5,6 +5,8 @@ public interface Estado {
 
     boolean destruido();
 
+    boolean enContruccion();
+
 }
  
 

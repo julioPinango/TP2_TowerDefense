@@ -71,4 +71,7 @@ public abstract class Defensa
     public boolean puedoAtacar(){
         return(this.estado.puedoAtacar());
     }
+    public boolean enContruccion() {
+        return estado.enContruccion();
+    }
 }
