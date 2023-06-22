@@ -40,7 +40,7 @@ public class VistaTurno extends GridPane{
         this.setPadding(new Insets(0));
         this.setHgap(0);
         this.setVgap(0);
-        this.setStyle("-fx-background-color: BLUEVIOLET; -fx-border-color: black;");
+        this.setStyle("-fx-background-color: DEEPSKYBLUE; -fx-border-color: black;");
 
         VBox cuadroTurno = new VBox();
         cuadroTurno.setSpacing(0); 
