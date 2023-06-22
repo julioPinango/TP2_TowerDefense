@@ -21,7 +21,7 @@ public class ContenedorInicial extends VBox {
         Label titulo = new Label("Tower Defense");
         titulo.setFont(new Font("Arial", 20));
 
-        Label aviso = new Label("*El nombre debe tener más de 4 caracteres");
+        Label aviso = new Label("*El nombre debe tener por lo menos 6 caracteres");
 
         Label label = new Label("Ingrese su nombre para iniciar el juego");
 

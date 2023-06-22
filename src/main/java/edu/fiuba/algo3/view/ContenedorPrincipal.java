@@ -28,7 +28,7 @@ public class ContenedorPrincipal extends GridPane{
     public ContenedorPrincipal(Stage s, Juego j){
         this.stage=s;
         this.juego=j;
-        this.add(new VistaJuego(j),0,0);
+        this.add(new VistaMapa(j),0,0);
 
         VBox ContenedorMenu=new VBox();
         Separator separator = new Separator(Orientation.HORIZONTAL);        
