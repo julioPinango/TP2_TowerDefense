@@ -5,10 +5,7 @@ import edu.fiuba.algo3.models.Cordenada;
 public class MovimientoLechuzaenDiagonal extends Movimiento{
 
     public Cordenada mover(Cordenada coordenadaObjetivo,Cordenada coordenadaActual)
-    {
-
-        System.out.println("X:"+coordenadaActual.getX()+"Y:"+coordenadaActual.getY());
-
+    {       
         int distanciaX = coordenadaObjetivo.getX() - coordenadaActual.getX();
         int distanciaY = coordenadaObjetivo.getY() - coordenadaActual.getY();
 
@@ -19,10 +16,7 @@ public class MovimientoLechuzaenDiagonal extends Movimiento{
         int pasoY = (distanciaY > 0) ? Math.min(distanciaY, 5) : Math.max(distanciaY, -5);
 
         int newCoordenadaX = coordenadaActual.getX() + pasoX;
-        int newCoordenadaY = coordenadaActual.getY() + pasoY;
-
-        System.out.println("X:"+coordenadaActual.getX()+"Y:"+coordenadaActual.getY());
-
+        int newCoordenadaY = coordenadaActual.getY() + pasoY;  
 
         return new Cordenada(newCoordenadaX, newCoordenadaY);
     }

@@ -8,5 +8,8 @@ public class AtaqueAraña extends Ataque{
         player.recibirAtaque(2);
     }
 
+    public int getdanio() {
+        return 2;
+    }
 }
 

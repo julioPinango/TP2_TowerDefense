@@ -7,6 +7,8 @@ public class AtaqueHormiga extends Ataque{
     public void dañar(Jugador player){
         player.recibirAtaque(1);
     }
-
+    public int getdanio() { 
+        return 1;
+    }
 }
 

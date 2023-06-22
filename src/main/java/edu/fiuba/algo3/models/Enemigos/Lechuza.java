@@ -34,7 +34,7 @@ public class Lechuza extends Enemigo
         coordenadaObjetivo = listaPasarelas.get(tamaño - 1).getCordenada();
     }
 
-    public void mover(Jugador jugador) {
+    public void mover() {
         if (Cordenada.calcularDistancia(coordenadaActual.getX(), coordenadaActual.getY(),
          coordenadaObjetivo.getX(), coordenadaObjetivo.getY())<6)
             {
@@ -42,14 +42,8 @@ public class Lechuza extends Enemigo
                 llegoAlFinal=true;
             }
         else 
-            {
-                System.out.println("X:"+coordenadaActual.getX()+"Y:"+coordenadaActual.getY());
-
-                coordenadaActual=movimiento.mover(coordenadaObjetivo,coordenadaActual);
-
-                System.out.println("X:"+coordenadaActual.getX()+"Y:"+coordenadaActual.getY());
-
-            }
+            coordenadaActual=movimiento.mover(coordenadaObjetivo,coordenadaActual);
+            
            // volar();           
         
     }

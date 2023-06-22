@@ -8,18 +8,22 @@ public class AtaqueTopo extends Ataque{
 
     
     Turno _Turno=null;
-
+    int _danio=2;
+    
     public AtaqueTopo (Turno turno){
         _Turno=turno;
     }
 
     public void dañar(Jugador player){
-        int danio=2;
 
         if(_Turno.esTurnoPar())            
-            danio=danio+3;
+            _danio=_danio+3;
 
-        player.recibirAtaque(danio);        
+        player.recibirAtaque(_danio);        
+    }
+
+    public int getdanio() {
+        return _danio;
     }
 }
 

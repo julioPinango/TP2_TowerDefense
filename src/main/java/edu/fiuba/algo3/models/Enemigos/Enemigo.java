@@ -38,8 +38,8 @@ public abstract class Enemigo{
                Objects.equals(nombre, otra.nombre);
     }
 
-    public Ataque getAtaque() {
-        return ataque;
+    public int getAtaque() {
+        return ataque.getdanio();
     }
     public int getEnergia() {
         return Energia;

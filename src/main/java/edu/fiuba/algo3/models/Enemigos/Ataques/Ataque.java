@@ -21,6 +21,10 @@ public abstract class Ataque{
         
     }
 
+    public int getdanio() {
+        return 0;
+    }
+
 
 
 
