@@ -19,13 +19,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class VistaJugador extends GridPane{
     private Juego juego;
     private VistaMapa vistaMapa;
     private VistaTurno _VistaTurno;
+    private Stage stage;
 
-    public VistaJugador(Juego j, VistaMapa vM,VistaTurno vT) {
+    public VistaJugador(Juego j, VistaMapa vM,VistaTurno vT, Stage s) {
         this.juego = j;
         this.vistaMapa = vM;
         this._VistaTurno=vT;
@@ -80,7 +82,7 @@ public class VistaJugador extends GridPane{
 
         Button botonPasarTurno=new Button("Pasar Turno");
 
-        BotonPasarTurnoHandler pasarTurno = new BotonPasarTurnoHandler(juego,vistaMapa,this,_VistaTurno);
+        BotonPasarTurnoHandler pasarTurno = new BotonPasarTurnoHandler(juego,vistaMapa,this,_VistaTurno, this.stage);
         botonPasarTurno.setOnAction(pasarTurno);
 
         return botonPasarTurno;
