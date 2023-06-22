@@ -31,6 +31,7 @@ public class VistaJugador extends GridPane{
         this.juego = j;
         this.vistaMapa = vM;
         this._VistaTurno=vT;
+        this.stage=s;
     }
     
     public GridPane mostrarDatos(){

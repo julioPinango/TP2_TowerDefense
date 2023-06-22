@@ -17,7 +17,6 @@ public class App extends Application {
     
         stage.setTitle("Tower Defense");
 
-        //StackPane layout = new StackPane();
         ContenedorInicial contenedorInicial = new ContenedorInicial(stage);
         Scene scene = new Scene(contenedorInicial ,500,270);
         stage.setScene(scene);

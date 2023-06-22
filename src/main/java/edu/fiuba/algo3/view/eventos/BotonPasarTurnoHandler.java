@@ -20,12 +20,12 @@ public class BotonPasarTurnoHandler implements EventHandler<ActionEvent> {
     private Stage stage;
 
 
-    public BotonPasarTurnoHandler(Juego juego,VistaMapa vistaMapa,VistaJugador vistaJugador,VistaTurno vistaTurno, Stage s){      
+    public BotonPasarTurnoHandler(Juego juego,VistaMapa vistaMapa,VistaJugador vistaJugador,VistaTurno vistaTurno, Stage stage){      
       _juego=juego;
       _vistaMapa=vistaMapa;
       _vistaJugador=vistaJugador;
       _VistaTurno=vistaTurno;
-      stage=s;
+      this.stage=stage;
     }
 
     public void handle(ActionEvent mouseEvent){
@@ -39,8 +39,8 @@ public class BotonPasarTurnoHandler implements EventHandler<ActionEvent> {
       _VistaTurno.mostrarTurno();
       
       if (_juego.getResultado()!="En proceso"){
-        ContenedorFinal contenedorPrincipal = new ContenedorFinal(stage, _juego);
-        Scene proximaVentana = new Scene(contenedorPrincipal, 1080, 720);
+        ContenedorFinal contenedorFinal = new ContenedorFinal(stage, _juego);
+        Scene proximaVentana = new Scene(contenedorFinal ,500,270);
         stage.setScene(proximaVentana);
       }
 
