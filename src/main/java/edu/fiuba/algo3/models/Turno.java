@@ -13,6 +13,8 @@ public class Turno {
 
     public void pasarTurno(){
         turnoActual++;
+        var log = Log.obtenetInstancia();
+        log.imprimirTurno(turnoActual);
     }
 
     public boolean esTurnoPar(){

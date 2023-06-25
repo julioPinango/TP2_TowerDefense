@@ -40,16 +40,12 @@ public abstract class Defensa
             this.estado=new EstadoOperativo();
             for (Enemigo enemigo : enemigos) {
 
-                if(cordenada.estaEnRango(RangoAtaque, enemigo.getCordenada()))
-                {
-                    if(enemigo.getEnergia()>0)
-                    {
-                        if(enemigo.recibirAtaque(danio))
-                        {
-                            var log = Log.obtenetInstancia();
-                            log.imprimirAtaque(this,enemigo,enemigo.getCordenada());
-                            break;
-                        }
+                if(cordenada.estaEnRango(RangoAtaque, enemigo.getCordenada()) && enemigo.getEnergia()>0)
+                { 
+                    if(enemigo.recibirAtaque(danio)){
+                        var log = Log.obtenetInstancia();
+                        log.imprimirAtaque(this,enemigo,enemigo.getCordenada());
+                        break;
                     }
                 }
             }

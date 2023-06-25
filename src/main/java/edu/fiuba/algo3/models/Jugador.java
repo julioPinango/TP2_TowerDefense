@@ -1,8 +1,5 @@
 package edu.fiuba.algo3.models;
 
-import edu.fiuba.algo3.models.Defensas.Defensa;
-import edu.fiuba.algo3.models.Enemigos.Enemigo;
-
 public class Jugador{
 
    private int Vida;
@@ -48,8 +45,7 @@ public class Jugador{
       this.hormigasDestruidas++;
    }
 
-   public void agregarCreditos(int creditosEntrantes)
-   {
+   public void agregarCreditos(int creditosEntrantes){
       Creditos=Creditos+creditosEntrantes;
    }
-   }
+}

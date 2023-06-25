@@ -2,7 +2,6 @@ package edu.fiuba.algo3.models.Defensas;
 
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Defensas.Estados.Estado;
-import edu.fiuba.algo3.models.Defensas.Estados.EstadoEnConstruccion;
 
 public class TorrePlateada extends Defensa
 {
@@ -16,6 +15,5 @@ public class TorrePlateada extends Defensa
         this.cordenada=cordenadas;
         this.estado=estado;
     }
-    
     
 }

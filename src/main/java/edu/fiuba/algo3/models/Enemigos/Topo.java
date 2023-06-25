@@ -1,13 +1,8 @@
 package edu.fiuba.algo3.models.Enemigos;
 
 import java.util.Queue;
-import java.util.Random;
 
-import edu.fiuba.algo3.models.Jugador;
-import edu.fiuba.algo3.models.Log;
-import edu.fiuba.algo3.models.Enemigos.Ataques.Ataque;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.Movimiento;
-import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoHormigaRalentizado;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoTopo;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoTopoRalentizado;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
@@ -18,7 +13,7 @@ public class Topo extends Enemigo
 
     public Topo(Queue<Pasarela> pasarelas,Movimiento mov)
     {
-        this.Energia = 1; //nunca lo atacan asi que no se que poner en energia
+        this.Energia = 1;
         this.Velocidad = 1; //va aumentando
         this.nombre = "Topo";
         this.pasarelas=pasarelas;

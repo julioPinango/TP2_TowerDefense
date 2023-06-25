@@ -73,9 +73,9 @@ public abstract class Enemigo{
     }
 
     public void atacarJugador(Jugador jugador){
-        this.ataque.dañar(jugador);
         var log = Log.obtenetInstancia();
         log.imprimirDanioEnemigo(this);
+        this.ataque.dañar(jugador);
     }
 
     public void ralentizar() {

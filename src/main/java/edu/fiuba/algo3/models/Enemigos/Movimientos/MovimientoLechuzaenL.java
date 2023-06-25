@@ -2,8 +2,6 @@ package edu.fiuba.algo3.models.Enemigos.Movimientos;
 
 import edu.fiuba.algo3.models.Cordenada;
 
-import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoLechuzaenDiagonal;
-
 public class MovimientoLechuzaenL extends Movimiento{
 
     public Movimiento obtenerMovimiento(int Energia)

@@ -3,8 +3,6 @@ package edu.fiuba.algo3.models.Enemigos;
 import java.util.Queue;
 
 import edu.fiuba.algo3.models.Jugador;
-import edu.fiuba.algo3.models.Log;
-import edu.fiuba.algo3.models.Enemigos.Ataques.Ataque;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.Movimiento;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoHormiga;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoHormigaRalentizado;
@@ -12,8 +10,6 @@ import edu.fiuba.algo3.models.Parcelas.Pasarela;
 
 public class Hormiga extends Enemigo
 {
-    //Queue<Pasarela> pasarelas = new LinkedList<>();
-
     public Hormiga(Queue<Pasarela> pasarelas,Movimiento mov)
     {
         this.Energia = 1;

@@ -30,4 +30,13 @@ public class Log{
         System.out.println("Jugador Construye "+defensa.getNombre() + 
         " en posición " + coordenada.getCoordenadas());
     }
+
+    public void imprimirTurno(int turno){
+        System.out.println("Turno " + turno);
+    }
+
+    public void imprimirAtaqueLechuza(Defensa defensa){
+        System.out.println("Lechuza destruye una " + defensa.getNombre() + " en la posición " + 
+        defensa.obtenerCordenada().getCoordenadas());
+    }
 }
