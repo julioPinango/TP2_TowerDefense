@@ -14,7 +14,7 @@ public class Topo extends Enemigo
     public Topo(Queue<Pasarela> pasarelas,Movimiento mov)
     {
         this.Energia = 1;
-        this.Velocidad = 1; //va aumentando
+        this.Velocidad = 1; 
         this.nombre = "Topo";
         this.pasarelas=pasarelas;
         this.contMovimientos= 0;
@@ -37,7 +37,7 @@ public class Topo extends Enemigo
 
     }
     public boolean recibirAtaque(int danio) {
-        return false; //nunca lo atacan
+        return false; 
     }
  
 

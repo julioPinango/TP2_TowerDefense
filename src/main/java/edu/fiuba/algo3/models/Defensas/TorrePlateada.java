@@ -11,7 +11,6 @@ public class TorrePlateada extends Defensa
         this.RangoAtaque=5;
         this.danio=2;
         this.nombre= "Torre Plateada";
-        
         this.cordenada=cordenadas;
         this.estado=estado;
     }

@@ -20,7 +20,7 @@ public class TrampaArenosa extends Defensa{
         this.estado=estado;
     }
 
-    public void atacar(List<Enemigo> enemigos){ //implementar un atacar distinto
+    public void atacar(List<Enemigo> enemigos){ 
 
         for (Enemigo enemigo : enemigos) {
             enemigo.ralentizar();            

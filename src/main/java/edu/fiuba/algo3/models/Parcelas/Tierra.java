@@ -13,7 +13,7 @@ public class Tierra extends Parcela
       this.cordenadas=cordenada;
       this.TipoDeParcela="Tierra";
    }    
-   // private Defensa Models defensa;
+
    public boolean puedoConstruirDefensa(Defensa defensaNueva) {
       boolean retorno=defensaNueva.puedoConstruirEnTierra(this.libre);        
       this.libre=false;

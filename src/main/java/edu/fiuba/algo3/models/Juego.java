@@ -78,8 +78,7 @@ public class Juego
         return jugador.getCreditos();
     }
     public void realizarTurno() {
-       //Efectua un turno y deja el juego en el estado correspondiente.
-
+ 
         mapa.realizarTurno(jugador,turno);                   
 
         if(jugador.jugadorDerrotado())

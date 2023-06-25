@@ -17,9 +17,8 @@ public class Lechuza extends Enemigo
     {
         this.Energia = 5;
         this.Velocidad = 5;
-
         this.nombre = "Lechuza";
-        this.pasarelas=pasarelas; //se mueve por cualquier parcela
+        this.pasarelas=pasarelas;
         this.movimiento=mov;
 
         List<Pasarela> listaPasarelas = new ArrayList<>(pasarelas);
