@@ -12,10 +12,8 @@ import java.util.Queue;
 import edu.fiuba.algo3.models.Cordenada;
 import edu.fiuba.algo3.models.Defensas.Defensa;
 import edu.fiuba.algo3.models.Defensas.DefensaFactory;
-import edu.fiuba.algo3.models.Enemigos.Araña;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 import edu.fiuba.algo3.models.Enemigos.Hormiga;
-import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoAraña;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoHormiga;
 import edu.fiuba.algo3.models.Parcelas.Pasarela;
 

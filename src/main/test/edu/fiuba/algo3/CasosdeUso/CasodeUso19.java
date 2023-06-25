@@ -23,20 +23,9 @@ public class CasodeUso19 {
 
         Juego juego=new Juego(jugador,mapa,turno);
 
-        juego.realizarTurno();
-        juego.realizarTurno();
-        juego.realizarTurno();
-        juego.realizarTurno();
-        juego.realizarTurno();
-        juego.realizarTurno();
-        juego.realizarTurno();
-        juego.realizarTurno();
-        juego.realizarTurno();
-        juego.realizarTurno();
-        juego.realizarTurno();
-        juego.realizarTurno();
-        juego.realizarTurno();
-        juego.realizarTurno();
+        for (int i = 0; i < 25; i++) {
+            juego.realizarTurno();
+        }
 
         //Como probamos lo aleatorio.
         assertEquals("Pierde",juego.getResultado());        

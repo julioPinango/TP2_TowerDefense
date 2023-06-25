@@ -9,6 +9,7 @@ import edu.fiuba.algo3.models.Parser;
 import edu.fiuba.algo3.models.Turno;
 import edu.fiuba.algo3.models.Enemigos.Lechuza;
 import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoLechuzaenDiagonal;
+import edu.fiuba.algo3.models.Enemigos.Movimientos.MovimientoLechuzaenL;
 
 import java.io.IOException;
 
@@ -28,9 +29,9 @@ public class PruebaLechuza {
 
             var camino=mapa.inicializarCaminoDeEnemigos(list);          
     
-            Lechuza lechuza=new Lechuza(camino,new MovimientoLechuzaenDiagonal());
+            Lechuza lechuza=new Lechuza(camino,new MovimientoLechuzaenL());
 
-            lechuza.volar();                        
+            lechuza.mover();                        
 
             assertEquals(3,lechuza.getCordenada().getX());
             assertEquals(3,lechuza.getCordenada().getY());
@@ -54,7 +55,7 @@ public class PruebaLechuza {
 
             lechuza.recibirAtaque(4);            
 
-            lechuza.volar();                        
+            lechuza.mover();                        
 
             assertEquals(lechuza.getCordenada().getX(),6);
             assertEquals(lechuza.getCordenada().getY(),5);
