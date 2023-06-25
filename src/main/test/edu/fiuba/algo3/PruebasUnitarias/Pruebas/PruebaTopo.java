@@ -7,6 +7,7 @@ import static org.mockito.Mockito.*;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
@@ -75,8 +76,12 @@ public class PruebaTopo {
         Queue<Pasarela> pasarelas = new LinkedList<>();
 
         Topo topo = new Topo(pasarelas,new MovimientoTopo());
+        Random random = new Random();
 
-        assertFalse(topo.recibirAtaque(anyInt()));
+        // Generar un número entero aleatorio entre 0 y 9
+        int numeroAleatorio = random.nextInt(10);
+
+        assertFalse(topo.recibirAtaque(numeroAleatorio));
     }
 
     @Test

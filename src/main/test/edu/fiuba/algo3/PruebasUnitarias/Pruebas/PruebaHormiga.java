@@ -2,10 +2,12 @@ package edu.fiuba.algo3.PruebasUnitarias.Pruebas;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
@@ -95,8 +97,11 @@ public class PruebaHormiga {
         Queue<Pasarela> pasarelas = new LinkedList<>();
 
         Hormiga hormiga = new Hormiga(pasarelas,new MovimientoHormiga());
+        Random random = new Random();
 
-        assertTrue(hormiga.recibirAtaque(anyInt()));
+        int numeroAleatorio = random.nextInt(10);
+
+        assertTrue(hormiga.recibirAtaque(numeroAleatorio));
     }
 
     @Test

@@ -2,7 +2,8 @@ package edu.fiuba.algo3.PruebasUnitarias.Pruebas;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.anyInt;
+
+import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +27,11 @@ public class PruebaEstadoEnConstruccion {
 
     @Test
     public void TestEstaDestruido(){
-        EstadoEnConstruccion enConstruccion = new EstadoEnConstruccion(anyInt());
+        Random random = new Random();
+
+        // Generar un número entero aleatorio entre 0 y 9
+        int numeroAleatorio = random.nextInt(10);
+        EstadoEnConstruccion enConstruccion = new EstadoEnConstruccion(numeroAleatorio);
 
         assertFalse(enConstruccion.destruido());
     }

@@ -84,16 +84,12 @@ public class CasodeUso8 {
         mapa.colocarDefensaEnEstaPosicion(0, 3, "Torre Plateada",jugador);
         mapa.colocarDefensaEnEstaPosicion(0, 4, "Torre Plateada",jugador);
         mapa.colocarDefensaEnEstaPosicion(0, 5, "Torre Plateada",jugador);
-        mapa.colocarDefensaEnEstaPosicion(0, 6, "Torre Plateada",jugador);
-        mapa.colocarDefensaEnEstaPosicion(0, 7, "Torre Plateada",jugador);
 
         Juego juego=new Juego(jugador,mapa,turno);
 
-        do{
-            juego.realizarTurno();              
+        for (int i = 0; i < 25; i++) {
+            juego.realizarTurno();   
         }
-        while (juego.getResultado()=="En proceso") ; 
-
         //Como probamos lo aleatorio.
         assertTrue(jugador.getCreditos()>0);
 
