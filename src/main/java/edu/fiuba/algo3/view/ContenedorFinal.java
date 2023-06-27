@@ -3,7 +3,8 @@ package edu.fiuba.algo3.view;
 import edu.fiuba.algo3.models.Juego;
 import edu.fiuba.algo3.models.Jugador;
 import edu.fiuba.algo3.view.eventos.BotonIniciarEventHandler;
-import edu.fiuba.algo3.view.eventos.OpcionesSalirDelJuegoEventHandler;
+import edu.fiuba.algo3.view.eventos.BotonReiniciarEventHandler;
+import edu.fiuba.algo3.view.eventos.SalirDelJuegoEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -26,14 +27,19 @@ public class ContenedorFinal extends VBox{
             resultadoJuego.setText("Perdiste el juego, será para la próxima!");
         }
 
-        Button buttonCerrarJuego = new Button("Cerrar Juego");
+        Button buttonCerrarJuego = new Button("Cerrar juego");
+        Button buttonReiniciar = new Button("Volver a jugar");
     
-        OpcionesSalirDelJuegoEventHandler iniciarEventHandler = new OpcionesSalirDelJuegoEventHandler(stage);
+        SalirDelJuegoEventHandler iniciarEventHandler = new SalirDelJuegoEventHandler(stage);
         buttonCerrarJuego.setOnAction(iniciarEventHandler);
+
+        BotonReiniciarEventHandler reiniciarEventHandler = new BotonReiniciarEventHandler(stage);
+        buttonReiniciar.setOnAction(reiniciarEventHandler);
 
         this.getChildren().addAll(
                 resultadoJuego,
-                buttonCerrarJuego
+                buttonCerrarJuego,
+                buttonReiniciar
         );
     }
 }

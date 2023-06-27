@@ -79,9 +79,6 @@ public class Mapa
             Spawn.add(nuevosEnemigos);
         }
 
-         
-
-
         return Spawn;
     }
 
@@ -150,6 +147,7 @@ public class Mapa
     public boolean hayDefensaEnEstaPosicion(int x, int y){
         Cordenada coordenada= new Cordenada(x, y);
         boolean retorno = false;
+
         for (int i=0; i< this.listaDefensas.size();i++){
             if (listaDefensas.get(i).obtenerCordenada().equals(coordenada)){
                 retorno = true;
@@ -189,7 +187,6 @@ public class Mapa
     private List<Enemigo> enemigosRestantes(List<Enemigo> enemigosActuales, Jugador jugador, Turno turno){
         List<Enemigo> listaEnemigosVivos = new ArrayList<>();   
 
-
         for(Enemigo enemigo:enemigosActuales)
         {             
             enemigo.mover();
@@ -202,9 +199,7 @@ public class Mapa
             {
                 enemigo.otorgarCreditos(jugador);                
                 enemigo.sumarEnemigoMuerto(jugador);
-            }
-
-            
+            } 
         }
         return listaEnemigosVivos;
     }
@@ -216,6 +211,10 @@ public class Mapa
 
             if(defensa.destruido()==false)
                 defensasDisponibles.add(defensa);
+            else{
+                Cordenada cordenadaDefensa= defensa.obtenerCordenada();
+                parcelas.get(cordenadaDefensa).liberar();
+            }
         }
 
         return defensasDisponibles;

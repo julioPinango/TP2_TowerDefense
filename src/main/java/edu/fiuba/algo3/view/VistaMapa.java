@@ -65,7 +65,6 @@ public class VistaMapa extends GridPane{
         imagenes.put("Topo", imagenTopo);
         imagenes.put("Lechuza", imagenLechuza);
 
-
         return imagenes;
     }
 
@@ -97,14 +96,12 @@ public class VistaMapa extends GridPane{
             
                 ImageView parcela=dibujarParcela(fila,columna);                 
 
-                
                 ImageView imageViewMarco=dibujarMarco(marco); 
 
                 StackPane stackPane = new StackPane();
 
                 stackPane.getChildren().addAll(parcela, imageViewMarco);
 
-                
                 stackPane=dibujarEnemigo(fila,columna,stackPane);
 
                 stackPane.setDisable(!parcelasHabilitadas);
@@ -119,14 +116,24 @@ public class VistaMapa extends GridPane{
     private StackPane dibujarEnemigo(int fila, int columna,StackPane stackPane) {
         
         List<String> enemigos=this.juego.enemigosEnPosicion(fila,columna);
+        GridPane gridPane = new GridPane();
+        gridPane.getChildren().clear();     
+        gridPane.setPadding(new Insets(0));
 
-        for (String ene : enemigos) {
+        for (var i=0; i<enemigos.size();i++ ) {
+            ImageView enemigo=new ImageView(imagenes.get(enemigos.get(i)));
+            enemigo.setFitHeight(16);
+            enemigo.setFitWidth(16);
             
-            ImageView enemigo=new ImageView(imagenes.get(ene));
-            enemigo.setFitHeight(20);
-            enemigo.setFitWidth(20);
-            stackPane.getChildren().add(enemigo);
+            if (i<3){
+                gridPane.add(enemigo, i, 0);
+            }else if (i<6){
+                gridPane.add(enemigo, i-3, 1);
+            }else{
+                gridPane.add(enemigo, i-6,2);
+            }
         }
+        stackPane.getChildren().add(gridPane);
 
         return stackPane;
     }

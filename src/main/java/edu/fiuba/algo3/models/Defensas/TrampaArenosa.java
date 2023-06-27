@@ -3,6 +3,7 @@ package edu.fiuba.algo3.models.Defensas;
 import java.util.List;
 
 import edu.fiuba.algo3.models.Cordenada;
+import edu.fiuba.algo3.models.Log;
 import edu.fiuba.algo3.models.Defensas.Estados.Estado;
 import edu.fiuba.algo3.models.Enemigos.Enemigo;
 
@@ -23,7 +24,9 @@ public class TrampaArenosa extends Defensa{
     public void atacar(List<Enemigo> enemigos){ 
 
         for (Enemigo enemigo : enemigos) {
-            enemigo.ralentizar();            
+            if(cordenada.estaEnRango(RangoAtaque, enemigo.getCordenada())){
+                 enemigo.ralentizar(); 
+            }           
         }
 
         contadorTurnos=contadorTurnos-1;

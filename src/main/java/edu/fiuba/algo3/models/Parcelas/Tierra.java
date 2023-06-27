@@ -14,6 +14,10 @@ public class Tierra extends Parcela
       this.TipoDeParcela="Tierra";
    }    
 
+   public void liberar(){
+      this.libre=true;
+   }
+
    public boolean puedoConstruirDefensa(Defensa defensaNueva) {
       boolean retorno=defensaNueva.puedoConstruirEnTierra(this.libre);        
       this.libre=false;

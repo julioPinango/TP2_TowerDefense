@@ -8,7 +8,6 @@ import edu.fiuba.algo3.view.eventos.BotonIniciarEventHandler;
 import edu.fiuba.algo3.view.eventos.MouseFueraParcelasEventHandler;
 import edu.fiuba.algo3.view.eventos.MouseParcelasEventHandler;
 import edu.fiuba.algo3.view.eventos.OpcionesPantallaCompletaEventHandler;
-import edu.fiuba.algo3.view.eventos.OpcionesSalirDelJuegoEventHandler;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;

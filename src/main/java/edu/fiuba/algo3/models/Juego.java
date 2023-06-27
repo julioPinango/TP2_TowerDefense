@@ -46,13 +46,12 @@ public class Juego
         return mapa.obtenerTipoParcela(x,y);
     }
    
-  
     public boolean colocarDefensas(int x, int y, String tipoDeTorre){
 
-        if(!(this.mapa.colocarDefensaEnEstaPosicion(x,y,tipoDeTorre,jugador))){
-            return false;
+        if(this.mapa.colocarDefensaEnEstaPosicion(x,y,tipoDeTorre,jugador)){
+            return true;
         }
-        return true;
+        return false;
     }
 
     public void terminarPartida(boolean gano)
@@ -71,25 +70,23 @@ public class Juego
     public int obtenerVidaRestanteDelJugador(){
         return jugador.getVida();
     }
+
     public String obtenerNombreDelJugador(){
         return jugador.getNombre();
     }
+
     public int obtenerCreditosDelJugador(){
         return jugador.getCreditos();
     }
+
     public void realizarTurno() {
  
         mapa.realizarTurno(jugador,turno);                   
 
-        if(jugador.jugadorDerrotado())
-        {
+        if ( jugador.jugadorDerrotado() || (mapa.quedanEnemigos()==false&&turno.getTurno()!=0))
             terminarPartida(!jugador.jugadorDerrotado());
-        }
-        else if (mapa.quedanEnemigos()==false&&turno.getTurno()!=0)
-        {
-            terminarPartida(!jugador.jugadorDerrotado());
-        }
-        turno.pasarTurno();    
+        else
+            turno.pasarTurno(); 
     }
 
     public boolean hayDefensa(int x, int y){

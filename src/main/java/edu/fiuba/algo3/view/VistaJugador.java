@@ -48,8 +48,6 @@ public class VistaJugador extends GridPane{
         cuadroInfoJugador.setSpacing(0); 
         cuadroInfoJugador.setPadding(new Insets(20)); 
 
-        
-
         Label estadisticasDelJugador = new Label("Tus Estadisticas");
         estadisticasDelJugador.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
         Label labelNombre = new Label("Nombre: "+ juego.obtenerNombreDelJugador()); 
@@ -121,7 +119,6 @@ public class VistaJugador extends GridPane{
         ImageView imageViewPlateada = new ImageView(imgTorrePlateada);
 
          
-
         if (this.juego.obtenerCreditosDelJugador()<10){
            imageViewBlanca.setImage(imgTorreBlancaDeshabilitada);
             imageViewBlanca.setDisable(true);
@@ -143,9 +140,11 @@ public class VistaJugador extends GridPane{
         imageViewBlanca.setOnMouseClicked(seleccionBlanca);
         imageViewPlateada.setOnMouseClicked(seleccionPlateada);
         
+        Label pasarela = new Label("Defensas de Pasarela");
         Label trampaArenosa = new Label("Trampa Arenosa");
         Label costoTrampa = new Label("25 creditos");
 
+        Label tierra = new Label("Defensas de Tierra");
         Label torrreBlanca = new Label("Torre Blanca");
         Label costoBlanca = new Label("10 creditos");
 
@@ -166,7 +165,9 @@ public class VistaJugador extends GridPane{
         TorrePlateadaBox.getChildren().addAll(torrePlateada,imageViewPlateada,costoPlateada);
 
         cuadroDefensas.getChildren().addAll(
+            pasarela,
             TrampaArenosaBox,
+            tierra,
             TorreBlancaBox,
             TorrePlateadaBox);
 

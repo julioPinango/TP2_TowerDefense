@@ -23,8 +23,7 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
     }
 
     public void handle(ActionEvent actionEvent) {
-        String nombre = nombreJugador.getText();
-        Juego nuevoJuego = iniciarJuego(nombre);
+        Juego nuevoJuego = iniciarJuego(nombreJugador.getText());
 
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, nuevoJuego);
         Scene proximaVentana = new Scene(contenedorPrincipal, 1080, 720);
@@ -33,8 +32,7 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
        // stage.setFullScreen(false);
     }
 
-    private Juego iniciarJuego(String nombreJugador) {
-        //String path = "src/main/java/edu/fiuba/algo3/models/ArchivosJson/JSONdeEnemigosDefinitivo.json";
+    private Juego iniciarJuego(String nombre) {
         String path = "src/main/java/edu/fiuba/algo3/models/ArchivosJson/JSONdeEnemigosDefinitivo.json";
 
         String path2 = "src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json";
@@ -42,7 +40,7 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
         Parser parser = new Parser();
         Mapa mapa = new Mapa(path, path2, parser);
         Turno turno = new Turno();
-        Jugador jugador = new Jugador(nombreJugador);
+        Jugador jugador = new Jugador(nombre);
         Juego juego = new Juego(jugador, mapa, turno);
 
         return juego;

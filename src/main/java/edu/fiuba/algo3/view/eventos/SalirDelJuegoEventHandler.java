@@ -12,11 +12,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class OpcionesSalirDelJuegoEventHandler implements EventHandler<ActionEvent>{
+public class SalirDelJuegoEventHandler implements EventHandler<ActionEvent>{
 
     private Stage _Stage;
 
-    public OpcionesSalirDelJuegoEventHandler(Stage stage){
+    public SalirDelJuegoEventHandler(Stage stage){
       _Stage=stage;
     }
 
