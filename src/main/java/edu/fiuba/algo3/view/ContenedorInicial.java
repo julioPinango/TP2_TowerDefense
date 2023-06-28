@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.view;
 
 import edu.fiuba.algo3.view.eventos.BotonIniciarEventHandler;
+import edu.fiuba.algo3.view.eventos.TextoEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -46,6 +47,9 @@ public class ContenedorInicial extends VBox {
         BotonIniciarEventHandler iniciarEventHandler = new BotonIniciarEventHandler(stage, nombreJugador);
         buttonIniciar.setOnAction(iniciarEventHandler);
         buttonIniciar.setFont(new Font("Trebuchet MS", 18));
+
+        TextoEventHandler tx = new TextoEventHandler(iniciarEventHandler);
+        nombreJugador.setOnKeyPressed(tx);
 
         this.getChildren().addAll(
                 //titulo,
