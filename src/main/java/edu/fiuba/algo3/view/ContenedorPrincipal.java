@@ -43,7 +43,7 @@ public class ContenedorPrincipal extends BorderPane{
         VistaMapa vista= new VistaMapa(juego);
         this.contenedor= new HBox();
         contenedor.getChildren().addAll(vista.mostrarMapa());
-        
+        vista.setAlignment(Pos.CENTER);
         return vista;
     }
 
@@ -52,7 +52,7 @@ public class ContenedorPrincipal extends BorderPane{
         VistaTurno turno=new VistaTurno(juego);
         VistaJugador vistaJugador = new VistaJugador(juego, vistaMapa,turno,stage);
         ContenedorMenu.getChildren().addAll(vistaJugador.mostrarDatos(),turno.mostrarTurno());
-        
+        ContenedorMenu.setAlignment(Pos.CENTER);
         contenedor.getChildren().addAll(ContenedorMenu);
     }
 }

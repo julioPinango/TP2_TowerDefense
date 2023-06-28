@@ -19,12 +19,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.shape.Box;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.application.Application;
@@ -51,7 +47,7 @@ public class ContenedorInicial extends VBox {
         Image imagen = new Image("file:src/main/img/inicio.png");
         BackgroundImage imagenFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true));
         this.setBackground(new Background(imagenFondo));
-        
+
 
         Label aviso = new Label("*El nombre debe tener por lo menos 6 caracteres");
         aviso.setFont(new Font("Trebuchet MS", 18));
@@ -62,8 +58,14 @@ public class ContenedorInicial extends VBox {
         label.setFont(new Font("Trebuchet MS", 18));
         label.setStyle("-fx-font-weight: bold; -fx-background-color: white;");
 
+
         TextField nombreJugador = new TextField();
         nombreJugador.setFont(new Font("Trebuchet MS", 18));
+        nombreJugador.setPrefWidth(650);
+
+
+        HBox b = new HBox(nombreJugador);
+        b.setAlignment(Pos.CENTER);
 
         Button buttonIniciar = new Button("Iniciar juego");
         buttonIniciar.setDisable(true);
@@ -77,15 +79,11 @@ public class ContenedorInicial extends VBox {
 
         this.getChildren().addAll(
                 label,
-                nombreJugador,
                 aviso,
                 buttonIniciar
-        ); 
-    }
+        );
 
-    private void setMusica(){
-        ControladorSonido controlador = new ControladorSonido();
-        this.mediaPlayer= controlador.setMusicaInicial();
+        
     }
 }
 

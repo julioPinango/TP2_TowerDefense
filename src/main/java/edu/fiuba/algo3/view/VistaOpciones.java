@@ -21,6 +21,7 @@ public class VistaOpciones extends MenuBar{
         this.stage=stage;
         this.subMenu=this.setOpciones();
         this.getMenus().addAll(this.subMenu);
+
     }    
 
     private Menu setOpciones(){
@@ -42,6 +43,7 @@ public class VistaOpciones extends MenuBar{
         reiniciarJuego.setOnAction(reiniciarEventHandler);
 
         subMenuButton.getItems().addAll(silenciarMusicaItem, silenciarEfectosItem, pantallaCompletaItem,SalirItem,reiniciarJuego);
+
         return subMenuButton;
     }
 }
