@@ -64,8 +64,8 @@ public class ContenedorInicial extends VBox {
         nombreJugador.setPrefWidth(650);
 
 
-        HBox b = new HBox(nombreJugador);
-        b.setAlignment(Pos.CENTER);
+        HBox contenedorNombre = new HBox(nombreJugador);
+        contenedorNombre.setAlignment(Pos.CENTER);
 
         Button buttonIniciar = new Button("Iniciar juego");
         buttonIniciar.setDisable(true);
@@ -78,12 +78,17 @@ public class ContenedorInicial extends VBox {
         nombreJugador.setOnKeyPressed(tx);
 
         this.getChildren().addAll(
-                label,
-                aviso,
-                buttonIniciar
+            label,
+            contenedorNombre,
+            aviso,
+            buttonIniciar
         );
 
-        
+    }
+
+    private void setMusica(){
+        ControladorSonido controladorSonido= new ControladorSonido();
+        this.mediaPlayer=controladorSonido.setMusicaInicial();
     }
 }
 
