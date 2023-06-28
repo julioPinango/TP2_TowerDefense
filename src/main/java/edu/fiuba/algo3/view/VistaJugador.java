@@ -17,6 +17,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
@@ -26,12 +27,14 @@ public class VistaJugador extends GridPane{
     private VistaMapa vistaMapa;
     private VistaTurno _VistaTurno;
     private Stage stage;
+    private MediaPlayer mediaPlayer;
 
-    public VistaJugador(Juego j, VistaMapa vM,VistaTurno vT, Stage s) {
+    public VistaJugador(Juego j, VistaMapa vM,VistaTurno vT, Stage s, MediaPlayer mP) {
         this.juego = j;
         this.vistaMapa = vM;
         this._VistaTurno=vT;
         this.stage=s;
+        this.mediaPlayer=mP;
     }
     
     public GridPane mostrarDatos(){
@@ -92,7 +95,7 @@ public class VistaJugador extends GridPane{
 
         Button botonPasarTurno=new Button("Pasar Turno");
 
-        BotonPasarTurnoHandler pasarTurno = new BotonPasarTurnoHandler(juego,vistaMapa,this,_VistaTurno, this.stage);
+        BotonPasarTurnoHandler pasarTurno = new BotonPasarTurnoHandler(juego,vistaMapa,this,_VistaTurno, this.stage, this.mediaPlayer);
         botonPasarTurno.setOnAction(pasarTurno);
 
         return botonPasarTurno;

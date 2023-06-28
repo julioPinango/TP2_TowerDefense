@@ -74,7 +74,7 @@ public class ContenedorInicial extends VBox {
         buttonIniciar.setOnAction(iniciarEventHandler);
         buttonIniciar.setFont(new Font("Trebuchet MS", 18));
 
-        TextoEventHandler tx = new TextoEventHandler(iniciarEventHandler);
+        TextoEventHandler tx = new TextoEventHandler(iniciarEventHandler,nombreJugador);
         nombreJugador.setOnKeyPressed(tx);
 
         this.getChildren().addAll(

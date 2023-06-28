@@ -8,6 +8,7 @@ import edu.fiuba.algo3.view.VistaTurno;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class BotonPasarTurnoHandler implements EventHandler<ActionEvent> {
@@ -17,13 +18,14 @@ public class BotonPasarTurnoHandler implements EventHandler<ActionEvent> {
   private VistaJugador _vistaJugador;
   private VistaTurno _VistaTurno;
   private Stage stage;
+  private MediaPlayer _mediaPlayer;
 
-
-  public BotonPasarTurnoHandler(Juego juego,VistaMapa vistaMapa,VistaJugador vistaJugador,VistaTurno vistaTurno, Stage stage){      
+  public BotonPasarTurnoHandler(Juego juego,VistaMapa vistaMapa,VistaJugador vistaJugador,VistaTurno vistaTurno, Stage stage, MediaPlayer mediaPlayer){      
     _juego=juego;
     _vistaMapa=vistaMapa;
     _vistaJugador=vistaJugador;
     _VistaTurno=vistaTurno;
+    _mediaPlayer=mediaPlayer;
     this.stage=stage;
   }
 
@@ -47,6 +49,7 @@ public class BotonPasarTurnoHandler implements EventHandler<ActionEvent> {
       ContenedorFinal contenedorFinal = new ContenedorFinal(stage, _juego);
       Scene proximaVentana = new Scene(contenedorFinal ,800,470);
 
+      this._mediaPlayer.stop();
       stage.setScene(proximaVentana);
       stage.centerOnScreen();
     }
