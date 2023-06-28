@@ -6,15 +6,18 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
     private Stage stage;
     private TextField nombreJugador;
+    private MediaPlayer mediaPlayer;
 
-    public BotonIniciarEventHandler(Stage stage, TextField nombre) {
+    public BotonIniciarEventHandler(Stage stage, TextField nombre, MediaPlayer mP) {
         this.stage = stage;
         this.nombreJugador = nombre;
+        this.mediaPlayer=mP;
     }
 
     public void handle(ActionEvent actionEvent) {
@@ -33,6 +36,7 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
 
         Scene proximaVentana = new Scene(scrollPane, 1080, 780);
 
+        mediaPlayer.stop();
         stage.setScene(proximaVentana);
         stage.centerOnScreen();
     }
