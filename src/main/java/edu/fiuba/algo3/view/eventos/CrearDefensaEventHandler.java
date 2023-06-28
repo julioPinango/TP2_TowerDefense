@@ -1,16 +1,9 @@
 package edu.fiuba.algo3.view.eventos;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import edu.fiuba.algo3.models.Juego;
-import edu.fiuba.algo3.models.Mapa;
-import edu.fiuba.algo3.view.VistaJugador;
 import edu.fiuba.algo3.view.VistaMapa;
 import javafx.event.EventHandler;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class CrearDefensaEventHandler implements EventHandler<MouseEvent>{

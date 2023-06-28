@@ -1,13 +1,7 @@
 package edu.fiuba.algo3.view;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import edu.fiuba.algo3.models.Juego;
-import edu.fiuba.algo3.view.eventos.BotonIniciarEventHandler;
 import edu.fiuba.algo3.view.eventos.BotonPasarTurnoHandler;
-import edu.fiuba.algo3.view.eventos.MouseFueraParcelasEventHandler;
-import edu.fiuba.algo3.view.eventos.MouseParcelasEventHandler;
 import edu.fiuba.algo3.view.eventos.SeleccionDefensaEventHandle;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,10 +9,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
 public class VistaJugador extends GridPane{
@@ -37,22 +37,34 @@ public class VistaJugador extends GridPane{
     public GridPane mostrarDatos(){
 
         this.getChildren().clear();
-
-
-        this.setPadding(new Insets(0));
+        this.setPadding(new Insets(0,10,0,10));
         this.setHgap(0);
         this.setVgap(0);
-        this.setStyle("-fx-background-color: white; -fx-border-color: black;");
+        this.setStyle("-fx-border-color: black;");
+
+        Image imagen = new Image("file:src/main/img/fondoDefensa.png");
+        BackgroundImage imagenFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true));
+        this.setBackground(new Background(imagenFondo));
 
         VBox cuadroInfoJugador = new VBox();
         cuadroInfoJugador.setSpacing(0); 
-        cuadroInfoJugador.setPadding(new Insets(20)); 
+        cuadroInfoJugador.setPadding(new Insets(20, 25,18,25)); 
 
-        Label estadisticasDelJugador = new Label("Tus Estadisticas");
-        estadisticasDelJugador.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
-        Label labelNombre = new Label("Nombre: "+ juego.obtenerNombreDelJugador()); 
-        Label labelVidaRestante = new Label("Vida: "+ juego.obtenerVidaRestanteDelJugador()); 
-        Label labelCreditos = new Label("Creditos Disponibles: "+ juego.obtenerCreditosDelJugador()); 
+        Label estadisticasDelJugador = new Label("ESTADISTICAS");
+        estadisticasDelJugador.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
+        estadisticasDelJugador.setTextFill(Color.WHITE);
+
+        Label labelNombre = new Label("Jugador: "+ juego.obtenerNombreDelJugador()); 
+        labelNombre.setStyle("-fx-font-size: 15px; -fx-font-weight: bold;");
+        labelNombre.setTextFill(Color.WHITE);
+
+        Label labelVidaRestante = new Label("Vida: "+ juego.obtenerVidaRestanteDelJugador());
+        labelVidaRestante.setStyle("-fx-font-size: 15px; -fx-font-weight: bold;");
+        labelVidaRestante.setTextFill(Color.WHITE);
+
+        Label labelCreditos = new Label("Creditos: "+ juego.obtenerCreditosDelJugador()); 
+        labelCreditos.setStyle("-fx-font-size: 15px;-fx-font-weight: bold;");
+        labelCreditos.setTextFill(Color.WHITE);
 
         cuadroInfoJugador.getChildren().addAll(estadisticasDelJugador,labelNombre,labelVidaRestante,labelCreditos);
 
@@ -62,7 +74,7 @@ public class VistaJugador extends GridPane{
 
         VBox cuadroBotones = new VBox();
         cuadroBotones.setSpacing(10);
-        cuadroBotones.setPadding(new Insets(20));
+        cuadroBotones.setPadding(new Insets(12));
         cuadroBotones.setAlignment(Pos.CENTER);
 
         Button botonPasarTurno = pasarTurno();
@@ -72,7 +84,6 @@ public class VistaJugador extends GridPane{
         cuadroBotones.getChildren().addAll(botonPasarTurno);
         this.add(stackPaneCuadro, 0, 0);
         this.add(cuadroBotones, 0,2);
-
 
         return this;
     }
@@ -90,8 +101,8 @@ public class VistaJugador extends GridPane{
     private void listaDefensas(){
 
         VBox cuadroDefensas = new VBox();
-        cuadroDefensas.setSpacing(10);
-        cuadroDefensas.setPadding(new Insets(15));
+        cuadroDefensas.setSpacing(8);
+        cuadroDefensas.setPadding(new Insets(0,5,0,5));
         cuadroDefensas.setAlignment(Pos.CENTER);
 
         VBox TrampaArenosaBox = new VBox();
@@ -132,6 +143,13 @@ public class VistaJugador extends GridPane{
             imageViewArena.setDisable(true);
         }
 
+        Line lineaHorizontal1 = new Line(50, 50, 250, 50);
+        lineaHorizontal1.setStroke(Color.WHITE);
+        Line lineaHorizontal2 = new Line(50, 50, 250, 50);
+        lineaHorizontal2.setStroke(Color.WHITE);
+        Line lineaHorizontal3 = new Line(50, 50, 250, 50);
+        lineaHorizontal3.setStroke(Color.WHITE);
+
         SeleccionDefensaEventHandle seleccionArena = new SeleccionDefensaEventHandle(this.vistaMapa, "Trampa Arenosa",this);
         SeleccionDefensaEventHandle seleccionBlanca = new SeleccionDefensaEventHandle(this.vistaMapa, "Torre Blanca", this);
         SeleccionDefensaEventHandle seleccionPlateada = new SeleccionDefensaEventHandle(this.vistaMapa, "Torre Plateada", this);
@@ -141,15 +159,36 @@ public class VistaJugador extends GridPane{
         imageViewPlateada.setOnMouseClicked(seleccionPlateada);
         
         Label pasarela = new Label("Defensas de Pasarela");
+        pasarela.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+        pasarela.setTextFill(Color.WHITE);
+
         Label trampaArenosa = new Label("Trampa Arenosa");
+        trampaArenosa.setStyle("-fx-font-size: 15px; -fx-font-weight: bold;");
+        trampaArenosa.setTextFill(Color.WHITE);
+
         Label costoTrampa = new Label("25 creditos");
+        costoTrampa.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
+        costoTrampa.setTextFill(Color.WHITE);
 
         Label tierra = new Label("Defensas de Tierra");
+        tierra.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+        tierra.setTextFill(Color.WHITE);
+
         Label torrreBlanca = new Label("Torre Blanca");
+        torrreBlanca.setStyle("-fx-font-size: 15px; -fx-font-weight: bold;");
+        torrreBlanca.setTextFill(Color.WHITE);
+
         Label costoBlanca = new Label("10 creditos");
+        costoBlanca.setStyle("-fx-font-size: 12px;-fx-font-weight: bold;");
+        costoBlanca.setTextFill(Color.WHITE);
 
         Label torrePlateada = new Label("Torre Plateada");
+        torrePlateada.setStyle("-fx-font-size: 15px;-fx-font-weight: bold;");
+        torrePlateada.setTextFill(Color.WHITE);
+
         Label costoPlateada = new Label("20 creditos");
+        costoPlateada.setStyle("-fx-font-size: 12px;-fx-font-weight: bold;");
+        costoPlateada.setTextFill(Color.WHITE);
 
         imageViewArena.setFitWidth(100);
         imageViewArena.setFitHeight(100);
@@ -165,11 +204,14 @@ public class VistaJugador extends GridPane{
         TorrePlateadaBox.getChildren().addAll(torrePlateada,imageViewPlateada,costoPlateada);
 
         cuadroDefensas.getChildren().addAll(
+            lineaHorizontal1,
             pasarela,
             TrampaArenosaBox,
+            lineaHorizontal2,
             tierra,
             TorreBlancaBox,
-            TorrePlateadaBox);
+            TorrePlateadaBox,
+            lineaHorizontal3);
 
         this.add(cuadroDefensas,0,1);
     }

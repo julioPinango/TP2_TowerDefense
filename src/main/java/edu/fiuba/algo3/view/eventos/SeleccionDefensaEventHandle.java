@@ -1,10 +1,7 @@
 package edu.fiuba.algo3.view.eventos;
 
-import edu.fiuba.algo3.models.Juego;
-import edu.fiuba.algo3.view.ContenedorPrincipal;
 import edu.fiuba.algo3.view.VistaJugador;
 import edu.fiuba.algo3.view.VistaMapa;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 

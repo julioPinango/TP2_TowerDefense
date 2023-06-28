@@ -2,14 +2,9 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.view.ContenedorInicial;
 import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     @Override
@@ -18,9 +13,8 @@ public class App extends Application {
         stage.setTitle("Tower Defense");
 
         ContenedorInicial contenedorInicial = new ContenedorInicial(stage);
-        Scene scene = new Scene(contenedorInicial ,500,270);
+        Scene scene = new Scene(contenedorInicial ,800,470);
         stage.setScene(scene);
-
         stage.show();
     }
 

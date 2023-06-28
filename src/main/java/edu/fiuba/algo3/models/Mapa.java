@@ -209,12 +209,12 @@ public class Mapa
 
         for (Defensa defensa : defensasActuales) {
 
-            if(defensa.destruido()==false)
-                defensasDisponibles.add(defensa);
-            else{
+            if(defensa.destruido()){
                 Cordenada cordenadaDefensa= defensa.obtenerCordenada();
                 parcelas.get(cordenadaDefensa).liberar();
             }
+            else
+                defensasDisponibles.add(defensa);
         }
 
         return defensasDisponibles;

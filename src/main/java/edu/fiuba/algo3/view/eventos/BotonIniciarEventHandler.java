@@ -1,15 +1,10 @@
 package edu.fiuba.algo3.view.eventos;
 
-import edu.fiuba.algo3.models.Juego;
-import edu.fiuba.algo3.models.Jugador;
-import edu.fiuba.algo3.models.Mapa;
-import edu.fiuba.algo3.models.Parser;
-import edu.fiuba.algo3.models.Turno;
-import edu.fiuba.algo3.view.ContenedorInicial;
 import edu.fiuba.algo3.view.ContenedorPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -23,26 +18,22 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
     }
 
     public void handle(ActionEvent actionEvent) {
-        Juego nuevoJuego = iniciarJuego(nombreJugador.getText());
+        iniciarJuego nuevoJuego = new iniciarJuego(nombreJugador.getText());
 
-        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, nuevoJuego);
-        Scene proximaVentana = new Scene(contenedorPrincipal, 1080, 720);
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, nuevoJuego.devolverJuego());
+
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(contenedorPrincipal);
+        scrollPane.setPrefSize(200, 200);
+        
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setVvalue(0.5); 
+        scrollPane.setHvalue(0.5); 
+
+        Scene proximaVentana = new Scene(scrollPane, 1080, 780);
 
         stage.setScene(proximaVentana);
-       // stage.setFullScreen(false);
-    }
-
-    private Juego iniciarJuego(String nombre) {
-        String path = "src/main/java/edu/fiuba/algo3/models/ArchivosJson/JSONdeEnemigosDefinitivo.json";
-
-        String path2 = "src/main/java/edu/fiuba/algo3/models/ArchivosJson/mapa.json";
-
-        Parser parser = new Parser();
-        Mapa mapa = new Mapa(path, path2, parser);
-        Turno turno = new Turno();
-        Jugador jugador = new Jugador(nombre);
-        Juego juego = new Juego(jugador, mapa, turno);
-
-        return juego;
+        stage.centerOnScreen();
     }
 }

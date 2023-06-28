@@ -9,13 +9,10 @@ import edu.fiuba.algo3.view.eventos.CrearDefensaEventHandler;
 import edu.fiuba.algo3.view.eventos.MouseFueraParcelasEventHandler;
 import edu.fiuba.algo3.view.eventos.MouseParcelasEventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 
 public class VistaMapa extends GridPane{
     private Juego juego;
@@ -153,9 +150,8 @@ public class VistaMapa extends GridPane{
 
         ImageView iv=new ImageView(imagen);
 
-
-        iv.setFitWidth(50);
-        iv.setFitHeight(50);
+        iv.setFitWidth(51);
+        iv.setFitHeight(51);
 
         return iv;
     }
@@ -163,8 +159,8 @@ public class VistaMapa extends GridPane{
     private ImageView dibujarMarco(Image imagenMarco) {   
         
         ImageView marco=new ImageView(imagenMarco);
-        marco.setFitWidth(50);
-        marco.setFitHeight(50);
+        marco.setFitWidth(51);
+        marco.setFitHeight(51);
         marco.setVisible(false);
         return marco;
     }

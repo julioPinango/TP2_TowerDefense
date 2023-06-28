@@ -1,59 +1,58 @@
 package edu.fiuba.algo3.view;
 
-
-
-import java.util.HashMap;
-import java.util.Map;
-
 import edu.fiuba.algo3.models.Juego;
-import javafx.event.ActionEvent;
-import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ScrollBar;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Separator;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ContenedorPrincipal extends BorderPane{
     private VistaMapa vistaMapa;
+    private Juego juego;
+    private Stage stage;
+    private HBox contenedor;
 
-    public ContenedorPrincipal(Stage stage, Juego juego){
+    public ContenedorPrincipal(Stage s, Juego j){
+        this.stage=s;
+        this.juego=j;
 
-        this.setMenu(stage);
-        this.vistaMapa=this.setMapa(juego);
-        this.setOpcionesJugador(vistaMapa, juego, stage);
+        Image imagen = new Image("file:src/main/img/difuminado.png");
+        BackgroundImage imagenFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true));
+        this.setBackground(new Background(imagenFondo));
+
+        this.setMenu();
+        this.vistaMapa=this.setMapa();
+        this.setOpcionesJugador();
+        this.setCenter(contenedor);
+        contenedor.setAlignment(Pos.CENTER);
     }
 
-    private void setMenu(Stage stage){
-        VistaOpciones opcionesMenu = new VistaOpciones(stage);
+    private void setMenu(){
+        VistaOpciones opcionesMenu = new VistaOpciones(stage, juego);
         this.setTop(opcionesMenu);
     }
 
-    private VistaMapa setMapa(Juego juego){
+    private VistaMapa setMapa(){
         VistaMapa vista= new VistaMapa(juego);
-        this.setCenter(vista.mostrarMapa());
+        this.contenedor= new HBox();
+        contenedor.getChildren().addAll(vista.mostrarMapa());
+        
         return vista;
     }
 
-    private void setOpcionesJugador(VistaMapa vista, Juego juego, Stage stage){
+    private void setOpcionesJugador(){
         VBox ContenedorMenu=new VBox();
-        //Separator separator = new Separator(Orientation.HORIZONTAL);    S    
-        //ContenedorMenu.getChildren().addAll(new VistaOpciones(s));
-        //ContenedorMenu.getChildren().addAll(separator);
         VistaTurno turno=new VistaTurno(juego);
         VistaJugador vistaJugador = new VistaJugador(juego, vistaMapa,turno,stage);
         ContenedorMenu.getChildren().addAll(vistaJugador.mostrarDatos(),turno.mostrarTurno());
-        this.setRight(ContenedorMenu);
+        
+        contenedor.getChildren().addAll(ContenedorMenu);
     }
 }
